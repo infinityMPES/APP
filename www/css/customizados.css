@@ -1,0 +1,60 @@
+@CHARSET "ISO-8859-1";
+
+/*****************
+*****************/
+.has-header {
+    top: 44px;
+    background-image: linear-gradient(to top, #3ba98f, #e7f7f7, #dce9ef);
+}
+
+/** ESTILO DA HOME **/
+[nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
+    background: #235e26;
+}
+
+.imagem-home {
+    border-radius: 25px;
+    width: 20%;
+    margin-top: 5px;
+}
+
+.bar.bar-assertive {
+    border-color: #235e26;
+    background-color: #235e26;
+    background-image: linear-gradient(0deg, #e42112, #e42112 50%, transparent 50%);
+    color: #fff;
+}
+
+.popover .bar-header, .popover .bar-header .title {
+    background: #235e26;
+	color: white;
+}
+
+.scroll .botoes-home:not(:first-child) {
+    margin-top: 15px !important;
+}
+
+.botoes-inicios{
+    color: #ffffff;
+    background: #235e26;
+    padding: 5px;
+    border: solid 1px;
+    border-radius: 10px;
+    display: block;
+    text-decoration: none;
+	font-size: 1.2em;
+}
+
+a.botoes-inicios{
+	text-decoration: none;
+}
+
+a.botoes-inicios i.fa {
+    font-size: 4em;
+    display: block;
+	margin-bottom: 5px;
+}
+
+.botoes-inicios, a.botoes-inicios .ion{
+	text-align: center;
+}
