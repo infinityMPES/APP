@@ -2,31 +2,58 @@
 
 /*****************
 *****************/
+input::placeholder { 
+	color: #517f78; 
+	font-size: 1em; 
+	padding: 5px;
+}
+.placeholder-icon{
+	color: #517f78;
+}
+
+.botaoPadrao{
+	background: #386d67;
+    color: white;
+    font-weight: bold;
+}
+
+.botaoPadrao:hover{
+	color: white;
+}
+
+#fab{
+	display: none !important;
+}
 .has-header {
     top: 44px;
-    background-image: linear-gradient(to top, #3ba98f, #e7f7f7, #dce9ef);
+	background: url('../img/imagens/background.png') no-repeat;
+	background-size: 100%;
+}
+
+.pageLogin, .view-container {
+	background: url('../img/imagens/background_logo.png') no-repeat;
+	background-size: 100%;
 }
 
 /** ESTILO DA HOME **/
 [nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
-    background: #235e26;
+    background: #62aaa2 !important;
 }
 
 .imagem-home {
-    border-radius: 25px;
-    width: 20%;
-    margin-top: 5px;
+    width: 50%;
+    margin-top: 10px;
 }
 
 .bar.bar-assertive {
-    border-color: #235e26;
-    background-color: #235e26;
+    border-color: #62aaa2 !important;
+    background: #62aaa2 !important;
     background-image: linear-gradient(0deg, #e42112, #e42112 50%, transparent 50%);
     color: #fff;
 }
 
 .popover .bar-header, .popover .bar-header .title {
-    background: #235e26;
+    background: #62aaa2 !important;
 	color: white;
 }
 
@@ -35,14 +62,9 @@
 }
 
 .botoes-inicios{
-    color: #ffffff;
-    background: #235e26;
     padding: 5px;
-    border: solid 1px;
-    border-radius: 10px;
     display: block;
     text-decoration: none;
-	font-size: 1.2em;
 }
 
 a.botoes-inicios{
@@ -57,4 +79,32 @@ a.botoes-inicios i.fa {
 
 .botoes-inicios, a.botoes-inicios .ion{
 	text-align: center;
+}
+
+.links{
+	color: #517f78;
+	text-decoration: none;
+}
+
+/************************
+********* Login
+*************************/
+.imagem-home-login{
+	margin-bottom: 30%;
+}
+.car-login {
+    background: none !important;
+	margin: 0px !important;
+}
+.car-login div label.login{
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+}
+.car-login div label.senha{
+/* 	border-top: dashed 1px gray !important; */
+}
+.centralizar{
+	text-align: center;
+}
+.links-login li{
+	margin-top:20px;
 }

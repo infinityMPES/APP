@@ -21,7 +21,27 @@ app.run(function ($ionicPlatform) {
 
 app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
-
+    
+    .state('app.login', {
+        url: '/login',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/login.html',
+                controller: 'LoginCtrl'
+            }
+        }
+    })
+    
+    .state('app.inicio', {
+        url: '/inicio',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/inicio.html',
+                controller: 'InicioCtrl'
+            }
+        }
+    })
+    
     .state('app', {
         url: '/app',
         abstract: true,
@@ -68,16 +88,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             }
         }
     })
-    
-    .state('app.inicio', {
-        url: '/inicio',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/inicio.html',
-                controller: 'InicioCtrl'
-            }
-        }
-    })
 
     .state('app.extensions', {
         url: '/extensions',
@@ -91,5 +101,5 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     ;
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/inicio');
+    $urlRouterProvider.otherwise('/app/login');
 });
