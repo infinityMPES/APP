@@ -1,0 +1,48 @@
+<ion-view view-title="{{titulo}}"  class="bar-positive">
+	<ion-nav-buttons side="right">
+		<button class="button button-icon icon topo ion-ios-cart-outline" ng-show="carrinho > 0" ng-click="finalizarCompra()"><span class="badge badge-assertive header-badge">{{carrinho}}</span></button>
+    </ion-nav-buttons>
+	<ion-content>
+		<h5 class="textoTopo" ng-show="cadastro">
+			Preencha os dados para criar sua conta e participar dos sorteios do {{strTitulo}}.
+		</h5>
+		<form name="form" novalidate ng-submit="cadastrar()">
+			<div class="list">
+				<input type="hidden" ng-model="usuarioData.id">
+				<label class="item item-input" ng-show="parametros.campos.exibir.indexOf('nome') != -1">
+				  <input type="text" placeholder="Nome Completo" ng-model="usuarioData.nome" required>
+				</label>
+				<label class="item item-input" ng-show="cadastro && parametros.campos.exibir.indexOf('cpf') != -1">
+				  <input type="tel" placeholder="CPF" {{cadastroCPF}} mask="999.999.999-99" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="usuarioData.cpf" required>
+				</label>
+				<label class="item item-input" ng-show="parametros.campos.exibir.indexOf('email') != -1">
+				  <input type="text" placeholder="E-mail" ng-model="usuarioData.email">
+				</label>
+				<label class="item item-input" ng-show="parametros.campos.exibir.indexOf('data_nascimento') != -1">
+				  <input type="tel" placeholder="Data de Nascimento" mask="99/99/9999" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="usuarioData.data_nascimento" required>
+				</label>
+				<label class="item item-input" ng-click="regioes()" ng-show="parametros.campos.exibir.indexOf('regiao') != -1">
+				  <h4 class="textoTopo">Regiões/Municípios</h4>
+				</label>
+				<label class="item item-input" ng-show="parametros.campos.exibir.indexOf('cep') != -1">
+				  <input type="tel" placeholder="CEP" mask="99.999-999" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="usuarioData.cep" required>
+				</label>
+				<label class="item item-input" ng-show="parametros.campos.exibir.indexOf('telefone') != -1">
+				  <input type="tel" placeholder="Número do telefone (dd + telefone)" mask="(99) 9?9999-9999" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="usuarioData.telefone" required>
+				</label>
+				<label class="item item-input" ng-show="!cadastro">
+				  <input type="password" placeholder="Senha Antiga" ng-model="usuarioData.senha_antiga">
+				</label>
+				<label class="item item-input">
+				  <input type="password" placeholder="{{!cadastro ? 'Nova': ''}} Senha" ng-model="usuarioData.senha">
+				</label>
+				<label class="item item-input">
+				  <input type="password" placeholder="Confirmar {{!cadastro ? 'Nova': ''}} Senha" ng-model="usuarioData.senha_confirmacao">
+				</label>
+				<label class="item">
+		          <button class="button button-block button-positive" type="submit">{{!cadastro ? 'Atualizar': 'Cadastrar'}}</button>
+		        </label>
+			</div>
+		</form>
+	</ion-content>
+</ion-view>

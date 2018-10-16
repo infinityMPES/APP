@@ -31,6 +31,27 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             }
         }
     })
+    .state('app.esqueci-senha', {
+        url: '/esqueci-senha',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/esqueci-senha.html',
+                controller: 'LoginCtrl'
+            }
+        }
+    })
+    
+    
+    .state('app.cadastar-paciente', {
+        url: '/cadastar-paciente',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/cadastrar-paciente.html',
+                controller: 'CadastroPacienteCtrl'
+            }
+        }
+    })
+    
     
     .state('app.inicio', {
         url: '/inicio',

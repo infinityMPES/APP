@@ -1,4 +1,4 @@
-﻿app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout, $ionicHistory, $state) {
+﻿app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout, $ionicHistory, $state, $ionicLoading) {
     // Form data for the login modal
     $scope.loginData = {};
 
@@ -36,7 +36,11 @@
         $scope.popover.remove();
     });
     
-    
+    /*********
+     * CONSTANTES
+     **********/
+    $scope.strUrlServico   	= Constantes.APP_SERVICE;
+    $scope.timeout   		= Constantes.APP_TIMEOUT;
     
     /*******
     GO HOME
@@ -86,16 +90,17 @@
      * Login Usuário
      */
     $scope.loginData = {};
-//    $scope.loginData.strCpf = '07325076428';
-//    $scope.loginData.strSenha = '123456';
     
+    $scope.setLogin = function(loginData){
+    	$scope.loginData = loginData;
+    }
     
     $scope.usuarioLogado = function(bolLogin){
     	/**
          * Caso o usuário não esteja logado
          */
         if(angular.equals($scope.loginData, {})) {
-//        	if(!bolLogin) $scope.goTo('app.login');
+        	if(!bolLogin) $scope.goTo('app.login');
         }else{
         	$scope.goTo('app.inicio');
         }

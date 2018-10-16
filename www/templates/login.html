@@ -1,23 +1,26 @@
 <ion-view view-title="Inicio" hide-nav-bar="true"> 
 	<ion-content class="im-wrapper pageLogin">
-			<p style="margin-top: 55%">&nbsp;</p>
-			<div class="card car-login">
-				<div class="list">
-					<label class="item item-input login"> 
-						<i class="icon ion-person placeholder-icon"></i> 
-						<input type="text" placeholder="Informe seu CPF">
-					</label> 
-					<label class="item item-input senha"> 
-						<i class="icon ion-key placeholder-icon"></i> 
-						<input type="password" placeholder="Informe sua Senha">
-					</label>
+			<p style="margin-top: 45%">&nbsp;</p>
+			<form name="login" class="loginForm">
+				<div class="card car-login">
+						<div class="list">
+							<label class="item item-input login"> 
+								<i class="icon ion-person placeholder-icon"></i> 
+								<input type="text" placeholder="Informe seu CPF: 999.999.999-99" class="cpf" name="strCPF" ng-model="loginData.strCpf" required>
+							</label>
+							<span class="erro" ng-show="erros && !login.strCPF.$valid">Login é Obrigatório</span> 
+							<label class="item item-input senha"> 
+								<i class="icon ion-key placeholder-icon"></i> 
+								<input type="password" placeholder="Informe sua Senha" name="strSenha"  ng-model="loginData.strSenha" required>
+							</label>
+							<span class="erro" ng-show="erros && !login.strSenha.$valid">Senha é Obrigatória</span>
+						</div>
 				</div>
-			</div>
-			<button class="button button-full botaoPadrao" ng-click="loading()">Entrar</button>
-			
+				<button class="button button-full botaoPadrao" ng-click="logar()">Entrar</button>
+			</form>
 			<ul class="centralizar links-login">
 				<li><a class="links link" href="#/app/cadastrar-usuario">NÃO SOU CADASTRADO</a></li>
-				<li><a class="links link" href="#/app/esqueci-a-senha">ESQUECI A SENHA</a></li>
+				<li><a class="links link" href="#/app/esqueci-senha">ESQUECI A SENHA</a></li>
 			</ul>
 	</ion-content>
 </ion-view>

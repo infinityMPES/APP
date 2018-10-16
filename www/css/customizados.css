@@ -1,6 +1,7 @@
 @CHARSET "ISO-8859-1";
 
 /*****************
+GERAIS
 *****************/
 input::placeholder { 
 	color: #517f78; 
@@ -35,6 +36,38 @@ input::placeholder {
 	background-size: 100%;
 }
 
+.erro{
+	color: red;
+/*     border-bottom: dashed 1px; */
+	border-top: dashed 1px;
+    width: 100%;
+    display: block;
+    padding: 5px;
+}
+
+.bar-subheader, .bar-subheader .title {
+    top: 0px !important;
+    display: block;
+    height: 118px;
+	font-size: 12px;
+    background: #62aaa2 !important;
+}
+
+.titulo-icone{
+	color: white !important;
+}
+
+.titulo-icone i{
+	font-size: 4em !important;
+}
+
+.texto-icone{
+	font-size: 14px !important;
+}
+
+.formPadrao{
+	background: white;
+}
 /** ESTILO DA HOME **/
 [nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
     background: #62aaa2 !important;
@@ -107,4 +140,14 @@ a.botoes-inicios i.fa {
 }
 .links-login li{
 	margin-top:20px;
+}
+
+.loginForm .erro{
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+} 
+/************************
+********* Esqueci a senha
+*************************/
+.esqueci-senha{
+	background: white;
 }
