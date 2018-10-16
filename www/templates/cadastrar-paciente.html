@@ -1,48 +1,44 @@
-<ion-view view-title="{{titulo}}"  class="bar-positive">
-	<ion-nav-buttons side="right">
-		<button class="button button-icon icon topo ion-ios-cart-outline" ng-show="carrinho > 0" ng-click="finalizarCompra()"><span class="badge badge-assertive header-badge">{{carrinho}}</span></button>
-    </ion-nav-buttons>
-	<ion-content>
-		<h5 class="textoTopo" ng-show="cadastro">
-			Preencha os dados para criar sua conta e participar dos sorteios do {{strTitulo}}.
-		</h5>
-		<form name="form" novalidate ng-submit="cadastrar()">
-			<div class="list">
-				<input type="hidden" ng-model="usuarioData.id">
-				<label class="item item-input" ng-show="parametros.campos.exibir.indexOf('nome') != -1">
-				  <input type="text" placeholder="Nome Completo" ng-model="usuarioData.nome" required>
-				</label>
-				<label class="item item-input" ng-show="cadastro && parametros.campos.exibir.indexOf('cpf') != -1">
-				  <input type="tel" placeholder="CPF" {{cadastroCPF}} mask="999.999.999-99" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="usuarioData.cpf" required>
-				</label>
-				<label class="item item-input" ng-show="parametros.campos.exibir.indexOf('email') != -1">
-				  <input type="text" placeholder="E-mail" ng-model="usuarioData.email">
-				</label>
-				<label class="item item-input" ng-show="parametros.campos.exibir.indexOf('data_nascimento') != -1">
-				  <input type="tel" placeholder="Data de Nascimento" mask="99/99/9999" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="usuarioData.data_nascimento" required>
-				</label>
-				<label class="item item-input" ng-click="regioes()" ng-show="parametros.campos.exibir.indexOf('regiao') != -1">
-				  <h4 class="textoTopo">Regiões/Municípios</h4>
-				</label>
-				<label class="item item-input" ng-show="parametros.campos.exibir.indexOf('cep') != -1">
-				  <input type="tel" placeholder="CEP" mask="99.999-999" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="usuarioData.cep" required>
-				</label>
-				<label class="item item-input" ng-show="parametros.campos.exibir.indexOf('telefone') != -1">
-				  <input type="tel" placeholder="Número do telefone (dd + telefone)" mask="(99) 9?9999-9999" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" ng-model="usuarioData.telefone" required>
-				</label>
-				<label class="item item-input" ng-show="!cadastro">
-				  <input type="password" placeholder="Senha Antiga" ng-model="usuarioData.senha_antiga">
-				</label>
-				<label class="item item-input">
-				  <input type="password" placeholder="{{!cadastro ? 'Nova': ''}} Senha" ng-model="usuarioData.senha">
-				</label>
-				<label class="item item-input">
-				  <input type="password" placeholder="Confirmar {{!cadastro ? 'Nova': ''}} Senha" ng-model="usuarioData.senha_confirmacao">
-				</label>
-				<label class="item">
-		          <button class="button button-block button-positive" type="submit">{{!cadastro ? 'Atualizar': 'Cadastrar'}}</button>
-		        </label>
+<ion-view view-title="" class="esqueci-senha-titulo">
+	<ion-nav-title  class="esqueci-senha-titulo">
+		Cadastrar Usuário
+    </ion-nav-title>
+    <ion-content class="esqueci-senha">
+        <div class="bar bar-subheader bar-stable static text-center">
+            <strong class="title titulo-icone">
+            	<i class="fa fa-user" aria-hidden="true"></i>
+            	<br />
+            	<span class="texto-icone">Preencha os campos a baixo para realizar o seu cadastro.</span>
+           	</strong>
+        </div>
+        <form name="recuperarSenha" class="formPadrao cadastroUsuario im-wrapper ">
+			<div class="card car-login">
+				<div class="list">
+					<label class="item item-input login"> 
+						<input type="text" placeholder="Informe seu CPF: 999.999.999-99" class="cpf" name="cpf" ng-model="loginData.cpf" required>
+					</label>
+					<span class="erro" ng-show="erros && !login.CPF.$valid">CPF é Obrigatário</span> 
+
+					<label class="item item-input login"> 
+						<input type="text" placeholder="Informe seu nome" name="nome" ng-model="loginData.nome" required>
+					</label>
+					<span class="erro" ng-show="erros && !login.nome.$valid">Nome é Obrigatário</span> 
+					
+					<label class="item item-input login"> 
+						<input type="text" placeholder="Informe seu nome" name="nome" ng-model="loginData.nome" required>
+						<i class="icon ion-person placeholder-icon"></i> 
+					</label>
+					<span class="erro" ng-show="erros && !login.nome.$valid">Nome é Obrigatário</span> 
+				</div>
 			</div>
+			<button class="button button-full botaoPadrao" ng-click="cadastrar()">Cadastrar</button>
 		</form>
-	</ion-content>
+    </ion-content>
 </ion-view>
+<style>
+	.bar.bar-header{
+	    box-shadow: none !important;
+	}
+	.bar.bar-stable{
+		border: none !important;
+	}
+</style>
