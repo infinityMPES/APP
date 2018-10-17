@@ -9,7 +9,7 @@ var Constantes = {
 	"APP_TIMEOUT"	 					: 30000,
 	"APP_DATABASE_NAME"	 				: "imip_oncologia",
 	"APP_DATABASE_NAME_DISPLAY"			: "Imip Oncologia",
-	"APP_ID"	 						: "2a7e883c-6c32-4e54-8ee8-594b87c4a703",
+	"APP_ID"	 						: "08582d2d-8cb3-4ca3-9c3d-b86be7ec5e8b",
 	
 	// BASE
 	"APP_BASE"	 						: "imip",

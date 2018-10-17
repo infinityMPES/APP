@@ -16,6 +16,40 @@ app.run(function ($ionicPlatform) {
         if (window.StatusBar) {
             StatusBar.styleDefault();
         }
+        
+        if(!ionic.Platform.is('browser')) {
+    		Notification.shcedule = function(id, title, text, config) {
+    			var message 	  	   = {};
+    			message.id 	  	  	   = id;    // Um id exclusivo da notificação, melhor usar um valor numérico
+    			message.title     	   = title; // O título da mensagem
+    			message.text	  	   = text;  // A mensagem
+    			if(config == null) {
+    				message.at		   = null;  // Quando mostrar a notificacão
+    				message.every 	   = null;  // A cada 'minuto', 'hora', 'dia', 'semana', 'mes', 'ano'
+    				message.badge 	   = null;  // Exibe um número no ícone da aplicação
+    				message.sound	   = null;  // O Som a ser reproduzido ao receber a mensagem
+    				message.ongoing    = false; // Impedir limpar a notificação (apenas Android)		
+    				message.autoClear  = false; // A notificação é cancelada quando o usuário clicar
+    			} else {
+    				for(var x in config) {
+    					message[x] = config[x]; 
+    				}
+    			}
+    			cordova.plugins.notification.local.schedule(message);
+    		}
+    		Notification.on = function(typeTrigger, callback) {
+    			cordova.plugins.notification.local.on(typeTrigger, function (notification, state) {
+    				callback(notification, state);
+    			});
+    		};
+    		Notification.notificationOpenedHandle = function(json) {
+
+    		    $state.go('app.inicio');
+    		}
+    		window.plugins.OneSignal.startInit(Constantes.APP_ID).handleNotificationOpened(Notification.notificationOpenedHandle).endInit();
+    	} else {
+    		Notification.shcedule = function(id, title, text, config) {}		
+    	}
     });
 })
 
