@@ -68,6 +68,35 @@ input::placeholder {
 .formPadrao{
 	background: white;
 }
+
+.cadastroPadrao:not(.login) input, .cadastroPadrao select{
+	border-bottom: solid 1px #62aaa2 !important;
+}
+.corpadrao{
+	color: #62aaa2 !important;
+}
+
+.confirmarCadastro .formPadrao{
+	background: #62aaa2 !important;
+	color: white !important;
+}
+
+.confirmarCadastro .formPadrao input::placeholder { 
+	color: #ffffff; 
+	font-size: 1em; 
+	padding: 5px;
+}
+
+.confirmarCadastro .formPadrao input, .confirmarCadastro .formPadrao select{
+	border-bottom: solid 1px white;
+}
+
+.confirmarCadastro .formPadrao .input-label, .confirmarCadastro .formPadrao .fa, 
+.confirmarCadastro .formPadrao input, .confirmarCadastro .formPadrao select{
+	color: white !important;
+	background: #62aaa2 !important;
+}
+
 /** ESTILO DA HOME **/
 [nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
     background: #62aaa2 !important;
@@ -147,6 +176,12 @@ a.botoes-inicios i.fa {
 } 
 /************************
 ********* Esqueci a senha
+*************************/
+.esqueci-senha{
+	background: white;
+}
+/************************
+********* cadastro paciente
 *************************/
 .esqueci-senha{
 	background: white;

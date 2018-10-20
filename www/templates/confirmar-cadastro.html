@@ -1,0 +1,43 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeLogin()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doLogin()">
+      <div class="list">
+      	<div class="item item-button-right title sem-margem">
+		    <img class="centralizar" src="img/{{parametros.css.uf}}.logo.png"/>
+	  	</div>
+        <label class="item item-input">
+          <input type="tel" placeholder="Digite seu CPF" mask="999.999.999-99"  clean="true" ng-model="loginData.strCpf" required>
+        </label>
+        <label class="item item-input">
+          <input type="password" placeholder="Digite sua Senha"  ng-model="loginData.strSenha">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Entrar</button>
+        </label>
+        <label class="item"> 
+        	<a class="link" ng-click="esqueciASenha()" href="#/app/esqueci-a-senha">
+          		<button class="button button-block btLink">Esqueci minha senha</button>
+        	</a>
+        </label>
+        <div class="item item-divider center">
+        	Não tem cadastro?
+        </div>
+        <label class="item">
+        	<a class="link" ng-click="doCadastro()">
+          		<button class="button button-block button-balanced center">Cadastre-se</button>
+         	</a>
+        </label>
+        <label class="item">
+        	<a class="link" ng-click="fecharLogin()">
+          		<button class="button button-block button-assertive center">Fechar</button>
+         	</a>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

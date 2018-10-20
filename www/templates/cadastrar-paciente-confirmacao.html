@@ -1,0 +1,102 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeConfirmar()">Fechar</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="confirmarCadastro">
+  		<div class="bar bar-subheader bar-stable static text-center">
+            <strong class="title titulo-icone">
+            	<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+            	<br />
+            	<span class="texto-icone">Confira seus dados antes de enviar.</span>
+           	</strong>
+        </div>
+        <form name="cadastrarUsuarioConfirmar" class="formPadrao cadastroUsuario im-wrapper ">
+			<div class="list">
+				<label class="item item-input login"> 
+					<input type="text" placeholder="Informe seu CPF: 999.999.999-99" readonly class="cpf" name="cpf" ng-model="loginData.cpf" required>
+				</label>
+				<span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.cpf.$valid">CPF é Obrigatário</span> 
+
+				<label class="item item-input login"> 
+					<input type="text" placeholder="Informe seu nome" name="nome" readonly ng-model="loginData.nome" required>
+				</label>
+				<span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.nome.$valid">Nome é Obrigatário</span> 
+				
+				<label class="item item-input login"> 
+					<input type="text" placeholder="Data de Nascimento" name="data_nascimento" readonly class="data" ng-model="loginData.data_nascimento" required>
+					<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
+				</label>
+				<span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.data_nascimento.$valid">Data de Nascimento é Obrigatário</span> 
+				
+				<label class="item item-input item-select">
+				    <div class="input-label">
+				      Sexo
+				    </div>
+				    <select style="min-width: 75%;" name="sexo" ng-model="loginData.sexo">
+				      <option value="1">Masculino</option>
+				      <option value="2">Feminino</option>
+				    </select>
+				</label>
+				<span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.sexo.$valid">Sexo é Obrigatário</span> 	
+				
+				<label class="item item-input login"> 
+					<input type="text" placeholder="Informe seu Endereço" name="endereco" readonly ng-model="loginData.endereco" required>
+				</label>
+				<span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.endereco.$valid">Endereço é Obrigatário</span> 
+				
+				<label class="item item-input item-select">
+				    <div class="input-label" style="width: 50%">
+				      	<label class="item item-input login" style="padding-left: 0px"> 
+							<input type="text" placeholder="Informe sua Cidade" name="cidade" readonly ng-model="loginData.cidade" required>
+						</label>
+						<span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.cidade.$valid">Cidade é Obrigatária</span> 
+				    </div>
+				    <select style="min-width: 25%;height: 54px;" name="uf" ng-model="loginData.uf">
+				      <option selected="selected">UF</option>
+				      <option value="PE">PE</option>
+				      <option value="BA">BA</option>
+				    </select>
+				    <span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.uf.$valid">Cidade é Obrigatária</span>
+				</label>
+							
+				<label class="item item-input login"> 
+					<input type="text" placeholder="Primeiro contato" class="ddd_tel" name="contato" readonly ng-model="loginData.contato" required>
+				</label>
+				<span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.contato.$valid">Contato é Obrigatário</span>
+				
+				<label class="item item-input login"> 
+					<input type="text" placeholder="Segundo contato" class="ddd_tel" name="contato1" readonly ng-model="loginData.contato1" required>
+				</label>
+					
+				<label class="item item-input login"> 
+					<input type="text" placeholder="Informe seu e-mail" name="email" readonly ng-model="loginData.email" required>
+				</label>
+				<span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.email.$valid">E-mail é Obrigatário</span>
+			</div>
+			<div class="row">
+				<div class="col col-50">
+					<button class="button button-full button-light" ng-click="closeConfirmar()">Cancelar</button>
+				</div>
+				<div class="col col-50">
+					<button class="button button-full botaoPadrao" ng-click="cadastrar()">Cadastrar</button>
+				</div>
+			</div>
+		</form>
+    </ion-content>
+</ion-modal-view>
+<style>
+	.bar.bar-header{
+	    box-shadow: none !important;
+	}
+	.bar.bar-stable{
+		border: none !important;
+	}
+	.disable-user-behavior{
+		display: none !important;
+	}
+	.has-header {
+    	top: 0px;
+	}
+</style>

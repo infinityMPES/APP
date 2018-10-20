@@ -30,22 +30,6 @@ Util.str_split = function (string, splitLength) {
 	  return chunks;
 };
 
-Util.mascaraCertificado = function(mascara, string) {
-
-    retorno = '';
-    separadores = [',','.','-'];
-    mascaraArray = Util.str_split(mascara,1);
-    stringArray = Util.str_split(string,1);
-    n = 0;
-    
-    for(i = 0; i < mascara.length; i++) {
-        if(!Util.inArray(mascaraArray[i], separadores)) {
-        	mascaraArray[i] = stringArray[n++];
-        }
-    }
-    return mascaraArray.join('');
-};
-
 Util.Asc = function (String) {
 	return String.charCodeAt(0);
 }
@@ -402,4 +386,91 @@ function hash() {
 			}
 		}	
 		return key+'-'+iv;
+}
+
+/**
+ * Validação de cpf
+ */
+Util.validaCPF = function(cpf)
+{
+  var numeros, digitos, soma, i, resultado, digitos_iguais;
+  digitos_iguais = 1;
+  if (cpf.length < 11)
+        return false;
+  for (i = 0; i < cpf.length - 1; i++)
+        if (cpf.charAt(i) != cpf.charAt(i + 1))
+              {
+              digitos_iguais = 0;
+              break;
+              }
+  if (!digitos_iguais)
+        {
+        numeros = cpf.substring(0,9);
+        digitos = cpf.substring(9);
+        soma = 0;
+        for (i = 10; i > 1; i--)
+              soma += numeros.charAt(10 - i) * i;
+        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+        if (resultado != digitos.charAt(0))
+              return false;
+        numeros = cpf.substring(0,10);
+        soma = 0;
+        for (i = 11; i > 1; i--)
+              soma += numeros.charAt(11 - i) * i;
+        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+        if (resultado != digitos.charAt(1))
+              return false;
+        return true;
+        }
+  else
+      return false;
+}
+
+/**
+ * Validação de data
+ */
+Util.validaData = function(stringData)
+{
+   /******** VALIDA DATA NO FORMATO DD/MM/AAAA *******/
+   var regExpCaracter = /[^\d]/;     //Expressão regular para procurar caracter não-numérico.
+   var regExpEspaco = /^\s+|\s+$/g;  //Expressão regular para retirar espaços em branco.
+   if(stringData.length != 10)
+   {
+       alert('Data fora do padrão DD/MM/AAAA');
+       return false;
+   }
+   splitData = stringData.split('/');
+   if(splitData.length != 3)
+   {
+       alert('Data fora do padrão DD/MM/AAAA');
+       return false;
+   }
+   splitData[0] = splitData[0].replace(regExpEspaco, '');
+   splitData[1] = splitData[1].replace(regExpEspaco, '');
+   splitData[2] = splitData[2].replace(regExpEspaco, '');
+   if ((splitData[0].length != 2) || (splitData[1].length != 2) || (splitData[2].length != 4))
+   {
+       alert('Data fora do padrão DD/MM/AAAA');
+       return false;
+   }
+   if (regExpCaracter.test(splitData[0]) || regExpCaracter.test(splitData[1]) || regExpCaracter.test(splitData[2]))
+   {
+       alert('Caracter inválido encontrado!');
+       return false;
+   }
+
+   dia = parseInt(splitData[0],10);
+   mes = parseInt(splitData[1],10)-1;
+   ano = parseInt(splitData[2],10);
+   var novaData = new Date(ano, mes, dia);
+   if ((novaData.getDate() != dia) || (novaData.getMonth() != mes) || (novaData.getFullYear() != ano))
+   {
+       alert('Data Inválida!');
+       return false;
+   }
+   else
+   {
+       alert('Data OK!');
+       return true;
+   }
 }
