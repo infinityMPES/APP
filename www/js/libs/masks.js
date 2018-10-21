@@ -1,16 +1,21 @@
 /**
- * Iniciando ao carregar a p·gina
+ * Iniciando ao carregar a p√°gina
  */
 $(document).ready(function(){
 	// Iniciando as mascaras 2s depois do carregamento
 	setTimeout(function(){
 		definirMascaras()
 	},2000);
+	
 	// Para cada troca de tela
 	$("a.links").on("click", function(){
-		definirMascaras();
+		setTimeout(function(){
+			console.log("aqui");
+			definirMascaras();
+		},2000);
 	});
 });
+
 /**
  * Definindo as mascaras
  */

@@ -261,14 +261,30 @@ Util.headers = function(token, json) {
 
 
 /**
- * Valida��o de cpf
+ * Validação de cpf
  */
 Util.validaCPF = function(cpf)
 {
+  if(cpf == "" || cpf == undefined) return false;
+  cpf = cpf.replace(/[^\d]+/g,'');
+  if (cpf.length != 11 || 
+			cpf == "00000000000" || 
+			cpf == "11111111111" || 
+			cpf == "22222222222" || 
+			cpf == "33333333333" || 
+			cpf == "44444444444" || 
+			cpf == "55555555555" || 
+			cpf == "66666666666" || 
+			cpf == "77777777777" || 
+			cpf == "88888888888" || 
+			cpf == "99999999999")
+				return false;
   var numeros, digitos, soma, i, resultado, digitos_iguais;
   digitos_iguais = 1;
   if (cpf.length < 11)
         return false;
+  
+  
   for (i = 0; i < cpf.length - 1; i++)
         if (cpf.charAt(i) != cpf.charAt(i + 1))
               {
@@ -277,6 +293,7 @@ Util.validaCPF = function(cpf)
               }
   if (!digitos_iguais)
         {
+	  	
         numeros = cpf.substring(0,9);
         digitos = cpf.substring(9);
         soma = 0;
@@ -303,9 +320,10 @@ Util.validaCPF = function(cpf)
  */
 Util.validaData = function(stringData)
 {
+	if(stringData == "" || stringData == undefined) return false;
    /******** VALIDA DATA NO FORMATO DD/MM/AAAA *******/
-   var regExpCaracter = /[^\d]/;     //Express�o regular para procurar caracter n�o-num�rico.
-   var regExpEspaco = /^\s+|\s+$/g;  //Express�o regular para retirar espa�os em branco.
+   var regExpCaracter = /[^\d]/;     //Expressão regular para procurar caracter n�o-num�rico.
+   var regExpEspaco = /^\s+|\s+$/g;  //Expressão regular para retirar espa�os em branco.
    if(stringData.length != 10)
    {
        return false;
