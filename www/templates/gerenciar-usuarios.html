@@ -1,0 +1,88 @@
+<ion-view view-title="" class="esqueci-senha-titulo">
+	<ion-nav-title  class="esqueci-senha-titulo">
+		Gerenciar Usuários
+    </ion-nav-title>
+    <ion-content class="esqueci-senha">
+        <div class="bar bar-subheader bar-stable static text-center">
+            <strong class="title titulo-icone">
+            	<i class="fa fa-users" aria-hidden="true"></i>
+            	<br />
+           	</strong>
+        </div>
+        <form name="formListarUsuario" id="formListarUsuario" class="formPadrao formListarUsuario im-wrapper ">
+<!-- 			<div class="card car-"> -->
+				<div class="list">
+				
+					<label class="item item-input cadastroPadrao item-select">
+					    <div class="input-label corpadrao">
+					      Situação
+					    </div>
+					    <select style="min-width: 75%;" name="sexo" ng-model="filtro.situacao">
+					      <option>Todas situações</option>
+					      <option value="0">Esperando Aprovação</option>
+					      <option value="1">Ativo</option>
+					      <option value="2">Inativo</option>
+					    </select>
+					</label>
+					
+					<label class="item item-input cadastroPadrao item-select">
+					    <div class="input-label corpadrao">
+					      Perfil
+					    </div>
+					    <select style="min-width: 75%;" name="sexo" ng-model="filtro.perfil_id">
+					      <option ng-repeat="perfil in listaPerfis" value="{{perfil.id}}">{{perfil.descricao}}</option>
+					    </select>
+					</label>
+					
+					<label class="item item-input cadastroPadrao" ng-show="filtro.perfil_id == 2" > 
+						<i class="icon fa fa-user placeholder-icon" style="font-size: 24px"></i> 
+						<input type="text" placeholder="Informe CPF" class="cpf" name="cpf" ng-model="filtro.cpf">
+					</label>
+					
+					<label class="item item-input cadastroPadrao "  ng-show="filtro.perfil_id == 1"> 
+						<i class="icon fa fa-user placeholder-icon" style="font-size: 24px"></i> 
+						<input type="text" placeholder="Informe nº PEP" class="pep" name="pep" ng-model="filtro.pep" >
+					</label>
+				</div>
+<!-- 			</div> -->
+			<button class="button button-full botaoPadrao" ng-click="pesquisaUsuarios()">Pesquisar</button>
+		</form>
+		
+		<div class="listagem">
+			<div class="row" ng-show="mostrarLista">
+				<div class="col col-100">
+					<h3 class="tituloListagem">Usuários</h3>
+				</div>
+			</div>
+			<div class="row" ng-show="mostrarLista">
+				<div class="col col-100">
+					<table id="listaUsuarios" class="display" width="100%">
+						<thead>
+			            	<tr>
+				                <th>Login</th>
+				                <th>Acesso</th>
+				                <th>Ação</th>
+				            </tr>
+				        </thead>
+				        <tfoot>
+				            <tr>
+				                <th>Login</th>
+				                <th>Acesso</th>
+				                <th>Ação</th>
+				            </tr>
+				        </tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+
+    </ion-content>
+</ion-view>
+<style>
+	.bar.bar-header{
+	    box-shadow: none !important;
+	}
+	.bar.bar-stable{
+		border: none !important;
+	}
+</style>

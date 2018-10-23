@@ -133,6 +133,10 @@ a.botoes-inicios{
 	text-decoration: none;
 }
 
+a.botoes-inicios img{
+	width: 80%;
+}
+
 a.botoes-inicios i.fa {
     font-size: 4em;
     display: block;
@@ -185,4 +189,18 @@ a.botoes-inicios i.fa {
 *************************/
 .esqueci-senha{
 	background: white;
+}
+
+
+/***********************
+ *** Gerenciar usuário
+ **********************/
+.listagem{
+	border: solid 1px #62aaa2 ;
+	margin: 10px;
+	border-radius: 10px;
+}
+.tituloListagem{
+	border-bottom: solid 1px #62aaa2 ;
+	color: #386d67;
 }

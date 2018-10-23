@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('starter', ['ionic', 'ionic-material']);
-//Essa variável irá conter as informações necessárias dos ids do app no onesignal
+//Essa variï¿½vel irï¿½ conter as informaï¿½ï¿½es necessï¿½rias dos ids do app no onesignal
 var idsOnesignal = {};
 
 app.run(function ($rootScope, $compile, $state, $ionicPlatform, $ionicHistory, $ionicPopup, $http) {
@@ -30,7 +30,7 @@ app.run(function ($rootScope, $compile, $state, $ionicPlatform, $ionicHistory, $
         	    .endInit();
         	  
         	  window.plugins.OneSignal.getIds(function(ids) {
-        		  // Setando os id do one signal numa variável global
+        		  // Setando os id do one signal numa variï¿½vel global
         		  idsOnesignal = ids;
         		  console.log("Ids Onesignal: " + JSON.stringify(ids));
 //        		  var notificationObj = { contents: {en: "message body"},
@@ -84,13 +84,22 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }
     })
     
-    
     .state('app.inicio', {
         url: '/inicio',
         views: {
             'menuContent': {
                 templateUrl: 'templates/inicio.html',
                 controller: 'InicioCtrl'
+            }
+        }
+    })
+    
+    .state('app.gerenciar-usuario', {
+        url: '/gerenciar-usuario',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/gerenciar-usuarios.html',
+                controller: 'GerenciarUsuariosCtrl'
             }
         }
     })

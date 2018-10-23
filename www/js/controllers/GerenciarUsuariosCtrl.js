@@ -1,21 +1,104 @@
-﻿app.controller('CadastroPacienteCtrl', function ($scope, $stateParams, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal) {
+﻿app.controller('GerenciarUsuariosCtrl', function ($scope, $stateParams, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal) {
 	 // Verificando se o usuário está logado
-	 $scope.usuarioLogado(true);
+//	 $scope.usuarioLogado(true);
 	 
-	 $scope.listaCancer = [];
+	 $scope.mostrarLista = false;
+	 $scope.filtro = {};
+	 $scope.listaPerfis = [];
+	 $scope.listaUsuarios = [];
 	 
-	 
+	 // Buscando os perfis cadastrados na base
 	 $http({
-			method: "GET",
-		    timeout:$scope.timeout,
-		    url: $scope.strUrlServico + Constantes.APP_SERVICE_LISTAR_CANCER,
-		    headers: Util.headers($scope.token)
-		})
-		.then(function(response) {
-			 if(response.data.bolRetorno == true){
-				 $scope.listaCancer = response.data.result;
-			 }
-		}, function(response) {});
+		method: "GET",
+	    timeout:$scope.timeout,
+	    url: $scope.strUrlServico + Constantes.APP_SERVICE_LISTAR_PERFIS,
+	    headers: Util.headers($scope.token)
+	 }).then(function(response) {
+		 if(response.data.bolRetorno == true){
+			 $scope.listaPerfis = response.data.result;
+		 }
+	 }, function(response) {});
+	 
+	 /**
+	  * Método que irá realizar o filtro dos usuários
+	  */
+	 $scope.pesquisaUsuarios = function(){
+		 // ´Mostrando o carregando
+		 $scope.carregando();
+		 $scope.mostrarLista = false;
+		// Validando os campos 
+		 var errosValidacao = validarFiltro($scope.filtro);
+		 // Caso haja algum erro
+		 if(errosValidacao.bolErros){
+		 	// Disparando ação de load
+			$scope.carregado();
+			// Abrindo dialog com erros
+			var alertPopup = $ionicPopup.alert({
+				title: 'Campo obrigatórios',
+				template: errosValidacao.strMensagem
+			});
+			alertPopup.then(function(res) { });
+			return false;
+		 }else{
+			 $http({
+				 method: "POST",
+				    timeout:$scope.timeout,
+				    data: 'filtroBusca=' + JSON.stringify($scope.filtro),
+				    url: $scope.strUrlServico + Constantes.APP_SERVICE_PESQUISAR_USUARIOS,
+				    headers: Util.headers($scope.token)
+				})
+				.then(function(response) {
+					 $scope.carregado();
+					 if(response.data.bolRetorno == true){
+						 $scope.mostrarLista = true;
+						 listaUsuarios = response.data.result;
+						 console.log(listaUsuarios)
+						 // Iniciando a tabela
+						 $(document).ready(function() {
+							    $('#listaUsuarios').DataTable( {
+							    	language : {
+						    	        "decimal":        "",
+						    	        "emptyTable":     "Desculpe, nenhum registro encontrato",
+						    	        "info":           "Mostrando _START_ de _END_ of _TOTAL_ registros",
+						    	        "infoEmpty":      "Showing 0 to 0 of 0 entries",
+						    	        "infoFiltered":   "(filtrado de _MAX_ registros)",
+						    	        "infoPostFix":    "",
+						    	        "thousands":      ",",
+						    	        "lengthMenu":     "Mostrar _MENU_ registros",
+						    	        "loadingRecords": "Carregando...",
+						    	        "processing":     "Processando...",
+						    	        "search":         "Buscar:",
+						    	        "zeroRecords":    "Nenhum Resultado Encontrado",
+						    	        "paginate": {
+						    	            "first":      "Primeiro",
+						    	            "last":       "Ultimo",
+						    	            "next":       "Próximo",
+						    	            "previous":   "Anterior"
+						    	        },
+						    	        "aria": {
+						    	            "sortAscending":  ": activate to sort column ascending",
+						    	            "sortDescending": ": activate to sort column descending"
+						    	        }
+						    	    },
+						    	    dom: 'Bfrtip',
+					    	        buttons: [
+					    	            'copy', 'csv', 'excel', 'pdf'
+					    	        ],
+							        data: listaUsuarios,
+							        "columns": [
+					                    { "data": "login" },
+					                    { "data": "nome" },
+					                    { "data": "id" },
+					                ]
+							    } );
+							} );
+					 }
+				}, function(response) {});
+		 }
+		 
+	 }
+	 
+	 
 	 
 	 /*** MÉTODO DE FAZER CADASTRAR ****/
 	 $scope.cadastrar = function(){
@@ -152,72 +235,21 @@
 });
 
 /**
- * Método que irá validar o cadastro do paciente
+ * Método que irá validar o filtro
  */
-function validarCadastroPaciente(loginData){
+function validarFiltro(loginData){
 	
 	bolErros = false;
 	strMensagem = "";
 	
-	if(!Util.validaCPF(loginData.cpf)) {
+	if(loginData.cpf != "" && loginData.cpf != undefined && !Util.validaCPF(loginData.cpf)) {
 		bolErros = true;
 		strMensagem += "<b>CPF</b> inválido! <br />";
 	}
 	
-	if(loginData.senha == "" || loginData.senha == undefined){
+	if(loginData.perfil_id == "" || loginData.perfil_id == undefined){
 		bolErros = true;
-		strMensagem += "<b>Senha</b> é obrigatória!  <br />";
+		strMensagem += "<b>Perfil</b> é obrigatório!  <br />";
 	}
-	
-	if(loginData.confirmacao_senha == "" || loginData.confirmacao_senha == undefined){
-		bolErros = true;
-		strMensagem += "<b>Confirmação da Senha</b> é obrigatória!  <br />";
-	}
-	
-	if(loginData.senha != loginData.confirmacao_senha){
-		bolErros = true;
-		strMensagem += "A <b>Senha</b> não corresponde a <b>Confirmação da Senha</b>!  <br />";
-	}
-	
-	if(loginData.email == "" || loginData.email == undefined){
-		bolErros = true;
-		strMensagem += "<b>E-mail</b> é obrigatório!  <br />";
-	}
-	
-	if(loginData.nome == "" || loginData.nome == undefined) {
-		bolErros = true;
-		strMensagem += "<b>Nome</b> é obrigatório!  <br />";
-	}
-	
-	if(!Util.validaData(loginData.data_nascimento)) {
-		bolErros = true;
-		strMensagem += "<b>Data nascimento</b> inválida!  <br />";
-	}
-	
-	if(loginData.sexo == "" || loginData.sexo == undefined){
-		bolErros = true;
-		strMensagem += "<b>Sexo</b> é obrigatório!  <br />";
-	}
-	
-	if(loginData.endereco == "" || loginData.endereco == undefined){
-		bolErros = true;
-		strMensagem += "<b>Endereço</b> é obrigatório!  <br />";
-	}
-	
-	if(loginData.cidade == "" || loginData.cidade == undefined){
-		bolErros = true;
-		strMensagem += "<b>Cidade</b> é obrigatória!  <br />";
-	}
-	
-	if(loginData.uf == "" || loginData.uf == undefined){
-		bolErros = true;
-		strMensagem += "<b>Estado</b> é obrigatório!  <br />";
-	}
-	
-	if(loginData.contato == "" || loginData.contato == undefined){
-		bolErros = true;
-		strMensagem += "É necessário informar ao menos um <b>Nº de Contato</b>!  <br />";
-	}
-	
 	return {strMensagem : strMensagem, bolErros : bolErros};
 }

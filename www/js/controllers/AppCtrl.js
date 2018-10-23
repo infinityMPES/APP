@@ -102,7 +102,9 @@
         if(angular.equals($scope.loginData, {})) {
         	if(!bolLogin) $scope.goTo('app.login');
         }else{
-        	$scope.goTo('app.inicio');
+        	if(($scope.loginData.login != undefined || $scope.loginData.login != "")
+    		   ($scope.loginData.perfil_id != undefined || $scope.loginData.perfil_id != ""))
+        		$scope.goTo('app.inicio');
         }
     }
     

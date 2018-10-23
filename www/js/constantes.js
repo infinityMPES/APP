@@ -23,16 +23,18 @@ var Constantes = {
 	"APP_MSG_TIMEOUT"					: "<center><span class='icon ion-android-alert' style='font-size:35px'></span><br>Ops...<br>Sem Conex�o!</center>",
 	
 	// SERVICOS
-	
+	/****** MÓDULO USUÁRIO ********/
 	"APP_SERVICE_USUARIO_LOGIN"					: "usuario/login",
 	"APP_SERVICE_USUARIO_ENVIAR_SENHA"			: "usuario/esqueciSenha",
 	"APP_SERVICE_CADASTRAR_PACIENTE"			: "usuario/cadastrarPaciente",
-	
 	"APP_SERVICE_EXISTE_CPF"					: "usuario/existeEmail",
 	"APP_SERVICE_EXISTE_EMAIL"					: "usuario/existeCpf",
 	"APP_SERVICE_VALIDAR_CADASTRO"				: "usuario/validarCadastro",
-
-	"APP_SERVICE_LISTAR_CANCER"					: "usuario/listaCancer",
+	"APP_SERVICE_LISTAR_PERFIS"					: "usuario/listaPerfis",
+	"APP_SERVICE_PESQUISAR_USUARIOS"			: "usuario/pesquisarUsuarios",
+	/****** FIM MÓDULO USUÁRIO ********/
+	
+	
 	
 	"APP_SERVICE_INICIO"						: "inicio",
 	"APP_SERVICE_PARAMETRO"						: "parametro",
