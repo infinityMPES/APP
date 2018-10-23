@@ -14,24 +14,47 @@
         </div>
         <form name="cadastrarUsuarioConfirmar" class="formPadrao cadastroUsuario im-wrapper ">
 			<div class="list">
-				<label class="item item-input login"> 
-					<input type="text" placeholder="Informe seu CPF: 999.999.999-99" readonly class="cpf" name="cpf" ng-model="loginData.cpf" required>
+				<label class="item item-input cadastroPadrao "> 
+					<i class="icon fa fa-user placeholder-icon" style="font-size: 24px"></i> 
+					<input type="text" placeholder="Informe seu CPF: 999.999.999-99" class="cpf" name="cpf" ng-model="loginData.cpf" required>
 				</label>
-				<span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.cpf.$valid">CPF é Obrigatário</span> 
-
-				<label class="item item-input login"> 
-					<input type="text" placeholder="Informe seu nome" name="nome" readonly ng-model="loginData.nome" required>
-				</label>
-				<span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.nome.$valid">Nome é Obrigatário</span> 
+				<span class="erro" ng-show="erros && !cadastrarUsuario.cpf.$valid">CPF é Obrigatário</span> 
 				
-				<label class="item item-input login"> 
-					<input type="text" placeholder="Data de Nascimento" name="data_nascimento" readonly class="data" ng-model="loginData.data_nascimento" required>
+				<label class="item item-input cadastroPadrao "> 
+				 	<i class="icon fa fa-envelope placeholder-icon" style="font-size: 24px"></i> 
+					<input type="text" placeholder="Informe seu e-mail: exemplo@email.com" name="email" ng-model="loginData.email" required>
+				</label>
+				<span class="erro" ng-show="erros && !cadastrarUsuario.email.$valid">E-mail é Obrigatário</span>
+				
+				<label class="item item-input cadastroPadrao "> 
+				 	<i class="icon fa fa-file-text placeholder-icon" style="font-size: 24px"></i> 
+					<input type="text" placeholder="Informe Nº PEP" name="pep" ng-model="loginData.pep" required>
+				</label>
+				<span class="erro" ng-show="erros && !cadastrarUsuario.pep.$valid">PEP é Obrigatário</span>
+				
+				<label class="item item-input cadastroPadrao item-select">
+				    <div class="input-label corpadrao">
+				      Cancer
+				    </div>
+				    <select style="min-width: 75%;" name="sexo" ng-model="loginData.cancer_id">
+				      <option ng-repeat="cancer in listaCancer" value="{{cancer.id}}">{{cancer.descricao}}</option>
+				    </select>
+				</label>
+					
+				<label class="item item-input cadastroPadrao "> 
+					<i class="icon fa fa-id-card-o placeholder-icon" style="font-size: 24px"></i> 
+					<input type="text" placeholder="Informe seu nome" name="nome" ng-model="loginData.nome" required>
+				</label>
+				<span class="erro" ng-show="erros && !cadastrarUsuario.nome.$valid">Nome é Obrigatário</span> 
+				
+				<label class="item item-input cadastroPadrao "> 
+					<input type="text" placeholder="Data Nascimento: 99/99/9999" name="data_nascimento" class="data" ng-model="loginData.data_nascimento" required>
 					<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
 				</label>
-				<span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.data_nascimento.$valid">Data de Nascimento é Obrigatário</span> 
+				<span class="erro" ng-show="erros && !cadastrarUsuario.data_nascimento.$valid">Data de Nascimento é Obrigatário</span> 
 				
-				<label class="item item-input item-select">
-				    <div class="input-label">
+				<label class="item item-input cadastroPadrao item-select">
+				    <div class="input-label corpadrao">
 				      Sexo
 				    </div>
 				    <select style="min-width: 75%;" name="sexo" ng-model="loginData.sexo">
@@ -39,41 +62,42 @@
 				      <option value="2">Feminino</option>
 				    </select>
 				</label>
-				<span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.sexo.$valid">Sexo é Obrigatário</span> 	
+				<span class="erro" ng-show="erros && !cadastrarUsuario.sexo.$valid">Sexo é Obrigatário</span> 	
 				
-				<label class="item item-input login"> 
-					<input type="text" placeholder="Informe seu Endereço" name="endereco" readonly ng-model="loginData.endereco" required>
+				<label class="item item-input cadastroPadrao "> 
+					<i class="icon fa fa-home placeholder-icon" style="font-size: 24px"></i> 
+					<input type="text" placeholder="Informe seu Endereço" name="endereco" ng-model="loginData.endereco" required>
 				</label>
-				<span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.endereco.$valid">Endereço é Obrigatário</span> 
+				<span class="erro" ng-show="erros && !cadastrarUsuario.endereco.$valid">Endereço é Obrigatário</span> 
 				
-				<label class="item item-input item-select">
-				    <div class="input-label" style="width: 50%">
-				      	<label class="item item-input login" style="padding-left: 0px"> 
-							<input type="text" placeholder="Informe sua Cidade" name="cidade" readonly ng-model="loginData.cidade" required>
-						</label>
-						<span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.cidade.$valid">Cidade é Obrigatária</span> 
+				<label class="item item-input cadastroPadrao "> 
+					<input type="text" placeholder="Informe sua cidade" name="cidade" ng-model="loginData.cidade" required>
+				</label>
+				<span class="erro" ng-show="erros && !cadastrarUsuario.cidade.$valid">Cidade é Obrigatária</span> 
+				
+				<label class="item item-input cadastroPadrao item-select">
+				    <div class="input-label corpadrao">
+				      Estado
 				    </div>
-				    <select style="min-width: 25%;height: 54px;" name="uf" ng-model="loginData.uf">
+				    <select name="uf" style="min-width: 75%;"  ng-model="loginData.uf">
 				      <option selected="selected">UF</option>
 				      <option value="PE">PE</option>
 				      <option value="BA">BA</option>
 				    </select>
-				    <span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.uf.$valid">Cidade é Obrigatária</span>
 				</label>
+				<span class="erro" ng-show="erros && !cadastrarUsuario.uf.$valid">Sexo é Obrigatário</span> 
 							
-				<label class="item item-input login"> 
-					<input type="text" placeholder="Primeiro contato" class="ddd_tel" name="contato" readonly ng-model="loginData.contato" required>
+				<label class="item item-input cadastroPadrao "> 
+				 	<i class="icon fa fa-phone-square placeholder-icon" style="font-size: 24px"></i> 
+					<input type="text" placeholder="Primeiro contato: (99) 9999-9999" class="ddd_tel" name="contato" ng-model="loginData.contato" required>
 				</label>
-				<span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.contato.$valid">Contato é Obrigatário</span>
+				<span class="erro" ng-show="erros && !cadastrarUsuario.contato.$valid">Contato é Obrigatário</span>
 				
-				<label class="item item-input login"> 
-					<input type="text" placeholder="Segundo contato" class="ddd_tel" name="contato1" readonly ng-model="loginData.contato1" required>
+				<label class="item item-input cadastroPadrao "> 
+					<i class="icon fa fa-phone-square placeholder-icon" style="font-size: 24px"></i> 
+					<input type="text" placeholder="Segundo contato: (99) 9999-9999" class="ddd_tel" name="contato1" ng-model="loginData.contato1">
 				</label>
-					
-				<label class="item item-input login"> 
-					<input type="text" placeholder="Informe seu e-mail" name="email" readonly ng-model="loginData.email" required>
-				</label>
-				<span class="erro" ng-show="erros && !cadastrarUsuarioConfirmar.email.$valid">E-mail é Obrigatário</span>
+				
 			</div>
 			<div class="row">
 				<div class="col col-50">

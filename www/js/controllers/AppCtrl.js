@@ -105,4 +105,8 @@
         	$scope.goTo('app.inicio');
         }
     }
+    
+    $scope.getOneSignal = function(){
+    	return idsOnesignal;	
+    }
 });

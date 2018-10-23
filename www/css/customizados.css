@@ -69,7 +69,7 @@ input::placeholder {
 	background: white;
 }
 
-.cadastroPadrao:not(.login) input, .cadastroPadrao select{
+.cadastroPadrao input, .cadastroPadrao select{
 	border-bottom: solid 1px #62aaa2 !important;
 }
 .corpadrao{
@@ -88,7 +88,7 @@ input::placeholder {
 }
 
 .confirmarCadastro .formPadrao input, .confirmarCadastro .formPadrao select{
-	border-bottom: solid 1px white;
+	border-bottom: solid 1px white !important;
 }
 
 .confirmarCadastro .formPadrao .input-label, .confirmarCadastro .formPadrao .fa, 

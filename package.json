@@ -9,6 +9,7 @@
     "gulp-sass": "^3.1.0"
   },
   "dependencies": {
+    "@ionic-native/onesignal": "^4.16.0",
     "cordova-android": "^6.2.3",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",

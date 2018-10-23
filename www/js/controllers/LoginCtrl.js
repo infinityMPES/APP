@@ -29,11 +29,14 @@
 				$scope.erros=true;
 				salvo = false;
 		 }else{
+			objOnesignal = $scope.getOneSignal();
 			// 
 		 	$http({
 				method: "POST",
 			    timeout:$scope.timeout,
-			    data: "strLogin=" + (($scope.loginData.strCpf != undefined) ? $scope.loginData.strCpf : "") + "&strSenha=" + (($scope.loginData.strSenha != undefined) ? $scope.loginData.strSenha : ""),
+			    data: "strLogin=" + (($scope.loginData.strCpf != undefined) ? $scope.loginData.strCpf : "") 
+			    + "&strSenha=" + (($scope.loginData.strSenha != undefined) ? $scope.loginData.strSenha : "")
+			    + "&onesignal="+objOnesignal.userId,
 			    url: $scope.strUrlServico + Constantes.APP_SERVICE_USUARIO_LOGIN,
 			    headers: Util.headers($scope.token)
 			})

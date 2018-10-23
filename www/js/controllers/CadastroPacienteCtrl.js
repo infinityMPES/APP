@@ -2,6 +2,21 @@
 	 // Verificando se o usuário está logado
 	 $scope.usuarioLogado(true);
 	 
+	 $scope.listaCancer = [];
+	 
+	 
+	 $http({
+			method: "GET",
+		    timeout:$scope.timeout,
+		    url: $scope.strUrlServico + Constantes.APP_SERVICE_LISTAR_CANCER,
+		    headers: Util.headers($scope.token)
+		})
+		.then(function(response) {
+			 if(response.data.bolRetorno == true){
+				 $scope.listaCancer = response.data.result;
+			 }
+		}, function(response) {});
+	 
 	 /*** MÉTODO DE FAZER CADASTRAR ****/
 	 $scope.cadastrar = function(){
 		 // Disparando ação de load
@@ -20,11 +35,13 @@
 			alertPopup.then(function(res) { });
 			return false;
 		 }else{
+			 objOnesignal = $scope.getOneSignal();
+			 $scope.loginData.onesignal = objOnesignal.userId; 
 			// Postando para URL
 		 	$http({
 				method: "POST",
 			    timeout:$scope.timeout,
-			    data: $("#formCadastroPaciente").serializeArray(),
+			    data: 'dadosPaciente=' + JSON.stringify($scope.loginData) + "&onesignal="+objOnesignal.userId,
 			    url: $scope.strUrlServico + Constantes.APP_SERVICE_CADASTRAR_PACIENTE,
 			    headers: Util.headers($scope.token)
 			})

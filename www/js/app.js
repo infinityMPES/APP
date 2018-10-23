@@ -4,8 +4,10 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('starter', ['ionic', 'ionic-material']);
+//Essa vari�vel ir� conter as informa��es necess�rias dos ids do app no onesignal
+var idsOnesignal = {};
 
-app.run(function ($ionicPlatform) {
+app.run(function ($rootScope, $compile, $state, $ionicPlatform, $ionicHistory, $ionicPopup, $http) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -18,35 +20,31 @@ app.run(function ($ionicPlatform) {
         }
         
         if(!ionic.Platform.is('browser')) {
-    		Notification.shcedule = function(id, title, text, config) {
-    			var message 	  	   = {};
-    			message.id 	  	  	   = id;    // Um id exclusivo da notificação, melhor usar um valor numérico
-    			message.title     	   = title; // O título da mensagem
-    			message.text	  	   = text;  // A mensagem
-    			if(config == null) {
-    				message.at		   = null;  // Quando mostrar a notificacão
-    				message.every 	   = null;  // A cada 'minuto', 'hora', 'dia', 'semana', 'mes', 'ano'
-    				message.badge 	   = null;  // Exibe um número no ícone da aplicação
-    				message.sound	   = null;  // O Som a ser reproduzido ao receber a mensagem
-    				message.ongoing    = false; // Impedir limpar a notificação (apenas Android)		
-    				message.autoClear  = false; // A notificação é cancelada quando o usuário clicar
-    			} else {
-    				for(var x in config) {
-    					message[x] = config[x]; 
-    				}
-    			}
-    			cordova.plugins.notification.local.schedule(message);
-    		}
-    		Notification.on = function(typeTrigger, callback) {
-    			cordova.plugins.notification.local.on(typeTrigger, function (notification, state) {
-    				callback(notification, state);
-    			});
-    		};
-    		Notification.notificationOpenedHandle = function(json) {
+        	 var notificationOpenedCallback = function(jsonData) {
+        	    console.log('Alberto - notificationOpenedCallback: ' + JSON.stringify(jsonData));
+        	  };
 
-    		    $state.go('app.inicio');
-    		}
-    		window.plugins.OneSignal.startInit(Constantes.APP_ID).handleNotificationOpened(Notification.notificationOpenedHandle).endInit();
+        	  window.plugins.OneSignal
+        	    .startInit(Constantes.APP_ID)
+        	    .handleNotificationOpened(notificationOpenedCallback)
+        	    .endInit();
+        	  
+        	  window.plugins.OneSignal.getIds(function(ids) {
+        		  // Setando os id do one signal numa vari�vel global
+        		  idsOnesignal = ids;
+        		  console.log("Ids Onesignal: " + JSON.stringify(ids));
+//        		  var notificationObj = { contents: {en: "message body"},
+//        		                          include_player_ids: [ids.userId]};
+//        		  window.plugins.OneSignal.postNotification(notificationObj,
+//        		    function(successResponse) {
+//        		      console.log("Notification Post Success:", successResponse);
+//        		    },
+//        		    function (failedResponse) {
+//        		      console.log("Notification Post Failed: ", failedResponse);
+//        		      alert("Notification Post Failed:\n" + JSON.stringify(failedResponse));
+//        		    }
+//        		  );
+        		});
     	} else {
     		Notification.shcedule = function(id, title, text, config) {}		
     	}
