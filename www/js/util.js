@@ -358,3 +358,193 @@ Util.validaData = function(stringData)
        return true;
    }
 }
+
+/**
+ * Método que irá criar a tabela pelos parametros informados
+ * 
+ */
+Util.montarTabela =  function(idTabela, dados, colunas){
+	// Caso a tabela já esteja criada
+	$('#'+idTabela).dataTable().fnClearTable();
+	$('#'+idTabela).dataTable().fnDestroy();
+    
+	// Iniciando a tabela
+    $('#'+idTabela).DataTable({
+    	language : {
+	        "decimal":        "",
+	        "emptyTable":     "Desculpe, nenhum registro encontrato",
+	        "info":           "Mostrando _START_ de _END_ of _TOTAL_ registros",
+	        "infoEmpty":      "Showing 0 to 0 of 0 entries",
+	        "infoFiltered":   "(filtrado de _MAX_ registros)",
+	        "infoPostFix":    "",
+	        "thousands":      ",",
+	        "lengthMenu":     "Mostrar _MENU_ registros",
+	        "loadingRecords": "Carregando...",
+	        "processing":     "Processando...",
+	        "search":         "Buscar:",
+	        "zeroRecords":    "Nenhum Resultado Encontrado",
+	        "paginate": {
+	            "first":      "Primeiro",
+	            "last":       "Ultimo",
+	            "next":       "Próximo",
+	            "previous":   "Anterior"
+	        },
+	        "aria": {
+	            "sortAscending":  ": activate to sort column ascending",
+	            "sortDescending": ": activate to sort column descending"
+	        }
+	    },
+	    dom: 'Bfrtip',
+	    buttons: [
+	        'copy', 'csv', 'excel', 'pdf'
+	    ],
+        data: dados,
+        "columns": colunas
+    });
+}
+
+/**
+ * Método que irá validar o cadastro / edição do paciente
+ */
+Util.validarCadastroPaciente = function (loginData, bolCadastro){
+	
+	bolErros = false;
+	strMensagem = "";
+	
+	// Caso seja cadastrar paciente
+	if(loginData.id == "" && loginData.id == undefined){
+		if(!Util.validaCPF(loginData.cpf)) {
+			bolErros = true;
+			strMensagem += "<b>CPF</b> inválido! <br />";
+		}
+		
+		if(loginData.senha == "" || loginData.senha == undefined){
+			bolErros = true;
+			strMensagem += "<b>Senha</b> é obrigatória!  <br />";
+		}
+		
+		if(loginData.confirmacao_senha == "" || loginData.confirmacao_senha == undefined){
+			bolErros = true;
+			strMensagem += "<b>Confirmação da Senha</b> é obrigatória!  <br />";
+		}
+		
+		if(loginData.senha != loginData.confirmacao_senha){
+			bolErros = true;
+			strMensagem += "A <b>Senha</b> não corresponde a <b>Confirmação da Senha</b>!  <br />";
+		}
+	}else if(bolCadastro == undefined || bolCadastro == false){
+		// Caso seja editar paciente valido o perfil
+		if(loginData.perfil_id == "" || loginData.perfil_id == undefined){
+			bolErros = true;
+			strMensagem += "<b>Perfil</b> é obrigatório!  <br />";
+		}
+	}
+	
+	if(loginData.email == "" || loginData.email == undefined){
+		bolErros = true;
+		strMensagem += "<b>E-mail</b> é obrigatório!  <br />";
+	}
+	
+	if(loginData.nome == "" || loginData.nome == undefined) {
+		bolErros = true;
+		strMensagem += "<b>Nome</b> é obrigatório!  <br />";
+	}
+	
+	if(!Util.validaData(loginData.data_nascimento)) {
+		bolErros = true;
+		strMensagem += "<b>Data nascimento</b> inválida!  <br />";
+	}
+	
+	if(loginData.sexo == "" || loginData.sexo == undefined){
+		bolErros = true;
+		strMensagem += "<b>Sexo</b> é obrigatório!  <br />";
+	}
+	
+	if(loginData.endereco == "" || loginData.endereco == undefined){
+		bolErros = true;
+		strMensagem += "<b>Endereço</b> é obrigatório!  <br />";
+	}
+	
+	if(loginData.cidade == "" || loginData.cidade == undefined){
+		bolErros = true;
+		strMensagem += "<b>Cidade</b> é obrigatória!  <br />";
+	}
+	
+	if(loginData.uf == "" || loginData.uf == undefined){
+		bolErros = true;
+		strMensagem += "<b>Estado</b> é obrigatório!  <br />";
+	}
+	
+	if(loginData.contato == "" || loginData.contato == undefined){
+		bolErros = true;
+		strMensagem += "É necessário informar ao menos um <b>Nº de Contato</b>!  <br />";
+	}
+	
+	return {strMensagem : strMensagem, bolErros : bolErros};
+}
+
+/**
+ * Método que irá validar o cadastro / edição do usuário médico
+ */
+Util.validarCadastroMedico = function (loginData){
+	
+	bolErros = false;
+	strMensagem = "";
+	
+	if(!Util.validaCPF(loginData.cpf)) {
+		bolErros = true;
+		strMensagem += "<b>CPF</b> inválido! <br />";
+	}
+	
+	if(loginData.perfil_id == "" || loginData.perfil_id == undefined){
+		bolErros = true;
+		strMensagem += "<b>Perfil</b> é obrigatório!  <br />";
+	}
+	
+	/**
+	 * Caso seja cadastro valido dados de acesso
+	 */
+	if(loginData.id == "" && loginData.id == undefined){
+		if(loginData.senha == "" || loginData.senha == undefined){
+			bolErros = true;
+			strMensagem += "<b>Senha</b> é obrigatória!  <br />";
+		}
+		
+		if(loginData.confirmacao_senha == "" || loginData.confirmacao_senha == undefined){
+			bolErros = true;
+			strMensagem += "<b>Confirmação da Senha</b> é obrigatória!  <br />";
+		}
+		
+		if(loginData.senha != loginData.confirmacao_senha){
+			bolErros = true;
+			strMensagem += "A <b>Senha</b> não corresponde a <b>Confirmação da Senha</b>!  <br />";
+		}
+	}
+	
+	if(loginData.email == "" || loginData.email == undefined){
+		bolErros = true;
+		strMensagem += "<b>E-mail</b> é obrigatório!  <br />";
+	}
+	
+	if(loginData.nome == "" || loginData.nome == undefined) {
+		bolErros = true;
+		strMensagem += "<b>Nome</b> é obrigatório!  <br />";
+	}
+	
+	if(!Util.validaData(loginData.data_nascimento)) {
+		bolErros = true;
+		strMensagem += "<b>Data nascimento</b> inválida!  <br />";
+	}
+	
+	if(loginData.sexo == "" || loginData.sexo == undefined){
+		bolErros = true;
+		strMensagem += "<b>Sexo</b> é obrigatório!  <br />";
+	}
+	
+	if(loginData.endereco == "" || loginData.endereco == undefined){
+		bolErros = true;
+		strMensagem += "<b>Endereço</b> é obrigatório!  <br />";
+	}
+	
+	return {strMensagem : strMensagem, bolErros : bolErros};
+}

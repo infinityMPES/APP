@@ -63,6 +63,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             }
         }
     })
+    
     .state('app.esqueci-senha', {
         url: '/esqueci-senha',
         views: {
@@ -72,7 +73,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             }
         }
     })
-    
     
     .state('app.cadastar-paciente', {
         url: '/cadastar-paciente',
@@ -103,6 +103,26 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             }
         }
     })
+    
+    .state('app.editar-usuario', {
+	    url: '/editar-usuario/:usuarioId',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'templates/editar-usuario.html',
+	        controller: 'EditarUsuariosCtrl'
+	      }
+	    }
+	})
+    
+    .state('app.cadastrar-usuario', {
+	    url: '/cadastrar-usuario',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'templates/cadastrar-usuario.html',
+	        controller: 'CadastrarUsuariosCtrl'
+	      }
+	    }
+	})
     
     .state('app', {
         url: '/app',

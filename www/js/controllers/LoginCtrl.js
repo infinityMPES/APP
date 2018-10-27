@@ -59,12 +59,8 @@
 					});
 					alertPopup.then(function(res) {
 					});
-					// Redirecionando para o inicio
-					setTimeout(function(){
-						// Redirecionado para o inicio
-						$scope.goTo("app.inicio");
-						alertPopup.close();
-					}, 1500);
+					// Redirecionado para o inicio
+					$scope.goTo("app.inicio");
 				}
 				 
 			}, function(response) {

@@ -15,8 +15,8 @@ var Constantes = {
 	"APP_BASE"	 						: "imip",
 	"APP_BASE_TITULO"	 				: "Conxão Vida",
 	
-//	"APP_SERVICE"						: "http://smtp.curapelanatureza.com.br/ws/",
-	"APP_SERVICE"						: "http://192.168.0.48/imip/ws-imip-dois/WS/",
+	"APP_SERVICE"						: "http://smtp.curapelanatureza.com.br/ws/",
+//	"APP_SERVICE"						: "http://localhost/imip/ws-imip-dois/WS/",
 	
 	
 	"APP_MSG_ERROR"						: "<center><span class='icon ion-android-alert' style='font-size:35px'></span><br>Ops...<br>Sem Conex�o!</center>",
@@ -31,7 +31,10 @@ var Constantes = {
 	"APP_SERVICE_EXISTE_EMAIL"					: "usuario/existeCpf",
 	"APP_SERVICE_VALIDAR_CADASTRO"				: "usuario/validarCadastro",
 	"APP_SERVICE_LISTAR_PERFIS"					: "usuario/listaPerfis",
+	"APP_SERVICE_LISTAR_CANCER"					: "usuario/listaCancer",
 	"APP_SERVICE_PESQUISAR_USUARIOS"			: "usuario/pesquisarUsuarios",
+	"APP_SERVICE_RECUPERAR_USUARIO_POR_ID"		: "usuario/recuperarUsuarioPorId",
+	"APP_SERVICE_EDITAR_USUARIO"				: "usuario/editarUsuario",
 	/****** FIM MÓDULO USUÁRIO ********/
 	
 	

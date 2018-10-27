@@ -3,8 +3,6 @@
 	 $scope.usuarioLogado(true);
 	 
 	 $scope.listaCancer = [];
-	 
-	 
 	 $http({
 			method: "GET",
 		    timeout:$scope.timeout,
@@ -22,7 +20,7 @@
 		 // Disparando ação de load
 		 $scope.carregando();
 		 // Validando os campos 
-		 var errosValidacao = validarCadastroPaciente($scope.loginData);
+		 var errosValidacao = Util.validarCadastroPaciente($scope.loginData, true);
 		 // Caso haja algum erro
 		 if(errosValidacao.bolErros){
 		 	// Disparando ação de load
@@ -96,7 +94,7 @@
 	 /*** MÉTODO DE FAZER VALIDAÇÕES DO CADASTRO ****/
 	 $scope.validarCadastro = function(){
 		 // Validando os campos 
-		 var errosValidacao = validarCadastroPaciente($scope.loginData);
+		 var errosValidacao = Util.validarCadastroPaciente($scope.loginData, true);
 		 // Caso haja algum erro
 		 if(errosValidacao.bolErros){
 		 	// Disparando ação de load
@@ -150,74 +148,3 @@
 	 }
 	 /*** FIM DA VALIDAÇÃO ***/
 });
-
-/**
- * Método que irá validar o cadastro do paciente
- */
-function validarCadastroPaciente(loginData){
-	
-	bolErros = false;
-	strMensagem = "";
-	
-	if(!Util.validaCPF(loginData.cpf)) {
-		bolErros = true;
-		strMensagem += "<b>CPF</b> inválido! <br />";
-	}
-	
-	if(loginData.senha == "" || loginData.senha == undefined){
-		bolErros = true;
-		strMensagem += "<b>Senha</b> é obrigatória!  <br />";
-	}
-	
-	if(loginData.confirmacao_senha == "" || loginData.confirmacao_senha == undefined){
-		bolErros = true;
-		strMensagem += "<b>Confirmação da Senha</b> é obrigatória!  <br />";
-	}
-	
-	if(loginData.senha != loginData.confirmacao_senha){
-		bolErros = true;
-		strMensagem += "A <b>Senha</b> não corresponde a <b>Confirmação da Senha</b>!  <br />";
-	}
-	
-	if(loginData.email == "" || loginData.email == undefined){
-		bolErros = true;
-		strMensagem += "<b>E-mail</b> é obrigatório!  <br />";
-	}
-	
-	if(loginData.nome == "" || loginData.nome == undefined) {
-		bolErros = true;
-		strMensagem += "<b>Nome</b> é obrigatório!  <br />";
-	}
-	
-	if(!Util.validaData(loginData.data_nascimento)) {
-		bolErros = true;
-		strMensagem += "<b>Data nascimento</b> inválida!  <br />";
-	}
-	
-	if(loginData.sexo == "" || loginData.sexo == undefined){
-		bolErros = true;
-		strMensagem += "<b>Sexo</b> é obrigatório!  <br />";
-	}
-	
-	if(loginData.endereco == "" || loginData.endereco == undefined){
-		bolErros = true;
-		strMensagem += "<b>Endereço</b> é obrigatório!  <br />";
-	}
-	
-	if(loginData.cidade == "" || loginData.cidade == undefined){
-		bolErros = true;
-		strMensagem += "<b>Cidade</b> é obrigatória!  <br />";
-	}
-	
-	if(loginData.uf == "" || loginData.uf == undefined){
-		bolErros = true;
-		strMensagem += "<b>Estado</b> é obrigatório!  <br />";
-	}
-	
-	if(loginData.contato == "" || loginData.contato == undefined){
-		bolErros = true;
-		strMensagem += "É necessário informar ao menos um <b>Nº de Contato</b>!  <br />";
-	}
-	
-	return {strMensagem : strMensagem, bolErros : bolErros};
-}

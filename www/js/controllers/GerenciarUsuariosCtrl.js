@@ -1,12 +1,14 @@
 ﻿app.controller('GerenciarUsuariosCtrl', function ($scope, $stateParams, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal) {
 	 // Verificando se o usuário está logado
-//	 $scope.usuarioLogado(true);
+	 $scope.usuarioLogado(true);
 	 
 	 $scope.mostrarLista = false;
 	 $scope.filtro = {};
 	 $scope.listaPerfis = [];
 	 $scope.listaUsuarios = [];
 	 
+	// ´Mostrando o carregando
+	 $scope.carregando();
 	 // Buscando os perfis cadastrados na base
 	 $http({
 		method: "GET",
@@ -14,6 +16,7 @@
 	    url: $scope.strUrlServico + Constantes.APP_SERVICE_LISTAR_PERFIS,
 	    headers: Util.headers($scope.token)
 	 }).then(function(response) {
+		 $scope.carregado();
 		 if(response.data.bolRetorno == true){
 			 $scope.listaPerfis = response.data.result;
 		 }
@@ -49,50 +52,14 @@
 				})
 				.then(function(response) {
 					 $scope.carregado();
+					 listaUsuarios = [];
 					 if(response.data.bolRetorno == true){
-						 $scope.mostrarLista = true;
 						 listaUsuarios = response.data.result;
-						 console.log(listaUsuarios)
-						 // Iniciando a tabela
-						 $(document).ready(function() {
-							    $('#listaUsuarios').DataTable( {
-							    	language : {
-						    	        "decimal":        "",
-						    	        "emptyTable":     "Desculpe, nenhum registro encontrato",
-						    	        "info":           "Mostrando _START_ de _END_ of _TOTAL_ registros",
-						    	        "infoEmpty":      "Showing 0 to 0 of 0 entries",
-						    	        "infoFiltered":   "(filtrado de _MAX_ registros)",
-						    	        "infoPostFix":    "",
-						    	        "thousands":      ",",
-						    	        "lengthMenu":     "Mostrar _MENU_ registros",
-						    	        "loadingRecords": "Carregando...",
-						    	        "processing":     "Processando...",
-						    	        "search":         "Buscar:",
-						    	        "zeroRecords":    "Nenhum Resultado Encontrado",
-						    	        "paginate": {
-						    	            "first":      "Primeiro",
-						    	            "last":       "Ultimo",
-						    	            "next":       "Próximo",
-						    	            "previous":   "Anterior"
-						    	        },
-						    	        "aria": {
-						    	            "sortAscending":  ": activate to sort column ascending",
-						    	            "sortDescending": ": activate to sort column descending"
-						    	        }
-						    	    },
-						    	    dom: 'Bfrtip',
-					    	        buttons: [
-					    	            'copy', 'csv', 'excel', 'pdf'
-					    	        ],
-							        data: listaUsuarios,
-							        "columns": [
-					                    { "data": "login" },
-					                    { "data": "nome" },
-					                    { "data": "id" },
-					                ]
-							    } );
-							} );
 					 }
+ 					 // Mostrando a lista de usuários
+					 $scope.mostrarLista = true;
+					 // Criando a tabela
+					 Util.montarTabela('listaUsuarios', listaUsuarios, [{ "data": "login" },{ "data": "nome" },{ "data": "id" }]);
 				}, function(response) {});
 		 }
 		 

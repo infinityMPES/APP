@@ -2,13 +2,17 @@
 	<ion-nav-title  class="esqueci-senha-titulo">
 		Gerenciar Usuários
     </ion-nav-title>
-    <ion-content class="esqueci-senha">
+    <ion-content class="contentGerenciarUsuario">
+    	
+    	
         <div class="bar bar-subheader bar-stable static text-center">
-            <strong class="title titulo-icone">
+            <strong class="title titulo-icone gerenciarUsuarios">
             	<i class="fa fa-users" aria-hidden="true"></i>
             	<br />
+            	<a class="btAdicionar" href="#/app/cadastrar-usuario"><img src="./img/imagens/button_add.png" /></a>
            	</strong>
         </div>
+        
         <form name="formListarUsuario" id="formListarUsuario" class="formPadrao formListarUsuario im-wrapper ">
 <!-- 			<div class="card car-"> -->
 				<div class="list">
@@ -17,8 +21,8 @@
 					    <div class="input-label corpadrao">
 					      Situação
 					    </div>
-					    <select style="min-width: 75%;" name="sexo" ng-model="filtro.situacao">
-					      <option>Todas situações</option>
+					    <select style="min-width: 75%;" name="situacao" ng-model="filtro.situacao">
+					      <option value="">Todas situações</option>
 					      <option value="0">Esperando Aprovação</option>
 					      <option value="1">Ativo</option>
 					      <option value="2">Inativo</option>
@@ -48,26 +52,29 @@
 			<button class="button button-full botaoPadrao" ng-click="pesquisaUsuarios()">Pesquisar</button>
 		</form>
 		
-		<div class="listagem">
-			<div class="row" ng-show="mostrarLista">
+		<hr ng-show="mostrarLista" />
+		
+		<div class="listagem" ng-show="mostrarLista">
+			
+			<div class="row">
 				<div class="col col-100">
 					<h3 class="tituloListagem">Usuários</h3>
 				</div>
 			</div>
-			<div class="row" ng-show="mostrarLista">
-				<div class="col col-100">
-					<table id="listaUsuarios" class="display" width="100%">
+			<div class="row">
+				<div class="col col-100 lista">
+					<table id="listaUsuarios" class="display responsive nowrap" cellspacing="0" width="100%">
 						<thead>
 			            	<tr>
 				                <th>Login</th>
-				                <th>Acesso</th>
+				                <th>Nome</th>
 				                <th>Ação</th>
 				            </tr>
 				        </thead>
 				        <tfoot>
 				            <tr>
 				                <th>Login</th>
-				                <th>Acesso</th>
+				                <th>Nome</th>
 				                <th>Ação</th>
 				            </tr>
 				        </tfoot>

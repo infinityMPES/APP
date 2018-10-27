@@ -1,4 +1,4 @@
-@CHARSET "ISO-8859-1";
+@CHARSET "UTF-8";
 
 /*****************
 GERAIS
@@ -12,10 +12,11 @@ input::placeholder {
 	color: #517f78;
 }
 
-.botaoPadrao{
-	background: #386d67;
-    color: white;
+.botaoPadrao, .dt-button{
+	background: #386d67 !important;
+    color: white !important;
     font-weight: bold;
+    border: none !important;
 }
 
 .botaoPadrao:hover{
@@ -97,6 +98,11 @@ input::placeholder {
 	background: #62aaa2 !important;
 }
 
+.btAdicionar{
+	float: right;
+	margin-top: -65px;
+}
+
 /** ESTILO DA HOME **/
 [nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
     background: #62aaa2 !important;
@@ -134,7 +140,7 @@ a.botoes-inicios{
 }
 
 a.botoes-inicios img{
-	width: 80%;
+	width: 65%;
 }
 
 a.botoes-inicios i.fa {
@@ -193,8 +199,18 @@ a.botoes-inicios i.fa {
 
 
 /***********************
- *** Gerenciar usu·rio
+ *** Gerenciar usu√°rio
  **********************/
+.contentGerenciarUsuario .bar-subheader, .contentGerenciarUsuario .bar-subheader .title {
+	height: 85px !important;
+}
+.contentGerenciarUsuario, .contentGerenciarUsuario .scroll{
+	background: white;
+}
+.gerenciarUsuarios i{
+    font-size: 5em !important;
+    margin-top: 10px !important;
+}
 .listagem{
 	border: solid 1px #62aaa2 ;
 	margin: 10px;
@@ -203,4 +219,16 @@ a.botoes-inicios i.fa {
 .tituloListagem{
 	border-bottom: solid 1px #62aaa2 ;
 	color: #386d67;
+}
+#formListarUsuario label {
+	/**border-bottom: solid 1px  #62aaa2 ;*/
+}
+.dt-buttons{
+	width: 100%;
+}
+#listaUsuarios_filter{
+	display: none;
+}
+.dt-buttons .dt-button {
+    float: left;
 }
