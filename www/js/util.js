@@ -541,10 +541,5 @@ Util.validarCadastroMedico = function (loginData){
 		strMensagem += "<b>Sexo</b> é obrigatório!  <br />";
 	}
 	
-	if(loginData.endereco == "" || loginData.endereco == undefined){
-		bolErros = true;
-		strMensagem += "<b>Endereço</b> é obrigatório!  <br />";
-	}
-	
 	return {strMensagem : strMensagem, bolErros : bolErros};
 }

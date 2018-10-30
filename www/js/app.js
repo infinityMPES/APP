@@ -119,7 +119,17 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	    views: {
 	      'menuContent': {
 	        templateUrl: 'templates/cadastrar-usuario.html',
-	        controller: 'CadastrarUsuariosCtrl'
+	        controller: 'CadastroUsuariosCtrl'
+	      }
+	    }
+	})
+	
+	.state('app.cadastrar-exames', {
+	    url: '/cadastrar-exames',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'templates/cadastrar-exames.html',
+	        controller: 'CadastroExamesCtrl'
 	      }
 	    }
 	})

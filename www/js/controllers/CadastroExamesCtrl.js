@@ -1,11 +1,8 @@
-﻿app.controller('EditarUsuariosCtrl', function ($scope, $stateParams, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal) {
+﻿app.controller('CadastroExamesCtrl', function ($scope, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal) {
 	 // Verificando se o usuário está logado
 	 $scope.usuarioLogado(true);
 	 
 	 $scope.usuarioEdit = {};
-	 
-	 // ´Mostrando o carregando
-	 $scope.carregando();
 	 
 	 // Lista de perfis do sistema
 	 $scope.listaPerfis = [];
@@ -23,38 +20,14 @@
 	 
 	 $scope.listaCancer = [];
 	 $http({
-			method: "GET",
-		    timeout:$scope.timeout,
-		    url: $scope.strUrlServico + Constantes.APP_SERVICE_LISTAR_CANCER,
-		    headers: Util.headers($scope.token)
-		})
-		.then(function(response) {
-			 if(response.data.bolRetorno == true){
-				 $scope.listaCancer = response.data.result;
-			 }
-		}, function(response) {});
-	 
-	 // Recuperando os dados do usuário
-	 $http({
-			method: "GET",
-		    timeout:$scope.timeout,
-		    url: $scope.strUrlServico + Constantes.APP_SERVICE_RECUPERAR_USUARIO_POR_ID + "?intIdUsuario="+$stateParams.usuarioId,
-		    headers: Util.headers($scope.token)
+		method: "GET",
+	    timeout:$scope.timeout,
+	    url: $scope.strUrlServico + Constantes.APP_SERVICE_LISTAR_CANCER,
+	    headers: Util.headers($scope.token)
 	 }).then(function(response) {
-		 	// Disparando ação de load
-			$scope.carregado();
-			 if(response.data.bolRetorno == true){
-				 // Caso encontre o usuário
-				 $scope.usuarioEdit = response.data.result;
-			 }else{
-				var alertPopup = $ionicPopup.alert({
-					title: "Erro",
-					template: "Usuario Não Encontrado"
-				});
-				alertPopup.then(function(res) { });
-					// Redirecionando para o inicio
-//					setTimeout(function(){ $scope.goTo("app.gerenciar-usuario"); }, 1500);
-				}
+		 if(response.data.bolRetorno == true){
+			 $scope.listaCancer = response.data.result;
+		 }
 	 }, function(response) {});
 	 
 	 /*** MÉTODO DE SALVAR OS DADOS ****/
@@ -66,7 +39,7 @@
 			method: "POST",
 		    timeout:$scope.timeout,
 		    data: 'dadosUsuario=' + JSON.stringify($scope.usuarioEdit),
-		    url: $scope.strUrlServico + Constantes.APP_SERVICE_EDITAR_USUARIO,
+		    url: $scope.strUrlServico + Constantes.APP_SERVICE_CADASTRAR_USUARIO,
 		    headers: Util.headers($scope.token)
 		})
 		.then(function(response) {
@@ -76,7 +49,7 @@
 			mensagem   = "";
 			if(response.data.bolRetorno == true){
 				bolRetorno = true;
-				mensagem = "Edição Realizada Com Sucesso!";
+				mensagem = "Cadastro Realizada Com Sucesso!";
 			}else{
 				mensagem = response.data.strMensagem;
 			}
@@ -104,7 +77,10 @@
 	 /** MÉTODO PARA VALIDAR AS INFORMAÇOES **/
 	 $scope.validar = function(){
 		 
-		// Validando os campos 
+		 // Criando o campo cpf
+		 $scope.usuarioEdit.cpf = $scope.usuarioEdit.login;
+		 
+		 // Validando os campos 
 		 var errosValidacao =  ($scope.usuarioEdit.perfil_id == 1) 
 		 					   ? Util.validarCadastroPaciente($scope.usuarioEdit, false)
 	 						   : Util.validarCadastroMedico($scope.usuarioEdit);
@@ -121,6 +97,7 @@
 			alertPopup.then(function(res) { });
 			return false;
 		 }
+		 $scope.usuarioEdit.pep = $scope.usuarioEdit.numero_pep;
 		 // Validando cpf e email
 		 $scope.salvar();
 		 console.log($scope.usuarioEdit)

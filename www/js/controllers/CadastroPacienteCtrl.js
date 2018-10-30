@@ -1,6 +1,6 @@
 ﻿app.controller('CadastroPacienteCtrl', function ($scope, $stateParams, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal) {
 	 // Verificando se o usuário está logado
-	 $scope.usuarioLogado(true);
+//	 $scope.usuarioLogado(true);
 	 
 	 $scope.listaCancer = [];
 	 $http({

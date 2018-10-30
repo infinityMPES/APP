@@ -232,3 +232,11 @@ a.botoes-inicios i.fa {
 .dt-buttons .dt-button {
     float: left;
 }
+
+/********************************
+ **** Exames
+ *******************************/
+
+#formCadastroExame label{
+	padding-left: 0px !important;
+}
