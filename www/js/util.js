@@ -543,3 +543,30 @@ Util.validarCadastroMedico = function (loginData){
 	
 	return {strMensagem : strMensagem, bolErros : bolErros};
 }
+
+Util.validarCamposExames = function(exameData){
+	 bolErros = false;	
+	 strMensagem = "";
+	 
+	 if(exameData.area_id == undefined || exameData.area_id == ""){
+		 strMensagem += "Área é obrigatória";
+		 bolErros = true;	
+	 }
+	 
+	 if(exameData.tipo_exame_id == undefined || exameData.tipo_exame_id == ""){
+		 strMensagem += "Tipo de Exame é obrigatório";
+		 bolErros = true;	
+	 }
+	 
+	 if(exameData.data_exame == undefined || exameData.data_exame == ""){
+		 strMensagem += "Data Coleta é obrigatória";
+		 bolErros = true;	
+	 }
+	 
+	 if(exameData.data_previsao == undefined || exameData.data_previsao == ""){
+		 strMensagem += "Data Previsão é obrigatória";
+		 bolErros = true;	
+	 }
+	 
+	 return {strMensagem : strMensagem, bolErros : bolErros};
+}

@@ -2,33 +2,79 @@
 	 // Verificando se o usuário está logado
 	 $scope.usuarioLogado(true);
 	 
-	 $scope.usuarioEdit = {};
+	 $scope.exameData = {};
 	 
-	 // Lista de perfis do sistema
-	 $scope.listaPerfis = [];
+	 // Lista de áreas 
+	 $scope.listaAreas = [];
 	 // Buscando os perfis cadastrados na base
 	 $http({
 		method: "GET",
 	    timeout:$scope.timeout,
-	    url: $scope.strUrlServico + Constantes.APP_SERVICE_LISTAR_PERFIS,
+	    url: $scope.strUrlServico + Constantes.APP_SERVICE_EXAMES_LISTAR_AREAS,
 	    headers: Util.headers($scope.token)
 	 }).then(function(response) {
 		 if(response.data.bolRetorno == true){
-			 $scope.listaPerfis = response.data.result;
+			 $scope.listaAreas = response.data.result;
 		 }
 	 }, function(response) {});
-	 
-	 $scope.listaCancer = [];
+	 // Lista de tipo de exames
+	 $scope.listaTipoExames = [];
 	 $http({
 		method: "GET",
 	    timeout:$scope.timeout,
-	    url: $scope.strUrlServico + Constantes.APP_SERVICE_LISTAR_CANCER,
+	    url: $scope.strUrlServico + Constantes.APP_SERVICE_EXAMES_LISTAR_TIPOS_EXAMES,
 	    headers: Util.headers($scope.token)
 	 }).then(function(response) {
 		 if(response.data.bolRetorno == true){
-			 $scope.listaCancer = response.data.result;
+			 $scope.listaTipoExames = response.data.result;
 		 }
 	 }, function(response) {});
+	 
+	 /******* MÉTODO QUE IRÁ CALCULAR O PRAZO****************/
+	 $scope.calcularPrazo = function(){
+		 
+		 if($scope.exameData.tipo_exame_id == undefined || $scope.exameData.tipo_exame_id == ""
+			|| $scope.exameData.data_exame == undefined || $scope.exameData.data_exame == ""){
+			
+			 strMensagem = "";
+			 if($scope.exameData.tipo_exame_id == undefined || $scope.exameData.tipo_exame_id == "")
+				 strMensagem += "Tipo de Exame é obrigatório";
+			 
+			 if($scope.exameData.data_exame == undefined || $scope.exameData.data_exame == "")
+				 strMensagem += "Data Coleta é obrigatório";
+			 
+			 var alertPopup = $ionicPopup.alert({
+				title: 'Atenção',
+				template: strMensagem
+			 });
+			alertPopup.then(function(res) { });
+		 }else{
+			 $scope.carregando();
+			 
+			 $http({
+				method: "GET",
+			    timeout:$scope.timeout,
+			    url: $scope.strUrlServico 
+			    	 + Constantes.APP_SERVICE_EXAMES_REUPERAR_PREVISAO_EXAME 
+					 + "?intIdTipoExame=" + $scope.exameData.tipo_exame_id
+					 + "&strDataColeta=" + $scope.exameData.data_exame,
+			    headers: Util.headers($scope.token)
+			 }).then(function(response) {
+				 if(response.data.bolRetorno == true){
+					 $scope.exameData.data_previsao = response.data.result.previsao;
+				 }else{
+					var alertPopup = $ionicPopup.alert({
+						title: 'Atenção',
+						template: response.data.strMensagem
+					});
+					alertPopup.then(function(res) { });
+					$scope.exameData.data_previsao = "";
+				 }
+				 $scope.carregado();
+			 }, function(response) {});
+		 }
+	 }
+	 /******* FIM DO MÉTODO QUE IRÁ CALCULAR O PRAZO **************/
 	 
 	 /*** MÉTODO DE SALVAR OS DADOS ****/
 	 $scope.salvar = function(){
@@ -38,8 +84,8 @@
 	 	$http({
 			method: "POST",
 		    timeout:$scope.timeout,
-		    data: 'dadosUsuario=' + JSON.stringify($scope.usuarioEdit),
-		    url: $scope.strUrlServico + Constantes.APP_SERVICE_CADASTRAR_USUARIO,
+		    data: 'dadosExame=' + JSON.stringify($scope.exameData) + "&usuario_id="+$scope.loginData.id,
+		    url: $scope.strUrlServico + Constantes.APP_SERVICE_EXAMES_CADASTRAR ,
 		    headers: Util.headers($scope.token)
 		})
 		.then(function(response) {
@@ -59,14 +105,6 @@
 				template: mensagem
 			});
 			alertPopup.then(function(res) { });
-			// Redirecionando para o inicio
-			setTimeout(function(){
-				// Redirecionado para o inicio
-				if(bolRetorno){
-					$scope.closeConfirmar();
-					$scope.goTo("app.login");
-				}
-			}, 1500);
 		}, function(response) {
 			console.log(response);
 			// Disparando ação de load
@@ -76,15 +114,8 @@
 	 /*** FIM MÉTODO SALVAR OS DADOS ***/
 	 /** MÉTODO PARA VALIDAR AS INFORMAÇOES **/
 	 $scope.validar = function(){
-		 
-		 // Criando o campo cpf
-		 $scope.usuarioEdit.cpf = $scope.usuarioEdit.login;
-		 
 		 // Validando os campos 
-		 var errosValidacao =  ($scope.usuarioEdit.perfil_id == 1) 
-		 					   ? Util.validarCadastroPaciente($scope.usuarioEdit, false)
-	 						   : Util.validarCadastroMedico($scope.usuarioEdit);
-		 
+		 var errosValidacao =  Util.validarCamposExames($scope.exameData);
 	   	 // Caso haja algum erro
 		 if(errosValidacao.bolErros){
 		 	// Disparando ação de load
@@ -97,11 +128,8 @@
 			alertPopup.then(function(res) { });
 			return false;
 		 }
-		 $scope.usuarioEdit.pep = $scope.usuarioEdit.numero_pep;
-		 // Validando cpf e email
+		 // Iniciando o método de salvar
 		 $scope.salvar();
-		 console.log($scope.usuarioEdit)
-		 console.log(errosValidacao)
 	 }
 	 /** FIM MÉTODO PARA VALIDAR AS INFORMAÇOES **/
 });

@@ -32,7 +32,7 @@
 					</label>
 					
 					<label class="item item-input cadastroPadrao "> 
-						<input type="text" placeholder="Data Coleta Exame: 99/99/9999" name="data_exame" class="data" ng-model="exameData.data_exame" required>
+						<input type="text" placeholder="Data Coleta Exame: 99/99/9999" name="data_exame" class="data" ng-blur="calcularPrazo()" ng-model="exameData.data_exame" required>
 						<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
 					</label>
 					<span class="erro" ng-show="erros && !cadastrarUsuario.data_exame.$valid">Data Coleta Exame é Obrigatária</span> 
@@ -42,9 +42,8 @@
 						<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
 					</label>
 					<span class="erro" ng-show="erros && !cadastrarUsuario.data_previsao.$valid">Data Previsão Exame é Obrigatária</span> 
-					
 				</div>
-			<button class="button button-full botaoPadrao" ng-click="validarCadastro()">Cadastrar Exame</button>
+			<button class="button button-full botaoPadrao" ng-click="validar()">Cadastrar Exame</button>
 		</form>
     </ion-content>
 </ion-view>

@@ -38,6 +38,15 @@ var Constantes = {
 	"APP_SERVICE_CADASTRAR_USUARIO"				: "usuario/cadastrarUsuario",
 	/****** FIM MÓDULO USUÁRIO ********/
 	
+	/****** MÓDULO DE EXAMES *******/
+	"APP_SERVICE_EXAMES_LISTAR_AREAS"			: "exame/listarAreas",
+	"APP_SERVICE_EXAMES_LISTAR_TIPOS_EXAMES"	: "exame/listarTiposExames",
+	"APP_SERVICE_EXAMES_CADASTRAR"				: "exame/cadastrarExame",
+	"APP_SERVICE_EXAMES_REUPERAR_PREVISAO_EXAME": "exame/previsaoPorTipoExame",
+	"APP_SERVICE_EXAMES_LISTAR_EXAMES_USUARIO"	: "exame/listarExamesDoUsuarioPorId",
+	"APP_SERVICE_EXAMES_FILTRAR_EXAMES"			: "exame/filtrarExames",
+	
+	/****** FIM MÓDULO DE EXAMES *******/
 	
 	
 	"APP_SERVICE_INICIO"						: "inicio",
