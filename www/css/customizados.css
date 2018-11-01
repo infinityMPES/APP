@@ -240,3 +240,15 @@ a.botoes-inicios i.fa {
 #formCadastroExame label{
 	padding-left: 0px !important;
 }
+
+/**********
+ ***** Meus exames
+ *******/
+
+.meus-exames .bar-subheader, .meus-exames strong{
+	height: 60px !important;
+}
+
+.meus-exames div.item{
+	border-bottom: dashed 1px #62aaa2 !important;
+}

@@ -4,16 +4,15 @@
 	 
 	 $scope.listaCancer = [];
 	 $http({
-			method: "GET",
-		    timeout:$scope.timeout,
-		    url: $scope.strUrlServico + Constantes.APP_SERVICE_LISTAR_CANCER,
-		    headers: Util.headers($scope.token)
-		})
-		.then(function(response) {
-			 if(response.data.bolRetorno == true){
-				 $scope.listaCancer = response.data.result;
-			 }
-		}, function(response) {});
+		method: "GET",
+	    timeout:$scope.timeout,
+	    url: $scope.strUrlServico + Constantes.APP_SERVICE_LISTAR_CANCER,
+	    headers: Util.headers($scope.token)
+	 }).then(function(response) {
+		 if(response.data.bolRetorno == true){
+			 $scope.listaCancer = response.data.result;
+		 }
+	 }, function(response) {});
 	 
 	 /*** MÉTODO DE FAZER CADASTRAR ****/
 	 $scope.cadastrar = function(){
@@ -85,10 +84,13 @@
 	 
 	 $scope.closeConfirmar = function() {
 		 $scope.modal.hide();
+		 $(".disable-user-behavior").show();
 	 };
 	  
 	 $scope.confirmarCadastro = function() {
 		 $scope.modal.show();
+		 $(".disable-user-behavior").hide();
+		 $(".has-header").css("top", "0px");
 	 };
 	 /**  **/
 	 /*** MÉTODO DE FAZER VALIDAÇÕES DO CADASTRO ****/

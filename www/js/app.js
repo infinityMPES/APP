@@ -133,6 +133,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	      }
 	    }
 	})
+	
+	.state('app.meus-exames', {
+	    url: '/meus-exames',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'templates/meus-exames.html',
+	        controller: 'MeusExamesCtrl'
+	      }
+	    }
+	})
     
     .state('app', {
         url: '/app',

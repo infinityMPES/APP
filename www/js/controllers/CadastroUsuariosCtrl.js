@@ -50,6 +50,7 @@
 			if(response.data.bolRetorno == true){
 				bolRetorno = true;
 				mensagem = "Cadastro Realizada Com Sucesso!";
+				$scope.usuarioEdit = {};
 			}else{
 				mensagem = response.data.strMensagem;
 			}
@@ -59,14 +60,6 @@
 				template: mensagem
 			});
 			alertPopup.then(function(res) { });
-			// Redirecionando para o inicio
-			setTimeout(function(){
-				// Redirecionado para o inicio
-				if(bolRetorno){
-					$scope.closeConfirmar();
-					$scope.goTo("app.login");
-				}
-			}, 1500);
 		}, function(response) {
 			console.log(response);
 			// Disparando ação de load

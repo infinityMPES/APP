@@ -7,20 +7,20 @@
 	 $scope.listaPerfis = [];
 	 $scope.listaUsuarios = [];
 	 
-	// ´Mostrando o carregando
-	 $scope.carregando();
-	 // Buscando os perfis cadastrados na base
-	 $http({
-		method: "GET",
-	    timeout:$scope.timeout,
-	    url: $scope.strUrlServico + Constantes.APP_SERVICE_LISTAR_PERFIS,
-	    headers: Util.headers($scope.token)
-	 }).then(function(response) {
-		 $scope.carregado();
-		 if(response.data.bolRetorno == true){
-			 $scope.listaPerfis = response.data.result;
-		 }
-	 }, function(response) {});
+	 // carregando a lista de perfis
+	 setTimeout(function(){
+		 // Buscando os perfis cadastrados na base
+		 $http({
+			method: "GET",
+		    timeout:$scope.timeout,
+		    url: $scope.strUrlServico + Constantes.APP_SERVICE_LISTAR_PERFIS,
+		    headers: Util.headers($scope.token)
+		 }).then(function(response) {
+			 if(response.data.bolRetorno == true){
+				 $scope.listaPerfis = response.data.result;
+			 }
+		 }, function(response) {});
+	 }, 1500);
 	 
 	 /**
 	  * Método que irá realizar o filtro dos usuários

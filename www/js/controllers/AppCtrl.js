@@ -100,16 +100,16 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
     	/**
          * Caso o usuário não esteja logado
          */
-        if(angular.equals($scope.loginData, {})) {
-        	if(!bolLogin) $scope.goTo('app.login');
-        }else{
-        	
-        	if(($scope.loginData.login != undefined || $scope.loginData.login != "")
-    		   && 
-    		   ($scope.loginData.perfil_id != undefined || $scope.loginData.perfil_id != "")){
-        		$scope.goTo('app.inicio');
-        	}
-        }
+//        if(angular.equals($scope.loginData, {})) {
+//        	if(!bolLogin) $scope.goTo('app.login');
+//        }else{
+//        	
+//        	if(($scope.loginData.login != undefined || $scope.loginData.login != "")
+//    		   && 
+//    		   ($scope.loginData.perfil_id != undefined || $scope.loginData.perfil_id != "")){
+//        		$scope.goTo('app.inicio');
+//        	}
+//        }
     }
     
     $scope.getOneSignal = function(){

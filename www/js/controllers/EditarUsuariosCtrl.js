@@ -1,9 +1,10 @@
 ﻿app.controller('EditarUsuariosCtrl', function ($scope, $stateParams, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal) {
 	 // Verificando se o usuário está logado
-	 $scope.usuarioLogado(true);
+//	 $scope.usuarioLogado(true);
 	 
 	 $scope.usuarioEdit = {};
-	 
+	 // Disparando ação de load
+	 $scope.carregando();
 	 // ´Mostrando o carregando
 	 $scope.carregando();
 	 
@@ -52,8 +53,6 @@
 					template: "Usuario Não Encontrado"
 				});
 				alertPopup.then(function(res) { });
-					// Redirecionando para o inicio
-//					setTimeout(function(){ $scope.goTo("app.gerenciar-usuario"); }, 1500);
 				}
 	 }, function(response) {});
 	 
@@ -86,14 +85,6 @@
 				template: mensagem
 			});
 			alertPopup.then(function(res) { });
-			// Redirecionando para o inicio
-			setTimeout(function(){
-				// Redirecionado para o inicio
-				if(bolRetorno){
-					$scope.closeConfirmar();
-					$scope.goTo("app.login");
-				}
-			}, 1500);
 		}, function(response) {
 			console.log(response);
 			// Disparando ação de load

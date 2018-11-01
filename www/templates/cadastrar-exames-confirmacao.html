@@ -1,18 +1,20 @@
-<ion-view view-title="" class="esqueci-senha-titulo">
-	<ion-nav-title  class="esqueci-senha-titulo">
-		Cadastrar Exames
-    </ion-nav-title>
-    <ion-content class="esqueci-senha">
-        <div class="bar bar-subheader bar-stable static text-center">
+<ion-modal-view>
+  <ion-header-bar>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeConfirmar()">Fechar</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="confirmarCadastro">
+  		<div class="bar bar-subheader bar-stable static text-center">
             <strong class="title titulo-icone">
-            	<i class="fa fa-plus-square" aria-hidden="true"></i>
+            	<i class="fa fa-check-circle-o" aria-hidden="true"></i>
             	<br />
-            	<span class="texto-icone">Preencha os campos a baixo para cadastrar seus exames.</span>
+            	<span class="texto-icone">Confira seus dados antes de enviar.</span>
            	</strong>
         </div>
-        <form name="cadastrarUsuario" id="formCadastroExame" class="formPadrao cadastroUsuario im-wrapper ">
-				<div class="list">
-					<label class="item item-input cadastroPadrao item-select">
+        <form name="cadastrarExamesConfirmar" id="cadastrarExamesConfirmar" class="formPadrao cadastroUsuario im-wrapper ">
+			<div class="list">
+				<label class="item item-input cadastroPadrao item-select">
 					    <div class="input-label corpadrao">
 					      Área do Exame:
 					    </div>
@@ -40,11 +42,18 @@
 						<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
 					</label>
 					<span class="erro" ng-show="erros && !cadastrarUsuario.data_previsao.$valid">Data Previsão Exame é Obrigatária</span> 
+			</div>
+			<div class="row">
+				<div class="col col-50">
+					<button class="button button-full button-light" ng-click="closeConfirmar()">Cancelar</button>
 				</div>
-			<button class="button button-full botaoPadrao" ng-click="validar()">Cadastrar Exame</button>
+				<div class="col col-50">
+					<button class="button button-full botaoPadrao" ng-click="salvar()">Cadastrar</button>
+				</div>
+			</div>
 		</form>
     </ion-content>
-</ion-view>
+</ion-modal-view>
 <style>
 	.bar.bar-header{
 	    box-shadow: none !important;

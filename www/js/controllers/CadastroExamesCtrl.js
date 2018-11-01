@@ -17,6 +17,7 @@
 			 $scope.listaAreas = response.data.result;
 		 }
 	 }, function(response) {});
+	 
 	 // Lista de tipo de exames
 	 $scope.listaTipoExames = [];
 	 $http({
@@ -30,54 +31,29 @@
 		 }
 	 }, function(response) {});
 	 
-	 /******* MÉTODO QUE IRÁ CALCULAR O PRAZO****************/
-	 $scope.calcularPrazo = function(){
-		 
-		 if($scope.exameData.tipo_exame_id == undefined || $scope.exameData.tipo_exame_id == ""
-			|| $scope.exameData.data_exame == undefined || $scope.exameData.data_exame == ""){
-			
-			 strMensagem = "";
-			 if($scope.exameData.tipo_exame_id == undefined || $scope.exameData.tipo_exame_id == "")
-				 strMensagem += "Tipo de Exame é obrigatório";
-			 
-			 if($scope.exameData.data_exame == undefined || $scope.exameData.data_exame == "")
-				 strMensagem += "Data Coleta é obrigatório";
-			 
-			 var alertPopup = $ionicPopup.alert({
-				title: 'Atenção',
-				template: strMensagem
-			 });
-			alertPopup.then(function(res) { });
-		 }else{
-			 $scope.carregando();
-			 
-			 $http({
-				method: "GET",
-			    timeout:$scope.timeout,
-			    url: $scope.strUrlServico 
-			    	 + Constantes.APP_SERVICE_EXAMES_REUPERAR_PREVISAO_EXAME 
-					 + "?intIdTipoExame=" + $scope.exameData.tipo_exame_id
-					 + "&strDataColeta=" + $scope.exameData.data_exame,
-			    headers: Util.headers($scope.token)
-			 }).then(function(response) {
-				 if(response.data.bolRetorno == true){
-					 $scope.exameData.data_previsao = response.data.result.previsao;
-				 }else{
-					var alertPopup = $ionicPopup.alert({
-						title: 'Atenção',
-						template: response.data.strMensagem
-					});
-					alertPopup.then(function(res) { });
-					$scope.exameData.data_previsao = "";
-				 }
-				 $scope.carregado();
-			 }, function(response) {});
-		 }
-	 }
-	 /******* FIM DO MÉTODO QUE IRÁ CALCULAR O PRAZO **************/
+	 /** **/
+	 $ionicModal.fromTemplateUrl('templates/cadastrar-exames-confirmacao.html', {
+		 scope: $scope
+	 }).then(function(modal) {
+		 $scope.modal = modal;
+	 });
+	 
+	 $scope.closeConfirmar = function() {
+		 $scope.modal.hide();
+		 $(".disable-user-behavior").show();
+		 $(".has-header").css("top", "44px");
+	 };
+	  
+	 $scope.confirmarCadastro = function() {
+		 $scope.modal.show();
+		 $("#cadastrarExamesConfirmar").css("height", $(".confirmarCadastro").height() + "px");
+		 $(".disable-user-behavior").hide();
+		 $(".has-header").css("top", "0px");
+	 };
 	 
 	 /*** MÉTODO DE SALVAR OS DADOS ****/
 	 $scope.salvar = function(){
+		
 		// Disparando ação de load
 		$scope.carregando();
 		// Postando para URL
@@ -105,6 +81,15 @@
 				template: mensagem
 			});
 			alertPopup.then(function(res) { });
+			
+			// Redirecionando para o inicio
+			setTimeout(function(){
+				// Redirecionado para o inicio
+				if(bolRetorno){
+					$scope.exameData = {};
+					$scope.closeConfirmar();
+				}
+			}, 1500);
 		}, function(response) {
 			console.log(response);
 			// Disparando ação de load
@@ -128,8 +113,8 @@
 			alertPopup.then(function(res) { });
 			return false;
 		 }
-		 // Iniciando o método de salvar
-		 $scope.salvar();
+		 // Abrindo a tela de confirmação
+		 $scope.confirmarCadastro();
 	 }
 	 /** FIM MÉTODO PARA VALIDAR AS INFORMAÇOES **/
 });

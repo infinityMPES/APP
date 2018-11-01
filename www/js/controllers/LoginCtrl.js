@@ -59,6 +59,7 @@
 					});
 					alertPopup.then(function(res) {
 					});
+					$(".has-header").css("top", "44px");
 					// Redirecionado para o inicio
 					$scope.goTo("app.inicio");
 				}

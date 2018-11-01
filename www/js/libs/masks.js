@@ -3,17 +3,10 @@
  */
 $(document).ready(function(){
 	// Iniciando as mascaras 2s depois do carregamento
-	setTimeout(function(){
+	setInterval(function(){
 		definirMascaras()
-	},2000);
+	},1000);
 	
-	// Para cada troca de tela
-	$("a.links").on("click", function(){
-		setTimeout(function(){
-			console.log("aqui");
-			definirMascaras();
-		},2000);
-	});
 });
 
 /**
