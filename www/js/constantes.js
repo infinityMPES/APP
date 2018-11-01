@@ -15,8 +15,8 @@ var Constantes = {
 	"APP_BASE"	 						: "imip",
 	"APP_BASE_TITULO"	 				: "Conxão Vida",
 	
-//	"APP_SERVICE"						: "http://smtp.curapelanatureza.com.br/ws/",
-	"APP_SERVICE"						: "http://localhost/imip/ws-imip-dois/WS/",
+	"APP_SERVICE"						: "http://conexaovidaimip.com.br/dev/",
+//	"APP_SERVICE"						: "http://localhost/imip/ws-imip-dois/WS/",
 //	"APP_SERVICE"						: "http://192.168.0.48/imip/ws-imip-dois/WS/",
 //	"APP_SERVICE"						: "http://192.168.0.105/imip/ws-imip-dois/WS/",
 	
