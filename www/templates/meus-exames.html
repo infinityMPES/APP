@@ -12,32 +12,42 @@
         </div>
 		<div class="list">
 
-			  <div class="item item-icon-left" href="#">
-			    <i class="icon fa fa-check-circle-o" aria-hidden="true" style="color: #62aaa2"></i>
+			  <div class="item item-icon-left" ng-repeat="exame in listaExames">
+			    <i ng-show="exame.situacao == 1" class="icon fa fa-check-circle-o" aria-hidden="true" style="color: #62aaa2"></i>
+			    <i ng-show="exame.situacao == 0" class="icon fa fa-exclamation-triangle" aria-hidden="true" style="color: red"></i>
 			    <ul>
 			    	<li>
-			    		<b>Área:</b> Oncologia
+			    		<b>Área:</b> {{exame.area}}
 			    	</li>
 			    	<li>
-			    		<b>Tipo de Exame:</b> Hemograma
+			    		<b>Tipo de Exame:</b> {{exame.tipo_exame}}
 			    	</li>
 			    	<li>
-			    		<b>Data do Exame:</b> 02/02/2018
+			    		<b>Data do Exame:</b> {{exame.data_exame}}
 			    	</li>
 			    	<li>
-			    		<b>Previsão do Exame:</b> 02/02/2018
+			    		<b>Previsão do Exame:</b> {{exame.data_previsao}}
+			    	</li>
+			    	<li ng-show="exame.situacao == 1">
+			    		<b>Recebido:</b> {{exame.data_recebimento}}
 			    	</li>
 			    	<li>
-			    		<b>Recebido:</b> 02/02/2018
+			    		<b>Situacao:</b> 
+			    		<span ng-show="exame.situacao == 1">Entregue</span>
+			    		<span ng-show="exame.situacao == 0">Pendente</span>
 			    	</li>
-			    	<li>
-			    		<b>Situacao:</b> Entregue
+			    	<li ng-show="exame.situacao == 0">
+			    		<b>Média Entrega:</b> {{exame.media}} Dias
 			    	</li>
-			    	
+			    	<li ng-show="exame.situacao == 0">
+			    		<button class="button button-full botaoPadrao" ng-click="confirmarRecebimento(exame.id)" style="font-size: 11px;">
+			    			Confirmar Recebimento
+		    			</button>
+			    	</li>
 			    </ul>
 			  </div>
 			
-			  <div class="item item-icon-left item-icon-right" href="#">
+			  <div class="item item-icon-left item-icon-right">
 			    <i class="icon fa fa-exclamation-triangle" aria-hidden="true" style="color: red"></i>
 			    <ul>
 			    	<li>
@@ -51,14 +61,6 @@
 			    	</li>
 			    	<li>
 			    		<b>Previsão:</b> 02/02/2018
-			    	</li>
-			    	<li>
-			    		<b>Média Entrega:</b> 25 Dias
-			    	</li>
-			    	<li>
-			    		<button class="button button-full botaoPadrao" ng-click="confirmarRecebimento(loginData.id)" style="font-size: 11px;">
-			    			Confirmar Recebimento
-		    			</button>
 			    	</li>
 			    </ul>
 <!-- 			    <i ng-cliekc="" class="icon fa fa-check-square" aria-hidden="true" style="color: #62aaa2; font-size: 45px"></i> -->

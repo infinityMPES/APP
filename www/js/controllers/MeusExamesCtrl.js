@@ -2,9 +2,10 @@
 	 // Verificando se o usuário está logado
 	 $scope.exameData = {};
 	 // Disparando ação de load
-//	 $scope.carregando();
+	 $scope.carregando();
 	 // Lista de exames
 	 $scope.listaExames = [];
+	 $scope.exame_id = 0;
 	 // Recuperando os dados do usuário
 	 $http({
 			method: "GET",
@@ -34,7 +35,7 @@
 	 	$http({
 			method: "POST",
 		    timeout:$scope.timeout,
-		    data: 'dadosExame=' + JSON.stringify($scope.exameData) + "&intIdUsuario=" + $scope.loginData.id,
+		    data: 'dadosExame=' + JSON.stringify($scope.exameData) + "&intIdUsuario=" + $scope.loginData.id + "&intIdExame=" + $scope.exame_id,
 		    url: $scope.strUrlServico + Constantes.APP_SERVICE_EXAMES_CONFIRMAR_RECEBIMENTO,
 		    headers: Util.headers($scope.token)
 		})
@@ -73,17 +74,17 @@
 	 $scope.closeConfirmar = function() {
 		 $scope.modal.hide();
 		 $(".disable-user-behavior").show();
-		 $(".has-header").css("top", "44px");
+		 $(".confirmarCadastro").attr("style", "background: #ffffff !important");
 	 };
 	  
 	 $scope.confirmarCadastro = function() {
 		 $scope.modal.show();
+		 $(".confirmarCadastro").attr("style", "background: #62aaa2 !important");
 		 $(".disable-user-behavior").hide();
 		 $(".has-header").css("top", "0px");
-		 $("#formCadastroExame").css("height", $(".confirmarCadastro").height() + "px");
 	 };
-	 $scope.confirmarRecebimento = function(){
-		 console.log($scope.loginData.id);
+	 $scope.confirmarRecebimento = function(id){
+		 $scope.exame_id = id;
 		 $scope.confirmarCadastro();
 	 }
 });

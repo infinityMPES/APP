@@ -42,15 +42,61 @@
 		 $scope.modal.hide();
 		 $(".disable-user-behavior").show();
 		 $(".has-header").css("top", "44px");
+		 $(".confirmarCadastro").attr("style", "background: #ffffff !important");
 	 };
 	  
 	 $scope.confirmarCadastro = function() {
 		 $scope.modal.show();
-		 $("#cadastrarExamesConfirmar").css("height", $(".confirmarCadastro").height() + "px");
+		 $(".confirmarCadastro").attr("style", "background: #62aaa2 !important");
 		 $(".disable-user-behavior").hide();
 		 $(".has-header").css("top", "0px");
 	 };
-	 
+
+	 /******* MÉTODO QUE IRÁ CALCULAR O PRAZO****************/
+	 $scope.calcularPrazo = function(){
+		 
+		 if($scope.exameData.tipo_exame_id == undefined || $scope.exameData.tipo_exame_id == ""
+			|| $scope.exameData.data_exame == undefined || $scope.exameData.data_exame == ""){
+			
+			 strMensagem = "";
+			 if($scope.exameData.tipo_exame_id == undefined || $scope.exameData.tipo_exame_id == "")
+				 strMensagem += "Tipo de Exame é obrigatório";
+			 
+			 if($scope.exameData.data_exame == undefined || $scope.exameData.data_exame == "")
+				 strMensagem += "Data Coleta é obrigatório";
+			 
+			 var alertPopup = $ionicPopup.alert({
+				title: 'Atenção',
+				template: strMensagem
+			 });
+			alertPopup.then(function(res) { });
+		 }else{
+			 $scope.carregando();
+			 
+			 $http({
+				method: "GET",
+			    timeout:$scope.timeout,
+			    url: $scope.strUrlServico 
+			    	 + Constantes.APP_SERVICE_EXAMES_REUPERAR_PREVISAO_EXAME 
+					 + "?intIdTipoExame=" + $scope.exameData.tipo_exame_id
+					 + "&strDataColeta=" + $scope.exameData.data_exame,
+			    headers: Util.headers($scope.token)
+			 }).then(function(response) {
+				 if(response.data.bolRetorno == true){
+					 $scope.exameData.data_previsao = response.data.result.previsao;
+				 }else{
+					var alertPopup = $ionicPopup.alert({
+						title: 'Atenção',
+						template: response.data.strMensagem
+					});
+					alertPopup.then(function(res) { });
+					$scope.exameData.data_previsao = "";
+				 }
+				 $scope.carregado();
+			 }, function(response) {});
+		 }
+	 }
+	 /******* FIM DO MÉTODO QUE IRÁ CALCULAR O PRAZO **************/
 	 /*** MÉTODO DE SALVAR OS DADOS ****/
 	 $scope.salvar = function(){
 		

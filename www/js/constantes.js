@@ -17,8 +17,6 @@ var Constantes = {
 	
 	"APP_SERVICE"						: "http://conexaovidaimip.com.br/dev/",
 //	"APP_SERVICE"						: "http://localhost/imip/ws-imip-dois/WS/",
-//	"APP_SERVICE"						: "http://192.168.0.48/imip/ws-imip-dois/WS/",
-//	"APP_SERVICE"						: "http://192.168.0.105/imip/ws-imip-dois/WS/",
 	
 	"APP_MSG_ERROR"						: "<center><span class='icon ion-android-alert' style='font-size:35px'></span><br>Ops...<br>Sem Conex�o!</center>",
 	"APP_MSG_TIMEOUT"					: "<center><span class='icon ion-android-alert' style='font-size:35px'></span><br>Ops...<br>Sem Conex�o!</center>",

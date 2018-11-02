@@ -85,10 +85,12 @@
 	 $scope.closeConfirmar = function() {
 		 $scope.modal.hide();
 		 $(".disable-user-behavior").show();
+		 $(".confirmarCadastro").attr("style", "background: #ffffff !important");
 	 };
 	  
 	 $scope.confirmarCadastro = function() {
 		 $scope.modal.show();
+		 $(".confirmarCadastro").attr("style", "background: #62aaa2 !important");
 		 $(".disable-user-behavior").hide();
 		 $(".has-header").css("top", "0px");
 	 };
