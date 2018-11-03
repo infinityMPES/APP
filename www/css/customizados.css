@@ -103,6 +103,11 @@ input::placeholder {
 	margin-top: -65px;
 }
 
+table.dataTable td {
+  word-break: break-word;
+  white-space: normal !important;
+}
+
 /** ESTILO DA HOME **/
 [nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
     background: #62aaa2 !important;
@@ -202,7 +207,7 @@ a.botoes-inicios i.fa {
  *** Gerenciar usuário
  **********************/
 .contentGerenciarUsuario .bar-subheader, .contentGerenciarUsuario .bar-subheader .title {
-	height: 85px !important;
+	height: 120px !important;
 }
 .contentGerenciarUsuario, .contentGerenciarUsuario .scroll{
 	background: white;
@@ -251,4 +256,10 @@ a.botoes-inicios i.fa {
 
 .meus-exames div.item{
 	border-bottom: dashed 1px #62aaa2 !important;
+}
+/*********
+**** Gerenciar exames
+**/
+#listaExames_filter{
+	display: none;
 }

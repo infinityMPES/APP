@@ -398,6 +398,7 @@ Util.montarTabela =  function(idTabela, dados, colunas){
 	    buttons: [
 	        'copy', 'csv', 'excel', 'pdf'
 	    ],
+	    responsive: true,
         data: dados,
         "columns": colunas
     });

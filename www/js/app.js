@@ -143,6 +143,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	      }
 	    }
 	})
+	
+	.state('app.acompanhar-exames', {
+	    url: '/acompanhar-exames',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'templates/gerenciar-exames.html',
+	        controller: 'GerenciarExamesCtrl'
+	      }
+	    }
+	})
     
     .state('app', {
         url: '/app',

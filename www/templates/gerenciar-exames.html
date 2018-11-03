@@ -1,0 +1,108 @@
+<ion-view view-title="" class="esqueci-senha-titulo">
+	<ion-nav-title  class="esqueci-senha-titulo">
+		Gerenciar Exames
+    </ion-nav-title>
+    <ion-content class="contentGerenciarUsuario">
+    	
+    	
+        <div class="bar bar-subheader bar-stable static text-center">
+            <strong class="title titulo-icone gerenciarUsuarios">
+            	<img src="./img/imagens/file-medical-alt-solid.png" />
+            	<br />
+           	</strong>
+        </div>
+        
+        <form name="formListarUsuario" id="formListarUsuario" class="formPadrao formListarUsuario im-wrapper ">
+				<div class="list">
+					
+					<label class="item item-input cadastroPadrao item-select">
+					    <div class="input-label corpadrao">
+					      Situação do Exame:
+					    </div>
+					    <select style="min-width: 45%;" name="sexo" ng-model="exameData.situacao">
+					      <option value="0" selected="selected">Pendente</option>
+					      <option value="1">Entregue</option>
+					    </select>
+					</label>
+					<label class="item item-input cadastroPadrao item-select">
+					    <div class="input-label corpadrao">
+					      Área do Exame:
+					    </div>
+					    <select style="min-width: 65%;" name="sexo" ng-model="exameData.area_id">
+					      <option ng-repeat="area in listaAreas" value="{{area.id}}">{{area.descricao}}</option>
+					    </select>
+					</label>
+					<label class="item item-input cadastroPadrao item-select">
+					    <div class="input-label corpadrao">
+					      Tipo de Exame:
+					    </div>
+					    <select style="min-width: 65%;" name="sexo" ng-model="exameData.tipo_exame_id">
+					      <option ng-repeat="tipoExame in listaTipoExames" value="{{tipoExame.id}}">{{tipoExame.descricao}}</option>
+					    </select>
+					</label>
+					
+					<label class="item item-input cadastroPadrao"> 
+						<i class="icon fa fa-user placeholder-icon" style="font-size: 24px"></i> 
+						<input type="text" placeholder="Informe nº PEP" class="pep" name="pep" ng-model="exameData.pep" >
+					</label>
+				</div>
+			<button class="button button-full botaoPadrao" ng-click="pesquisaExames()">Pesquisar</button>
+		</form>
+		
+		<hr ng-show="mostrarLista" />
+		
+		<div class="listagem" ng-show="mostrarLista">
+			
+			<div class="tabs tabs-balanced tabs-icon-top" style="position: static; margin-bottom: 5px; border-radius: 5px; background: #62aaa2 !important;">
+                <a class="tab-item active lista" href="javascript:void(0)" ng-click="mostarListaF(true)" style="border-right: dashed 1px;" >
+                    <i class="icon fa fa-list-alt"></i> Exames 
+                </a>
+                <a class="tab-item graficos" href="javascript:void(0)" ng-click="mostarListaF(false)">
+                    <i class="icon fa fa-pie-chart"></i> Graficos
+                </a>
+            </div>
+			<div class="row" ng-show="mostarLista">
+				<div class="col col-100">
+					<h3 class="tituloListagem">Exames em Atraso</h3>
+				</div>
+			</div>
+			<div class="row" ng-show="mostarLista">
+				<div class="col col-100 lista">
+					<table id="listaExames" class="display responsive nowrap" cellspacing="0" width="100%">
+						<thead>
+			            	<tr>
+				                <th width="50%">Nome</th>
+				                <th width="50%">Dias Transcorridos</th>
+				            </tr>
+				        </thead>
+				        <tfoot>
+				            <tr>
+				                <th width="50%">Nome</th>
+				                <th width="50%">Dias Transcorridos</th>
+				            </tr>
+				        </tfoot>
+					</table>
+				</div>
+			</div>
+			
+			<div class="row" ng-show="!mostarLista">
+				<div class="col col-100 ">
+					<div id="graficoPizza" style="width: 100%; height: 300px;" ng-show="mostarGrafico == 1">pizza</div>
+					<div id="graficoBarra" style="width: 100%; height: 300px;" ng-show="mostarGrafico == 2">barra</div>
+					<button style="background: #62aaa2 !important;" class="button icon-left fa fa-pie-chart button-balanced" ng-click="mostarGraficoTipo(1)" >Pizza</button>
+					<button  style="background: #62aaa2 !important;" class="button icon-left fa fa-bar-chart button-balanced" ng-click="mostarGraficoTipo(2)">Barra</button>
+				</div>
+			</div>
+		</div>
+
+    </ion-content>
+</ion-view>
+
+<style>
+	.bar.bar-header{
+	    box-shadow: none !important;
+	}
+	.bar.bar-stable{
+		border: none !important;
+	}
+</style>

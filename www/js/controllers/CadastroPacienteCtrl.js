@@ -49,7 +49,7 @@
 				mensagem   = "";
 				if(response.data.bolRetorno == true){
 					bolRetorno = true;
-					mensagem = "<b>Cadastro Realizado com sucesso!</b> <br> Aguarde seu capastro ser aprovado para utilizar o Conexão Vida!";
+					mensagem = "<b>Cadastro Realizado com sucesso!</b> <br> Aguarde seu cadastro ser aprovado para utilizar o Conexão Vida!";
 				}else{
 					mensagem = response.data.strMensagem;
 				}

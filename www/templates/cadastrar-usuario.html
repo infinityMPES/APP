@@ -72,7 +72,7 @@
 					
 					<label class="item item-input cadastroPadrao"> 
 						<i class="icon fa fa-id-card-o placeholder-icon" style="font-size: 24px"></i> 
-						<input type="text" placeholder="Informe seu nome" name="nome" ng-model="usuarioEdit.nome" required>
+						<input type="text" placeholder="Informe seu nome" name="nome"  class="apenasLetras"  ng-model="usuarioEdit.nome" required>
 					</label>
 					<span class="erro" ng-show="erros && !cadastrarUsuario.nome.$valid">Nome é Obrigatário</span> 
 					
