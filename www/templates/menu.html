@@ -19,31 +19,38 @@
         <ion-header-bar class="expanded">
             <img src="img/logo.png" class="avatar motion spin fade">
             <div class="menu-bottom">
-                Ionic Material API
+                Conexão Vida - IMIP
             </div>
         </ion-header-bar>
         <ion-content class="stable-bg has-expanded-header">
             <ion-list>
-            	<ion-item nav-clear menu-close href="#/app/inicio">
+            	
+            	<ion-item nav-clear menu-close href="#/app/inicio" ng-show="loginData.perfil_id == 1 || loginData.perfil_id == 2">
                     Inicio
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/login">
-                    Login
+                <!-- Visão Paciente -->
+                <ion-item nav-clear menu-close href="#/app/cadastrar-exames" ng-show="loginData.perfil_id == 1">
+                    <img src="./img/imagens/icon_menu_cadastromexames.png" /> Cadastrar Exame
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/components">
-                    Components+
+                <ion-item nav-clear menu-close href="#/app/meus-exames" ng-show="loginData.perfil_id == 1">
+                    <img src="./img/imagens/icon_menu_meusexames.png" /> Meus Exames
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/extensions">
-                    Extensions
+                <!-- FIM Visão Paciente -->
+                
+                <!-- Visão Médica -->
+                <ion-item nav-clear menu-close href="#/app/acompanhar-exames" ng-show="loginData.perfil_id == 2">
+                   <img src="./img/imagens/icon_menu_meusexames.png" /> Acompanhar Exame
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/lists">
-                    Motion Lists
+                <ion-item nav-clear menu-close href="#/app/gerenciar-usuario" ng-show="loginData.perfil_id == 2">
+                   <img src="./img/imagens/icon_menu_gerenciar.png" /> Gerenciar Usuarios
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/motion">
-                    Motion Elements
+                <!-- FIM Visão Médica -->
+                
+                <ion-item nav-clear menu-close ng-click="sair()">
+                   <img src="./img/imagens/icon_menu_sair.png" /> Sair
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/ink">
-                    Ink
+                <ion-item nav-clear menu-close >
+                   Versão: {{versaoApp}}
                 </ion-item>
             </ion-list>
         </ion-content>

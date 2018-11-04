@@ -4,6 +4,7 @@ var loginData = {};
 app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout, $ionicHistory, $state, $ionicLoading) {
     // Form data for the login modal
     $scope.loginData = loginData;
+    $scope.versaoApp = Constantes.APP_VERSAO;
 
     var navIcons = document.getElementsByClassName('ion-navicon');
     for (var i = 0; i < navIcons.length; i++) {
@@ -114,5 +115,10 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
     
     $scope.getOneSignal = function(){
     	return idsOnesignal;	
+    }
+    
+    $scope.sair = function (){
+    	$scope.loginData = {};
+    	$scope.goTo('app.login');
     }
 });

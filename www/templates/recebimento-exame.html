@@ -15,10 +15,10 @@
         <form name="formCadastroExame" id="formCadastroExame" class="formPadrao cadastroUsuario im-wrapper ">
 			<div class="list">
 				<label class="item item-input cadastroPadrao "> 
-					<input type="text" placeholder="Previsão da Entrega Exame: 99/99/9999" name="data_previsao" class="data" ng-model="exameData.data_recebimento" required>
+					<input type="text" placeholder="Previsão da Entrega Exame: 99/99/9999" name="data_recebimento" class="data" ng-model="exameData.data_recebimento" required>
 					<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
 				</label>
-				<span class="erro" ng-show="erros && !formCadastroExame.data_previsao.$valid">Data Previsão Exame é Obrigatória</span> 
+				<span class="erro" ng-show="!formCadastroExame.data_recebimento.$valid">Data Previsão Exame é Obrigatória</span> 
 			</div>
 			<div class="row">
 				<div class="col col-50">

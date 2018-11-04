@@ -10,6 +10,7 @@ var Constantes = {
 	"APP_DATABASE_NAME"	 				: "imip_oncologia",
 	"APP_DATABASE_NAME_DISPLAY"			: "Imip Oncologia",
 	"APP_ID"	 						: "08582d2d-8cb3-4ca3-9c3d-b86be7ec5e8b",
+	"APP_VERSAO" 						: "0.0.4",
 	
 	// BASE
 	"APP_BASE"	 						: "imip",
@@ -44,7 +45,10 @@ var Constantes = {
 	"APP_SERVICE_EXAMES_REUPERAR_PREVISAO_EXAME": "exame/previsaoPorTipoExame",
 	"APP_SERVICE_EXAMES_LISTAR_EXAMES_USUARIO"	: "exame/listarExamesDoUsuarioPorId",
 	"APP_SERVICE_EXAMES_FILTRAR_EXAMES"			: "exame/filtrarExames",
+	"APP_SERVICE_EXAMES_LISTAR_TOTAIS_AREA"		: "exame/listarTotalExamePorArea",
+	"APP_SERVICE_EXAMES_LISTAR_TOTAIS_TIPO"		: "exame/listarTotalExamePorTipoExame",
 	"APP_SERVICE_EXAMES_CONFIRMAR_RECEBIMENTO"  : "exame/confirmarRecebimento",
+	"APP_SERVICE_EXAMES_RECUPERAR_EXAME_ID"  	: "exame/recuperarExamePorID",
 	
 	/****** FIM MÓDULO DE EXAMES *******/
 	

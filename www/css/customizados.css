@@ -3,6 +3,28 @@
 /*****************
 GERAIS
 *****************/
+.menu, .menu .has-header{
+	background: #62aaa2 !important;
+	color: white !important;
+}
+#menu-popover{
+	display: none;
+}
+.menu .item{
+	background: #62aaa2 !important;
+	color: white !important;
+	border-bottom: dashed 1px white;
+}
+
+.avatar{
+	border-radius: 0%!important;
+}
+
+.expanded {
+    border-bottom: solid 1px white;
+    background: #62aaa2 !important;
+}
+
 input::placeholder { 
 	color: #517f78; 
 	font-size: 1em; 
@@ -262,4 +284,8 @@ a.botoes-inicios i.fa {
 **/
 #listaExames_filter{
 	display: none;
+}
+
+.button-balanced span{
+	margin-top: 5px;
 }

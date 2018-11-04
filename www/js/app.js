@@ -153,6 +153,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	      }
 	    }
 	})
+	
+	.state('app.detalhe-exame', {
+	    url: '/detalhe-exame/:exameId',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'templates/detalhe-exame.html',
+	        controller: 'DetalheExamesCtrl'
+	      }
+	    }
+	})
     
     .state('app', {
         url: '/app',

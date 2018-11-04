@@ -31,7 +31,7 @@
 		 }
 	 }, function(response) {});
 	 
-	 /** **/
+	 /** MODAL DE CONFIMAÇÃO **/
 	 $ionicModal.fromTemplateUrl('templates/cadastrar-exames-confirmacao.html', {
 		 scope: $scope
 	 }).then(function(modal) {

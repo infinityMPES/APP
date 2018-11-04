@@ -117,7 +117,7 @@
 					alertPopup.then(function(res) {
 					});
 				}else if(response.data.result != null && response.data.result != undefined){
-					$scope.setLogin(response.data.result);
+					$scope.loginData = {};
 					var alertPopup = $ionicPopup.alert({
 						title: 'Sucesso',
 						template: 'Aguarde, você sera redirecionado!'

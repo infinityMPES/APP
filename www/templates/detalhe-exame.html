@@ -1,0 +1,62 @@
+<ion-view view-title="" class="esqueci-senha-titulo">
+	<ion-nav-title  class="esqueci-senha-titulo">
+		Detalhe Exame
+    </ion-nav-title>
+    <ion-content class="esqueci-senha detalhe">
+        <div class="bar bar-subheader bar-stable static text-center">
+            <strong class="title titulo-icone">
+            	<i class="fa fa-plus-square" aria-hidden="true"></i>
+            	<br />
+           	</strong>
+        </div>
+		<div class="list list-inset">
+
+		    <div class="item">
+				<b>Área:</b> {{objExame.area}}
+		    </div>
+		    <div class="item">
+				<b>Tipo Exame:</b> {{objExame.tipo_exame}}
+		    </div>
+		    <div class="item">
+				<b>Paciente:</b> {{objExame.nome}}
+		    </div>
+		    <div class="item">
+				<b>Contato:</b> <a class="links link" href="tel:{{objExame.contato}}">{{objExame.contato}}</a>
+		    </div>
+		    <div class="item" ng-show="objExame.contato_dois != null">
+				<b>Contato:</b> <a class="links link" href="tel:{{objExame.contato_dois}}">{{objExame.contato_dois}}</a>
+		    </div>
+		    <div class="item">
+				<b>Data Exame:</b> {{objExame.data_exame}}
+		    </div>
+		    <div class="item">
+				<b>Previsão:</b> {{objExame.data_previsao}}
+		    </div>
+		    <div class="item" ng-show="objExame.situacao == 1">
+				<b>Recebido:</b> {{objExame.data_recebimento}}
+		    </div>
+		    <div class="item">
+				<b>Situação: </b>
+				<span ng-show="objExame.situacao == 1">Entregue</span>
+				<span ng-show="objExame.situacao == 0">Pendente</span>
+		    </div>
+		    <div class="item">
+				<b>Dias Atraso:</b> {{objExame.dias_atraso}}
+		    </div>
+		</div>
+    </ion-content>
+</ion-view>
+<style>
+	.bar.bar-header{
+	    box-shadow: none !important;
+	}
+	.bar.bar-stable{
+		border: none !important;
+	}
+	.list-inset {
+	    border-left: solid 1px #62aaa2 !important;
+	}	
+	.detalhe .list .item{
+	    border-bottom: dashed 1px #62aaa2;
+	}
+</style>

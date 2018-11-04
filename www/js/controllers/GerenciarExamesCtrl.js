@@ -1,4 +1,7 @@
-﻿app.controller('GerenciarExamesCtrl', function ($scope, $stateParams, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal) {
+var totaisPorArea = [];
+var totaisPorTipo = [];
+
+app.controller('GerenciarExamesCtrl', function ($scope, $stateParams, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal) {
 	 // Verificando se o usuário está logado
 	 $scope.usuarioLogado(true);
 	 
@@ -79,13 +82,37 @@
 				 Util.montarTabela('listaExames', listaUsuarios, [{ "data": "nome" , "width" : '50px'},{ "data": "dias_atraso" }]);
 			}, function(response) {});
 		 
+		 
+		 // Totais por area
+		 $http({
+			method: "GET",
+		    timeout:$scope.timeout,
+		    url: $scope.strUrlServico + Constantes.APP_SERVICE_EXAMES_LISTAR_TOTAIS_AREA,
+		    headers: Util.headers($scope.token)
+		 }).then(function(response) {
+			 if(response.data.bolRetorno == true){
+				 totaisPorArea = response.data.result;
+			 }
+		 }, function(response) {});
+		 
+		 // Totais por tipo de exame
+		 $http({
+			method: "GET",
+		    timeout:$scope.timeout,
+		    url: $scope.strUrlServico + Constantes.APP_SERVICE_EXAMES_LISTAR_TOTAIS_TIPO,
+		    headers: Util.headers($scope.token)
+		 }).then(function(response) {
+			 if(response.data.bolRetorno == true){
+				 totaisPorTipo = response.data.result;
+			 }
+		 }, function(response) {});
 	 }
 	 // Default mostra a lista de usuários
-	 $scope.mostarLista = true;
+	 $scope.mostarListaTa = true;
 	 // Função para alternar entre lista e gráficos
 	 $scope.mostarListaF =  function(bolMostar){
-		 $scope.mostarLista = bolMostar;
-		 if(bolMostar) graficoPizza();
+		 $scope.mostarListaTa = bolMostar;
+		 if(!bolMostar) graficoPizza();
 	 }
 	 
 	// Default mostra a lista de usuários
@@ -96,60 +123,126 @@
 		 if(intTipo == 1) graficoPizza();
 		 else if(intTipo == 2) graficoBarra();
 	 }
+	 // Detalhamento do exame
+	 $scope.objExame = {};
+	 $scope.carregarDetalhe = function(idExame){
+		// ´Mostrando o carregando
+		 $scope.carregando();
+		 // Realizando os filtros
+		 $http({
+			 	method: "GET",
+			    timeout:$scope.timeout,
+			    url: $scope.strUrlServico + Constantes.APP_SERVICE_EXAMES_RECUPERAR_EXAME_ID + "?intIdExame="+idExame,
+			    headers: Util.headers($scope.token)
+			})
+			.then(function(response) {
+				 $scope.carregado();
+				 if(response.data.bolRetorno == true){
+					 $scope.objExame = response.data.result;
+				 }else{
+					 $scope.closeConfirmar();
+					 var alertPopup = $ionicPopup.alert({
+						title: "Erro",
+						template: "Exame Não Encontrado!"
+					 });
+					 alertPopup.then(function(res) { });
+				 }
+			}, function(response) {});
+	 }
+	 /******* MODAL DE DETALHE ********/
 });
 
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(graficoPizza);
 
+/**
+ * Método que irá mostrar os exames como gráfico de pizza
+ * 
+ * @returns {Boolean}
+ */
 function graficoPizza() {
-	
-	var data = google.visualization.arrayToDataTable([
-	    ['Task', 'Hours per Day'],
-	    ['Work',     11],
-	    ['Eat',      2],
-	    ['Commute',  2],
-	    ['Watch TV', 2],
-	    ['Sleep',    7]
-	]);
-	
+	if(totaisPorArea.length == 0) return false;
+	dados = [['Area', 'Total']];
+	for(var intChave = 0; intChave<totaisPorArea.length; intChave++){
+		valor = totaisPorArea[intChave];
+		valor[1] *= 1;  
+		dados.push(valor);
+	}
+	console.log(dados)
+	var data = google.visualization.arrayToDataTable(dados);
 	var options = {
-	    title: 'My Daily Activities'
+	    title: 'Totais Por Área',
+        width: $(window).width() - 50,
+	    'height':350,
+	    'chartArea': {'width': '100%', 'height': '90%'},
+	    tooltip : {trigger : "selection" },
+        'legend': {fontSize: 25,bold: true}
+	    
 	};
-	
-	var chart = new google.visualization.PieChart(document.getElementById('graficoPizza'));
-	
+	var chart = new google.visualization.PieChart(document.getElementById('pizzaPorArea'));
 	chart.draw(data, options);
+	
+	dadosTipo = [['Tipo Exame', 'Total']];
+	for(var intChave = 0; intChave<totaisPorTipo.length; intChave++){
+		valor = totaisPorTipo[intChave];
+		valor[1] *= 1;  
+		dadosTipo.push(valor);
+	}
+	console.log(dadosTipo)
+	var dataTipo = google.visualization.arrayToDataTable(dadosTipo);
+	var options = {
+	    title: 'Totais Por Tipo Exame',
+	    width: $(window).width() - 50,
+        'height':350,
+        'chartArea': {'width': '100%', 'height': '90%'},
+	    tooltip : {trigger : "selection" }
+	};
+	var chart = new google.visualization.PieChart(document.getElementById('pizzaPorTipo'));
+	chart.draw(dataTipo, options);
 }
 
 google.charts.setOnLoadCallback(graficoBarra);
 
+/**
+ * Método que irá mostrar os exames como gráfico de barra
+ * 
+ * @returns {Boolean}
+ */
 function graficoBarra() {
-	
-	
-	var data = google.visualization.arrayToDataTable([
-                      ['City', '2010 Population',],
-                      ['New York City, NY', 8175000],
-                      ['Los Angeles, CA', 3792000],
-                      ['Chicago, IL', 2695000],
-                      ['Houston, TX', 2099000],
-                      ['Philadelphia, PA', 1526000]
-                ]);
-
+	if(totaisPorArea.length == 0) return false;
+	dados = [['Area', 'Total']];
+	for(var intChave = 0; intChave<totaisPorArea.length; intChave++){
+		valor = totaisPorArea[intChave];
+		valor[1] *= 1;  
+		dados.push(valor);
+	}
+	console.log(dados)
+	var data = google.visualization.arrayToDataTable(dados);
 	var options = {
-                  title: 'Population of Largest U.S. Cities',
-                  chartArea: {width: '50%'},
-                  hAxis: {
-                    title: 'Total Population',
-                    minValue: 0
-                  },
-                  vAxis: {
-                    title: 'City'
-                  }
-                };
-
-	  var chart = new google.visualization.BarChart(document.getElementById('graficoBarra'));
-	  
-	  
-      chart.draw(data, options);
-      
+	    title: 'Totais Por Área',
+	    width: $(window).width() - 50,
+        'height':350,
+        legend: "none",
+	    tooltip : {trigger : "selection" }
+	};
+	var chart = new google.visualization.BarChart(document.getElementById('barraPorArea'));
+	chart.draw(data, options);
+	
+	dadosTipo = [['Tipo Exame', 'Total']];
+	for(var intChave = 0; intChave<totaisPorTipo.length; intChave++){
+		valor = totaisPorTipo[intChave];
+		valor[1] *= 1;  
+		dadosTipo.push(valor);
+	}
+	console.log(dadosTipo)
+	var dataTipo = google.visualization.arrayToDataTable(dadosTipo);
+	var options = {
+	    title: 'Totais Por Tipo Exame',
+	    width: $(window).width() - 50,
+        'height':350,
+        legend: "none",
+	    tooltip : {trigger : "selection" }
+	};
+	var chart = new google.visualization.BarChart(document.getElementById('barraPorTipo'));
+	chart.draw(dataTipo, options);
 }
