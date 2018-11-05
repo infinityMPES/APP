@@ -394,10 +394,10 @@ Util.montarTabela =  function(idTabela, dados, colunas){
 	            "sortDescending": ": activate to sort column descending"
 	        }
 	    },
-	    dom: 'Bfrtip',
-	    buttons: [
-	        'copy', 'csv', 'excel', 'pdf'
-	    ],
+//	    dom: 'Bfrtip',
+//	    buttons: [
+//	        'copy', 'csv', 'excel', 'pdf'
+//	    ],
 	    responsive: true,
         data: dados,
         "columns": colunas

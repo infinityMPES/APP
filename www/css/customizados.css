@@ -11,17 +11,27 @@ GERAIS
 	display: none;
 }
 .menu .item{
-	background: #62aaa2 !important;
 	color: white !important;
-	border-bottom: dashed 1px white;
+}
+.menu .item:FIRST-CHILD{
+	border-top: solid 1px white;
+}
+.menu .item:not(:first-child){
+	background: #62aaa2 !important;
+	border-top: dashed 1px white;
 }
 
 .avatar{
 	border-radius: 0%!important;
 }
 
+
+.button-positive{
+	background: #62aaa2 !important;	
+}
+
 .expanded {
-    border-bottom: solid 1px white;
+/*     border-bottom: solid 1px white; */
     background: #62aaa2 !important;
 }
 
@@ -272,9 +282,9 @@ a.botoes-inicios i.fa {
  ***** Meus exames
  *******/
 
-.meus-exames .bar-subheader, .meus-exames strong{
-	height: 60px !important;
-}
+/* .meus-exames .bar-subheader, .meus-exames strong{ */
+/* 	height: 60px !important; */
+/* } */
 
 .meus-exames div.item{
 	border-bottom: dashed 1px #62aaa2 !important;

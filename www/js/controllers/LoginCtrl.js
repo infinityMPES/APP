@@ -47,7 +47,7 @@
 				if(response.data.bolRetorno == false){
 					var alertPopup = $ionicPopup.alert({
 						title: 'Usuário Não Encontrado',
-						template: 'Usuário ou senha estão errados!'
+						template: 'Seu <b>Usuário ou Senha</b> estão errados! <br /> Ou o <b>Seu Cadastro</b> ainda não foi aprovado!'
 					});
 					alertPopup.then(function(res) {
 					});

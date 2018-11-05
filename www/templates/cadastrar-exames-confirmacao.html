@@ -38,17 +38,19 @@
 					<span class="erro" ng-show="erros && !cadastrarUsuario.data_exame.$valid">Data Coleta Exame é Obrigatária</span> 
 					
 					<label class="item item-input cadastroPadrao "> 
-						<input type="text" placeholder="Previsão da Entrega Exame: 99/99/9999" name="data_previsao" class="data" ng-model="exameData.data_previsao" required>
+						<input type="text" placeholder="Data de Entrega Resultado: 99/99/9999" name="data_previsao" class="data" ng-model="exameData.data_previsao" required>
 						<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.data_previsao.$valid">Data Previsão Exame é Obrigatária</span> 
+					<span class="erro" ng-show="erros && !cadastrarUsuario.data_previsao.$valid">Data de Entrega Resultado é Obrigatária</span> 
 			</div>
 			<div class="row">
-				<div class="col col-50">
-					<button class="button button-full button-light" ng-click="closeConfirmar()">Cancelar</button>
-				</div>
-				<div class="col col-50">
+				<div class="col col-100">
 					<button class="button button-full botaoPadrao" ng-click="salvar()">Cadastrar</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-100">
+					<button class="button button-full button-light" ng-click="closeConfirmar()">Cancelar</button>
 				</div>
 			</div>
 		</form>

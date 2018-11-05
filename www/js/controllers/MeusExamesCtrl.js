@@ -6,26 +6,32 @@
 	 // Lista de exames
 	 $scope.listaExames = [];
 	 $scope.exame_id = 0;
-	 // Recuperando os dados do usuário
-	 $http({
-			method: "GET",
-		    timeout:$scope.timeout,
-		    url: $scope.strUrlServico + Constantes.APP_SERVICE_EXAMES_LISTAR_EXAMES_USUARIO + "?intIdUsuario="+$scope.loginData.id,
-		    headers: Util.headers($scope.token)
-	 }).then(function(response) {
-		 	// Disparando ação de load
-			$scope.carregado();
-			 if(response.data.bolRetorno == true){
-				 // Caso encontre o usuário
-				 $scope.listaExames = response.data.result;
-			 }else{
-				var alertPopup = $ionicPopup.alert({
-					title: "Erro",
-					template: "Nenhum Exame Cadastrado!"
-				});
-				alertPopup.then(function(res) { });
-				}
-	 }, function(response) {});
+	 
+	 /** Método que irá recuperar os exames da base **/
+	 $scope.carregarExames = function(){
+		// Recuperando os dados do usuário
+		 $http({
+				method: "GET",
+			    timeout:$scope.timeout,
+			    url: $scope.strUrlServico + Constantes.APP_SERVICE_EXAMES_LISTAR_EXAMES_USUARIO + "?intIdUsuario="+$scope.loginData.id,
+			    headers: Util.headers($scope.token)
+		 }).then(function(response) {
+			 	// Disparando ação de load
+				$scope.carregado();
+				 if(response.data.bolRetorno == true){
+					 // Caso encontre o usuário
+					 $scope.listaExames = response.data.result;
+				 }else{
+					var alertPopup = $ionicPopup.alert({
+						title: "Erro",
+						template: "Nenhum Exame Cadastrado!"
+					});
+					alertPopup.then(function(res) { });
+					}
+		 }, function(response) {});
+	 }
+	 // Recuperando os exames
+	 $scope.carregarExames();
 	 
 	 /*** MÉTODO DE SALVAR OS DADOS ****/
 	 $scope.salvar = function(){
@@ -56,6 +62,8 @@
 				template: mensagem
 			});
 			alertPopup.then(function(res) { });
+			$scope.carregarExames();
+			$scope.closeConfirmar();
 		}, function(response) {
 			console.log(response);
 			// Disparando ação de load
@@ -75,6 +83,7 @@
 		 $scope.modal.hide();
 		 $(".disable-user-behavior").show();
 		 $(".confirmarCadastro").attr("style", "background: #ffffff !important");
+		 $(".has-header").css("top", "44px");
 	 };
 	  
 	 $scope.confirmarCadastro = function() {
