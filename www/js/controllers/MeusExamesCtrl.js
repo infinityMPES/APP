@@ -62,8 +62,10 @@
 				template: mensagem
 			});
 			alertPopup.then(function(res) { });
-			$scope.carregarExames();
-			$scope.closeConfirmar();
+			if(bolRetorno){
+				$scope.carregarExames();
+				$scope.closeConfirmar();
+			}
 		}, function(response) {
 			console.log(response);
 			// Disparando ação de load
