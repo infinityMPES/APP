@@ -7,7 +7,7 @@
             <strong class="title titulo-icone">
             	<i class="fa fa-plus-square" aria-hidden="true"></i>
             	<br />
-            	<span class="texto-icone">Preencha os campos abaixo para cadastrar seus exames.</span>
+            	<span class="texto-icone">Preencha os Campos Abaixo para Cadastrar Seus Exames.</span>
            	</strong>
         </div>
         <form name="cadastrarUsuario" id="formCadastroExame" class="formPadrao cadastroUsuario im-wrapper ">
@@ -33,13 +33,13 @@
 						<input type="text" placeholder="Data Coleta Exame: 99/99/9999" name="data_exame" class="data" ng-blur="calcularPrazo()" ng-model="exameData.data_exame" required>
 						<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.data_exame.$valid">Data Coleta Exame é Obrigatária</span> 
+					<span class="erro" ng-show="erros && !cadastrarUsuario.data_exame.$valid">Data de Coleta do Exame é Obrigatória</span> 
 					
 					<label class="item item-input cadastroPadrao "> 
 						<input type="text" placeholder="Data de Entrega Resultado: 99/99/9999" name="data_previsao" class="data" ng-model="exameData.data_previsao" required>
 						<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.data_previsao.$valid">Data de Entrega Resultado é Obrigatária</span> 
+					<span class="erro" ng-show="erros && !cadastrarUsuario.data_previsao.$valid">Data de Entrega do Resultado é Obrigatória</span> 
 				</div>
 			<button class="button button-full botaoPadrao" ng-click="validar()">Cadastrar Exame</button>
 		</form>

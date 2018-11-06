@@ -27,7 +27,7 @@
 						<i class="icon fa fa-user placeholder-icon" style="font-size: 24px"></i> 
 						<input type="text" placeholder="Informe seu CPF: 999.999.999-99" readonly="readonly" class="cpf" name="login" ng-model="usuarioEdit.login" required>
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.login.$valid">CPF é Obrigatário</span> 
+					<span class="erro" ng-show="erros && !cadastrarUsuario.login.$valid">CPF é Obrigatório</span> 
 					
 					<label class="item item-input cadastroPadrao item-select">
 					    <div class="input-label corpadrao">
@@ -42,13 +42,13 @@
 					 	<i class="icon fa fa-envelope placeholder-icon" style="font-size: 24px"></i> 
 						<input type="text" placeholder="Informe seu e-mail: exemplo@email.com" name="email" ng-model="usuarioEdit.email" required>
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.email.$valid">E-mail é Obrigatário</span>
+					<span class="erro" ng-show="erros && !cadastrarUsuario.email.$valid">E-mail é Obrigatório</span>
 					
 					<label class="item item-input cadastroPadrao"  ng-show="usuarioEdit.perfil_id == 1"> 
 					 	<i class="icon fa fa-file-text placeholder-icon" style="font-size: 24px"></i> 
 						<input type="text" placeholder="Informe Nº PEP" name="numero_pep" ng-model="usuarioEdit.numero_pep" required>
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.numero_pep.$valid">PEP é Obrigatário</span>
+					<span class="erro" ng-show="erros && !cadastrarUsuario.numero_pep.$valid">PEP é Obrigatório</span>
 					
 					<label class="item item-input cadastroPadrao item-select"  ng-show="usuarioEdit.perfil_id == 1">
 					    <div class="input-label corpadrao">
@@ -80,7 +80,7 @@
 					      <option value="2">Feminino</option>
 					    </select>
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.sexo.$valid">Sexo é Obrigatário</span> 	
+					<span class="erro" ng-show="erros && !cadastrarUsuario.sexo.$valid">Sexo é Obrigatório</span> 	
 					
 					<label class="item item-input cadastroPadrao"  ng-show="usuarioEdit.perfil_id == 1"> 
 						<i class="icon fa fa-home placeholder-icon" style="font-size: 24px"></i> 
