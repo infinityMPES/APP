@@ -71,6 +71,8 @@
 				console.log(response);
 				// Disparando ação de load
 				$scope.carregado();
+				// Mensagem de erro
+				$scope.falhaCarregamento(response);
 			});
 		 }
 	 }
@@ -84,16 +86,14 @@
 	 
 	 $scope.closeConfirmar = function() {
 		 $scope.modal.hide();
-		 $(".disable-user-behavior").show();
-		 $(".confirmarCadastro").attr("style", "background: #ffffff !important");
+		 $scope.removerConfirmacao();
 	 };
 	  
 	 $scope.confirmarCadastro = function() {
 		 $scope.modal.show();
-		 $(".confirmarCadastro").attr("style", "background: #62aaa2 !important");
-		 $(".disable-user-behavior").hide();
-		 $(".has-header").css("top", "0px");
+		 $scope.configurarConfirmacao();
 	 };
+	 
 	 /**  **/
 	 /*** MÉTODO DE FAZER VALIDAÇÕES DO CADASTRO ****/
 	 $scope.validarCadastro = function(){
@@ -143,6 +143,8 @@
 		}, function(response) {
 			// Disparando ação de load
 			$scope.carregado();
+			// Mensagem de erro
+			$scope.falhaCarregamento(response);
 		});
 	 }
 	 // Abrindo a tela de confirmarção de cadastro

@@ -59,7 +59,7 @@
 					});
 					alertPopup.then(function(res) {
 					});
-					$(".has-header").css("top", "44px");
+					$scope.removerConfirmacao();
 					// Redirecionado para o inicio
 					$scope.goTo("app.inicio");
 				}
@@ -68,6 +68,8 @@
 				console.log(response);
 				// Disparando ação de load
 				$scope.carregado();
+				// Mensagem de erro
+				$scope.falhaCarregamento(response);
 			});
 		 }
 	 }
@@ -135,6 +137,8 @@
 				console.log(response);
 				// Disparando ação de load
 				$scope.carregado();
+				// Mensagem de erro
+				$scope.falhaCarregamento(response);
 			});
 		 }
 	 }

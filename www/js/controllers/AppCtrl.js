@@ -120,5 +120,27 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
     $scope.sair = function (){
     	$scope.loginData = {};
     	$scope.goTo('app.login');
+    	$scope.configurarConfirmacao();
+    }
+    
+    $scope.falhaCarregamento = function(erro){
+    	console.log(erro);
+    }
+    
+    $scope.configurarConfirmacao = function(){
+    		 $(".confirmarCadastro").attr("style", "background: #62aaa2 !important");
+    		 $(".disable-user-behavior").hide();
+    		 $(".has-header, .pageLogin").css("top", "0px");
+    }
+    
+    $scope.removerConfirmacao = function(){
+    	 
+		 setTimeout(function(){
+			 $(".disable-user-behavior").show();
+			 $(".confirmarCadastro").attr("style", "background: #ffffff !important");
+			 $(".disable-user-behavior").show();
+			 $(".confirmarCadastro").attr("style", "background: #ffffff !important");
+			 $(".has-header").css("top", "44px");
+    	 }, 500);
     }
 });

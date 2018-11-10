@@ -34,7 +34,9 @@ GERAIS
 /*     border-bottom: solid 1px white; */
     background: #62aaa2 !important;
 }
-
+.item select{
+	height: 45px !important;
+}
 input::placeholder { 
 	color: #517f78; 
 	font-size: 1em; 

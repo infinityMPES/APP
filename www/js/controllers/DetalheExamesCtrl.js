@@ -1,9 +1,9 @@
 app.controller('DetalheExamesCtrl', function ($scope, $stateParams, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal) {
-	 // Verificando se o usuário está logado
+	 // Verificando se o usuï¿½rio estï¿½ logado
 	 $scope.usuarioLogado(true);
 	 // Detalhamento do exame
 	 $scope.objExame = {};
-	 // ´Mostrando o carregando
+	 // ï¿½Mostrando o carregando
 	 $scope.carregando();
 	 // Realizando os filtros
 	 $http({
@@ -19,10 +19,13 @@ app.controller('DetalheExamesCtrl', function ($scope, $stateParams, ionicMateria
 			 }else{
 				 var alertPopup = $ionicPopup.alert({
 					title: "Erro",
-					template: "Exame Não Encontrado!"
+					template: "Exame NÃ£o Encontrado!"
 				 });
 				 alertPopup.then(function(res) { });
 			 }
-		}, function(response) {});
+		}, function(response) {
+			// Mensagem de erro
+			$scope.falhaCarregamento(response);
+		});
 	 /******* MODAL DE DETALHE ********/
 });

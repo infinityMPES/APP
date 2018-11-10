@@ -16,7 +16,10 @@
 		 if(response.data.bolRetorno == true){
 			 $scope.listaAreas = response.data.result;
 		 }
-	 }, function(response) {});
+	 }, function(response) {
+		 	// Mensagem de erro
+			$scope.falhaCarregamento(response);
+	 });
 	 
 	 // Lista de tipo de exames
 	 $scope.listaTipoExames = [];
@@ -29,7 +32,10 @@
 		 if(response.data.bolRetorno == true){
 			 $scope.listaTipoExames = response.data.result;
 		 }
-	 }, function(response) {});
+	 }, function(response) {
+		// Mensagem de erro
+		$scope.falhaCarregamento(response);
+	 });
 	 
 	 /** MODAL DE CONFIMAÇÃO **/
 	 $ionicModal.fromTemplateUrl('templates/cadastrar-exames-confirmacao.html', {
@@ -93,7 +99,10 @@
 					$scope.exameData.data_previsao = "";
 				 }
 				 $scope.carregado();
-			 }, function(response) {});
+			 }, function(response) {
+				// Mensagem de erro
+				$scope.falhaCarregamento(response);
+			 });
 		 }
 	 }
 	 /******* FIM DO MÉTODO QUE IRÁ CALCULAR O PRAZO **************/
@@ -140,6 +149,9 @@
 			console.log(response);
 			// Disparando ação de load
 			$scope.carregado();
+			
+			// Mensagem de erro
+			$scope.falhaCarregamento(response);
 		});
 	 }
 	 /*** FIM MÉTODO SALVAR OS DADOS ***/

@@ -16,7 +16,10 @@
 		 if(response.data.bolRetorno == true){
 			 $scope.listaPerfis = response.data.result;
 		 }
-	 }, function(response) {});
+	 }, function(response) {
+		// Mensagem de erro
+		$scope.falhaCarregamento(response);
+	 });
 	 
 	 $scope.listaCancer = [];
 	 $http({
@@ -28,7 +31,10 @@
 		 if(response.data.bolRetorno == true){
 			 $scope.listaCancer = response.data.result;
 		 }
-	 }, function(response) {});
+	 }, function(response) {
+		// Mensagem de erro
+		$scope.falhaCarregamento(response);
+	 });
 	 
 	 /*** MÉTODO DE SALVAR OS DADOS ****/
 	 $scope.salvar = function(){
@@ -64,6 +70,8 @@
 			console.log(response);
 			// Disparando ação de load
 			$scope.carregado();
+			// Mensagem de erro
+			$scope.falhaCarregamento(response);
 		});
 	 }
 	 /*** FIM MÉTODO SALVAR OS DADOS ***/

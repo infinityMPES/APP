@@ -20,7 +20,10 @@ app.controller('GerenciarExamesCtrl', function ($scope, $stateParams, ionicMater
 		 if(response.data.bolRetorno == true){
 			 $scope.listaAreas = response.data.result;
 		 }
-	 }, function(response) {});
+	 }, function(response) {
+		// Mensagem de erro
+		$scope.falhaCarregamento(response);
+	 });
 	 
 	 // Lista de tipo de exames
 	 $scope.listaTipoExames = [];
@@ -33,8 +36,10 @@ app.controller('GerenciarExamesCtrl', function ($scope, $stateParams, ionicMater
 		 if(response.data.bolRetorno == true){
 			 $scope.listaTipoExames = response.data.result;
 		 }
-	 }, function(response) {});
-	 
+	 }, function(response) {
+		// Mensagem de erro
+		$scope.falhaCarregamento(response);
+	 });
 	 
 	 $scope.filtro = {};
 	 $scope.listaPerfis = [];
@@ -52,7 +57,10 @@ app.controller('GerenciarExamesCtrl', function ($scope, $stateParams, ionicMater
 			 if(response.data.bolRetorno == true){
 				 $scope.listaPerfis = response.data.result;
 			 }
-		 }, function(response) {});
+		 }, function(response) {
+			// Mensagem de erro
+			$scope.falhaCarregamento(response);
+		 });
 	 }, 1500);
 	 
 	 /**
@@ -80,7 +88,10 @@ app.controller('GerenciarExamesCtrl', function ($scope, $stateParams, ionicMater
 				 $scope.mostrarLista = true;
 				 // Criando a tabela
 				 Util.montarTabela('listaExames', listaUsuarios, [{ "data": "nome" , "width" : '50px'},{ "data": "dias_atraso" }]);
-			}, function(response) {});
+			}, function(response) {
+				// Mensagem de erro
+				$scope.falhaCarregamento(response);
+			});
 		 
 		 
 		 // Totais por area
@@ -93,7 +104,10 @@ app.controller('GerenciarExamesCtrl', function ($scope, $stateParams, ionicMater
 			 if(response.data.bolRetorno == true){
 				 totaisPorArea = response.data.result;
 			 }
-		 }, function(response) {});
+		 }, function(response) {
+			// Mensagem de erro
+			$scope.falhaCarregamento(response);
+		 });
 		 
 		 // Totais por tipo de exame
 		 $http({
@@ -105,7 +119,10 @@ app.controller('GerenciarExamesCtrl', function ($scope, $stateParams, ionicMater
 			 if(response.data.bolRetorno == true){
 				 totaisPorTipo = response.data.result;
 			 }
-		 }, function(response) {});
+		 }, function(response) {
+			// Mensagem de erro
+			$scope.falhaCarregamento(response);
+		 });
 	 }
 	 // Default mostra a lista de usuários
 	 $scope.mostarListaTa = true;
@@ -147,7 +164,10 @@ app.controller('GerenciarExamesCtrl', function ($scope, $stateParams, ionicMater
 					 });
 					 alertPopup.then(function(res) { });
 				 }
-			}, function(response) {});
+			}, function(response) {
+				// Mensagem de erro
+				$scope.falhaCarregamento(response);
+			});
 	 }
 	 /******* MODAL DE DETALHE ********/
 });

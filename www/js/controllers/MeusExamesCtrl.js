@@ -28,7 +28,10 @@
 					});
 					alertPopup.then(function(res) { });
 					}
-		 }, function(response) {});
+		 }, function(response) {
+			// Mensagem de erro
+			$scope.falhaCarregamento(response);
+		 });
 	 }
 	 // Recuperando os exames
 	 $scope.carregarExames();
@@ -70,6 +73,8 @@
 			console.log(response);
 			// Disparando ação de load
 			$scope.carregado();
+			// Mensagem de erro
+			$scope.falhaCarregamento(response);
 		});
 	 }
 	 /*** FIM MÉTODO SALVAR OS DADOS ***/
@@ -83,17 +88,14 @@
 	 
 	 $scope.closeConfirmar = function() {
 		 $scope.modal.hide();
-		 $(".disable-user-behavior").show();
-		 $(".confirmarCadastro").attr("style", "background: #ffffff !important");
-		 $(".has-header").css("top", "44px");
+		 $scope.removerConfirmacao();
 	 };
 	  
 	 $scope.confirmarCadastro = function() {
 		 $scope.modal.show();
-		 $(".confirmarCadastro").attr("style", "background: #62aaa2 !important");
-		 $(".disable-user-behavior").hide();
-		 $(".has-header").css("top", "0px");
+		 $scope.configurarConfirmacao();
 	 };
+	 
 	 $scope.confirmarRecebimento = function(id){
 		 $scope.exame_id = id;
 		 $scope.confirmarCadastro();

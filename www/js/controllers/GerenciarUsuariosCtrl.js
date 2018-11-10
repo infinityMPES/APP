@@ -19,7 +19,10 @@
 			 if(response.data.bolRetorno == true){
 				 $scope.listaPerfis = response.data.result;
 			 }
-		 }, function(response) {});
+		 }, function(response) {
+			// Mensagem de erro
+			$scope.falhaCarregamento(response);
+		 });
 	 }, 1500);
 	 
 	 /**
@@ -60,7 +63,10 @@
 					 $scope.mostrarLista = true;
 					 // Criando a tabela
 					 Util.montarTabela('listaUsuarios', listaUsuarios, [{ "data": "login" },{ "data": "nome" },{ "data": "id" }]);
-				}, function(response) {});
+				}, function(response) {
+					// Mensagem de erro
+					$scope.falhaCarregamento(response);
+				});
 		 }
 		 
 	 }
@@ -124,6 +130,8 @@
 				console.log(response);
 				// Disparando ação de load
 				$scope.carregado();
+				// Mensagem de erro
+				$scope.falhaCarregamento(response);
 			});
 		 }
 	 }
@@ -137,11 +145,14 @@
 	 
 	 $scope.closeConfirmar = function() {
 		 $scope.modal.hide();
+		 $scope.removerConfirmacao();
 	 };
 	  
 	 $scope.confirmarCadastro = function() {
 		 $scope.modal.show();
+		 $scope.configurarConfirmacao();
 	 };
+	 
 	 /**  **/
 	 /*** MÉTODO DE FAZER VALIDAÇÕES DO CADASTRO ****/
 	 $scope.validarCadastro = function(){
@@ -191,6 +202,8 @@
 		}, function(response) {
 			// Disparando ação de load
 			$scope.carregado();
+			// Mensagem de erro
+			$scope.falhaCarregamento(response);
 		});
 	 }
 	 // Abrindo a tela de confirmarção de cadastro
