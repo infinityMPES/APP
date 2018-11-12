@@ -163,6 +163,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	      }
 	    }
 	})
+	
+	.state('app.minhas-notificacoes', {
+	    url: '/minhas-notificacoes',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'templates/minhas-notificacoes.html',
+	        controller: 'MinhasNotificacoesCtrl'
+	      }
+	    }
+	})
     
     .state('app', {
         url: '/app',

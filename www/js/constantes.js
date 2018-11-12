@@ -19,7 +19,7 @@ var Constantes = {
 //	"APP_SERVICE"						: "http://conexaovidaimip.com.br/prod/",
 	"APP_SERVICE"						: "http://conexaovidaimip.com.br/dev/",
 //	"APP_SERVICE"						: "http://conexaovidaimip.com.br/teste/",
-//	"APP_SERVICE"						: "http://localhost/imip/ws-imip-dois/WS/",
+//	"APP_SERVICE"						: "http://localhost/imip/ws-imip-dois/ws/",
 	
 	"APP_MSG_ERROR"						: "<center><span class='icon ion-android-alert' style='font-size:35px'></span><br>Ops...<br>Sem Conex�o!</center>",
 	"APP_MSG_TIMEOUT"					: "<center><span class='icon ion-android-alert' style='font-size:35px'></span><br>Ops...<br>Sem Conex�o!</center>",
@@ -51,9 +51,14 @@ var Constantes = {
 	"APP_SERVICE_EXAMES_LISTAR_TOTAIS_TIPO"		: "exame/listarTotalExamePorTipoExame",
 	"APP_SERVICE_EXAMES_CONFIRMAR_RECEBIMENTO"  : "exame/confirmarRecebimento",
 	"APP_SERVICE_EXAMES_RECUPERAR_EXAME_ID"  	: "exame/recuperarExamePorID",
-	
 	/****** FIM MÓDULO DE EXAMES *******/
 	
+	/****** MÓDULO DE NOTIFICAÇÕES *******/
+	"APP_SERVICE_NOTIFICACOES_LISTAR_USUARIO"	: "notificacao/notificacoesDoUsuarioPorId",
+	"APP_SERVICE_NOTIFICACOES_BUSCAR_TOTAL"		: "notificacao/filtrarTotalUsuariosEnvio",
+	"APP_SERVICE_NOTIFICACOES_CADASTRAR"		: "notificacao/cadastrarNotificacao",
+	"APP_SERVICE_NOTIFICACOES_FILTRAR"			: "notificacao/filtrarNotificacoes",
+	/****** FIM MÓDULO DE NOTIFICAÇÕES *******/
 	
 	"APP_SERVICE_INICIO"						: "inicio",
 	"APP_SERVICE_PARAMETRO"						: "parametro",
