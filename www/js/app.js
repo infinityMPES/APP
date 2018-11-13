@@ -173,6 +173,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	      }
 	    }
 	})
+	
+	.state('app.gerenciar-notificacoes', {
+	    url: '/gerenciar-notificacoes',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'templates/gerenciar-notificacoes.html',
+	        controller: 'GerenciarNotificacoesCtrl'
+	      }
+	    }
+	})
     
     .state('app', {
         url: '/app',

@@ -5,6 +5,12 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
     // Form data for the login modal
     $scope.loginData = loginData;
     $scope.versaoApp = Constantes.APP_VERSAO;
+    $scope.mostrarBanco = 0;
+    if(Constantes.APP_SERVICE == "http://conexaovidaimip.com.br/dev/" 
+       || Constantes.APP_SERVICE == "http://conexaovidaimip.com.br/teste/"){
+       $scope.banco = (Constantes.APP_SERVICE == "http://conexaovidaimip.com.br/dev/") ? "DEV": "Teste";
+       $scope.mostrarBanco = 1;
+    }
 
     var navIcons = document.getElementsByClassName('ion-navicon');
     for (var i = 0; i < navIcons.length; i++) {

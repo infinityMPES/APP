@@ -1,7 +1,7 @@
 
 {
-  "name": "My Ionic App",
-  "short_name": "My Ionic App",
+  "name": "Conexão Vida - IMIP",
+  "short_name": "Aplicativo de comunicação entre paciente pacientes e equipe do IMIP (Conexão Vida - IMIP)",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{

@@ -17,14 +17,14 @@
 				</div>
 				
 			</div>
-			<div class="row botoes-home" style="margin-top:-10px;padding:0px" >
-				<div class="col col-100">
+			<div class="row botoes-home" style="margin-top:-10px;padding:0px" ng-show="loginData.perfil_id == 1" >
+				<div class="col col-50">
 					<a class="botoes-inicios links" href="#/app/minhas-notificacoes">
-						<img src="./img/imagens/button_notificar.png" title="Minhas Notificações" alt="Minhas Notificações" />
+						<img src="./img/imagens/button_minhasnotificacoes.png" title="Minhas NotificaÃ§Ãµes" alt="Minhas NotificaÃ§Ãµes" />
 					</a>
 				</div>
 			</div>
-			<!-- EQUIPE Mï¿½DICA -->
+			<!-- EQUIPE MÃ©DICA -->
 			<div class="row botoes-home" style="margin-top:-10px;padding:0px" ng-show="loginData.perfil_id == 2">
 				<div class="col col-100">
 					<a class="botoes-inicios links" href="#/app/acompanhar-exames">
@@ -34,6 +34,13 @@
 				<div class="col col-100">
 					<a class="botoes-inicios links" href="#/app/gerenciar-usuario">
 						<img src="./img/imagens/button_gerenciar.png" title="Acompanhar Consulta" alt="Acompanhar Consulta" />
+					</a>
+				</div>
+			</div>
+			<div class="row botoes-home" style="margin-top:-10px;padding:0px" ng-show="loginData.perfil_id == 2" >
+				<div class="col col-50">
+					<a class="botoes-inicios links" href="#/app/minhas-notificacoes">
+						<img src="./img/imagens/button_notificar.png" title="Minhas Notificaï¿½ï¿½es" alt="Minhas NotificaÃ§Ãµes" />
 					</a>
 				</div>
 			</div>

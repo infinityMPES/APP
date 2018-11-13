@@ -1,0 +1,123 @@
+<ion-view view-title="" class="esqueci-senha-titulo">
+	<ion-nav-title  class="esqueci-senha-titulo">
+		Notificar Paciente
+    </ion-nav-title>
+    <ion-content class="contentGerenciarUsuario">
+        <div class="bar bar-subheader bar-stable static text-center">
+            <strong class="title titulo-icone gerenciarUsuarios">
+            	<i class="fa fa-paper-plane" aria-hidden="true"></i>
+            	<br />
+            	Gerenciar Notificações
+           	</strong>
+        </div>
+        <br />
+        <div class="row">
+        	<div class="tabs tabs-balanced tabs-icon-top" style="position: static; margin-bottom: 5px; border-radius: 5px; background: #62aaa2 !important;">
+	             <a class="tab-item active lista" href="javascript:void(0)" ng-click="mostarListaF(true)" style="border-right: dashed 1px;" >
+	                 <i class="icon fa fa-podcast"></i> Cadastrar Notificacao 
+	             </a>
+	             <a class="tab-item graficos" href="javascript:void(0)" ng-click="mostarListaF(false)">
+	                 <i class="icon fa fa-search"></i> Buscar Notificações
+	             </a>
+	         </div>
+        </div>
+        
+         
+        <form name="formListarUsuario" id="formListarUsuario" class="formPadrao formListarUsuario im-wrapper ">
+				<div class="list">
+					
+					<label class="item item-input cadastroPadrao item-select">
+					    <div class="input-label corpadrao">
+					      Perfil
+					    </div>
+					    <select style="min-width: 75%;" name="sexo" ng-model="usuarioEdit.perfil_id">
+					      <option ng-repeat="perfil in listaPerfis" value="{{perfil.id}}">{{perfil.descricao}}</option>
+					    </select>
+					</label>
+					
+					<label class="item item-input cadastroPadrao item-select">
+					    <div class="input-label corpadrao">
+					      Sexo
+					    </div>
+					    <select style="min-width: 75%;" name="sexo" ng-model="usuarioEdit.sexo">
+					      <option value="1">Masculino</option>
+					      <option value="2">Feminino</option>
+					    </select>
+					</label>
+					
+					<label class="item item-input cadastroPadrao item-select"  ng-show="usuarioEdit.perfil_id == 1">
+					    <div class="input-label corpadrao">
+					      Câncer
+					    </div>
+					    <select style="min-width: 75%;" name="sexo" ng-model="usuarioEdit.cancer_id">
+					      <option ng-repeat="cancer in listaCancer" value="{{cancer.id}}">{{cancer.descricao}}</option>
+					    </select>
+					</label>
+					
+					<label class="item item-input cadastroPadrao item-select"  ng-show="usuarioEdit.perfil_id == 1">
+					    <div class="input-label corpadrao">
+					    	Com Idade Até
+					    </div>
+					    <select style="min-width: 75%;" name="sexo" ng-model="usuarioEdit.cancer_id">
+					      <option ng-repeat="idade in listaIdade" value="{{idade}}">{{idade}}</option>
+					    </select>
+					</label>
+					
+					<label class="item item-input cadastroPadrao"> 
+						<i class="icon fa fa-user placeholder-icon" style="font-size: 24px"></i> 
+						<input type="text" placeholder="Informe nº PEP" class="pep" name="pep" ng-model="exameData.pep" >
+					</label>
+					
+				</div>
+			<button class="button button-full botaoPadrao" ng-click="pesquisaExames()">Pesquisar</button>
+		</form>
+		
+		<hr ng-show="mostrarLista" />
+		
+		<div class="listagem" ng-show="mostrarLista">
+			
+			<div class="tabs tabs-balanced tabs-icon-top" style="position: static; margin-bottom: 5px; border-radius: 5px; background: #62aaa2 !important;">
+                <a class="tab-item active lista" href="javascript:void(0)" ng-click="mostarListaF(true)" style="border-right: dashed 1px;" >
+                    <i class="icon fa fa-list-alt"></i> Exames 
+                </a>
+                <a class="tab-item graficos" href="javascript:void(0)" ng-click="mostarListaF(false)">
+                    <i class="icon fa fa-pie-chart"></i> Gráficos
+                </a>
+            </div>
+			<div class="row" ng-show="mostarListaTa">
+				<div class="col col-100">
+					<h3 class="tituloListagem">Exames em Atraso</h3>
+				</div>
+			</div>
+			<div class="row" ng-show="mostarListaTa">
+				<div class="col col-100 lista">
+					<table id="listaExames" class="display responsive nowrap" cellspacing="0" width="100%">
+						<thead>
+			            	<tr>
+				                <th width="50%">Nome</th>
+				                <th width="50%">Dias Transcorridos</th>
+				            </tr>
+				        </thead>
+				        <tfoot>
+				            <tr>
+				                <th width="50%">Nome</th>
+				                <th width="50%">Dias Transcorridos</th>
+				            </tr>
+				        </tfoot>
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+    </ion-content>
+</ion-view>
+
+<style>
+	.bar.bar-header{
+	    box-shadow: none !important;
+	}
+	.bar.bar-stable{
+		border: none !important;
+	}
+</style>
