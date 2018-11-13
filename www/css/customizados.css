@@ -301,3 +301,40 @@ a.botoes-inicios i.fa {
 .button-balanced span{
 	margin-top: 5px;
 }
+
+/*********
+ ** NOTIFICAÇÃO
+ **********/
+.notificacao{
+    padding-left: 19px;
+}
+
+.notificacao h2{
+	font-size: 20px;
+}
+
+.notificacao p {
+    overflow: inherit;
+    white-space: normal;
+	padding: 20px;
+	text-align: justify;
+}
+.naoLida{
+	color: #034840;
+}
+.naoLida h2{
+	font-size: 20px;
+	color: #034840;
+}
+
+.naoLida p {
+	color: #034840;
+}
+
+.item.item-icon-left.notificacao:not(:first-child) {
+    border-top: dashed 1px #62aaa2;
+}
+.dataNotificacao{
+    text-align: right;
+    display: block;
+}

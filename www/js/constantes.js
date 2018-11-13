@@ -58,6 +58,8 @@ var Constantes = {
 	"APP_SERVICE_NOTIFICACOES_BUSCAR_TOTAL"		: "notificacao/filtrarTotalUsuariosEnvio",
 	"APP_SERVICE_NOTIFICACOES_CADASTRAR"		: "notificacao/cadastrarNotificacao",
 	"APP_SERVICE_NOTIFICACOES_FILTRAR"			: "notificacao/filtrarNotificacoes",
+	"APP_SERVICE_NOTIFICACOES_SETAR_LIDA"		: "notificacao/notificacoesLidas",
+	
 	/****** FIM MÓDULO DE NOTIFICAÇÕES *******/
 	
 	"APP_SERVICE_INICIO"						: "inicio",

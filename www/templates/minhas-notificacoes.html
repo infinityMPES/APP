@@ -10,17 +10,16 @@
            	</strong>
         </div>
 		<div class="list">
-			<div class="item item-icon-left" ng-repeat="notificacao in listaNotificacoes">
+			<div class="item item-icon-left notificacao " ng-class="{'naoLida': notificacao.visualizou == '0'}" ng-repeat="notificacao in listaNotificacoes">
 				<ul>
 					<li>
-						<b>Título:</b> {{notificacao.titulo}}
+						<h2>{{notificacao.titulo}}</h2>
 					</li>
 					<li>
-						<b>Recebido em:</b> {{notificacao.data_envio}}
+						<p>{{notificacao.mensagem}}</p>
 					</li>
 					<li>
-						<b>Mensagem:</b>
-						<p> {{notificacao.mensagem}}</p>
+						<span class="dataNotificacao">{{notificacao.data_envio}}</span>
 					</li>
 				</ul>
 			</div>
