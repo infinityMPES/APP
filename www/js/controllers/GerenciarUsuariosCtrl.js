@@ -7,12 +7,6 @@
 	 $scope.listaPerfis = [];
 	 $scope.listaUsuarios = [];
 	 
-	 $scope.listaIdade = [];
-	 
-	 for(var inicio = 1; inicio<=100; inicio++){
-		 $scope.listaIdade.push(inicio);
-	 }
-	 
 	 // carregando a lista de perfis
 	 setTimeout(function(){
 		 // Buscando os perfis cadastrados na base

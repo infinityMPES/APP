@@ -5,6 +5,12 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
 	 $scope.mostrarLista = false; // Flag para mostrar a lista
 	 $scope.notificacaoData = {}; // Objeto filtro
 	 
+	 $scope.listaIdade = [];
+	 
+	 for(var inicio = 1; inicio<=100; inicio++){
+		 $scope.listaIdade.push(inicio);
+	 }
+	 
 	// Lista de perfis do sistema
 	 $scope.listaPerfis = [];
 	 // Buscando os perfis cadastrados na base
