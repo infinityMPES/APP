@@ -1,0 +1,36 @@
+<ion-view view-title="" class="esqueci-senha-titulo meus-notificacaos">
+	<ion-nav-title  class="esqueci-senha-titulo">
+		Minhas Notificações
+    </ion-nav-title>
+    <ion-content class="esqueci-senha">
+        <div class="bar bar-subheader bar-stable static text-center">
+            <strong class="title titulo-icone meus-notificacaos">
+            	<i class="fa fa-paper-plane" aria-hidden="true"></i>
+            	<br />
+           	</strong>
+        </div>
+		<div class="list">
+			<div class="item item-icon-left notificacao " ng-class="{'naoLida': notificacao.visualizou == '0'}" ng-repeat="notificacao in listaNotificacoes">
+				<ul>
+					<li>
+						<h2>{{notificacao.titulo}}</h2>
+					</li>
+					<li>
+						<p>{{notificacao.mensagem}}</p>
+					</li>
+					<li>
+						<span class="dataNotificacao">{{notificacao.data_envio}}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+    </ion-content>
+</ion-view>
+<style>
+	.bar.bar-header{
+	    box-shadow: none !important;
+	}
+	.bar.bar-stable{
+		border: none !important;
+	}
+</style>

@@ -1,6 +1,6 @@
 <ion-view view-title="" class="esqueci-senha-titulo meus-notificacaos">
 	<ion-nav-title  class="esqueci-senha-titulo">
-		Minhas Notificações
+		Notificações
     </ion-nav-title>
     <ion-content class="esqueci-senha">
         <div class="bar bar-subheader bar-stable static text-center">
@@ -9,6 +9,12 @@
             	<br />
            	</strong>
         </div>
+        <div style="padding: 6%;">
+        	<span style="float: left;" class="texto-icone">Assunto</span>
+        	<span style="float: right;" class="texto-icone">Data do envio</span>
+        	
+        </div>
+
 		<div class="list">
 			<div class="item item-icon-left notificacao " ng-class="{'naoLida': notificacao.visualizou == '0'}" ng-repeat="notificacao in listaNotificacoes">
 				<ul>
