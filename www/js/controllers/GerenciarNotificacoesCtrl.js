@@ -1,5 +1,5 @@
 app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal) {
-	 // Verificando se o usuário está logado
+	 // Verificando se o usuï¿½rio estï¿½ logado
 	 $scope.usuarioLogado(true);
 	 
 	 $scope.mostrarLista = false; // Flag para mostrar a lista
@@ -44,10 +44,10 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
 	 });
 	 
 	 /**
-	  * Método que irá realizar o filtro dos usuários
+	  * Mï¿½todo que irï¿½ realizar o filtro dos usuï¿½rios
 	  */
 	 $scope.pesquisaNotificacao = function(){
-		 // ´Mostrando o carregando
+		 // ï¿½Mostrando o carregando
 		 $scope.carregando();
 		 $scope.mostrarLista = false;
 		 // Realizando os filtros
@@ -55,13 +55,15 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
 			 method: "POST",
 			    timeout:$scope.timeout,
 			    data: 'dadosNotificacao=' + JSON.stringify($scope.notificacaoData),
-			    url: $scope.strUrlServico + Constantes.APP_SERVICE_EXAMES_FILTRAR_EXAMES,
+			    url: $scope.strUrlServico + Constantes.APP_SERVICE_NOTIFICACOES_BUSCAR_TOTAL,
 			    headers: Util.headers($scope.token)
 			})
 			.then(function(response) {
 				 $scope.carregado();
 				 if(response.data.bolRetorno == true){
-					 $scope.notificacaoData.total = response.data.result.total;
+					 $scope.notificacaoData.total = response.data.result[0].total;
+					 console.log($scope.notificacaoData.total)
+					 $scope.confirmarCadastro();
 				 }
 			}, function(response) {
 				// Mensagem de erro
@@ -70,8 +72,29 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
 		 
 	 }
 	 
+	 /** MODAL DE CONFIMAÃ‡ÃƒO **/
+	 $ionicModal.fromTemplateUrl('templates/cadastrar-notificacao.html', {
+		 scope: $scope
+	 }).then(function(modal) {
+		 $scope.modal = modal;
+	 });
+	 
+	 $scope.closeConfirmar = function() {
+		 $scope.modal.hide();
+		 $(".disable-user-behavior").show();
+		 $(".has-header").css("top", "44px");
+		 $(".confirmarCadastro").attr("style", "background: #ffffff !important");
+	 };
+	  
+	 $scope.confirmarCadastro = function() {
+		 $scope.modal.show();
+		 $(".confirmarCadastro").attr("style", "background: #62aaa2 !important");
+		 $(".disable-user-behavior").hide();
+		 $(".has-header").css("top", "0px");
+	 };
+	 
 	 $scope.enviarNotificacao = function(){
-		 // ´Mostrando o carregando
+		 // Mostrando o carregando
 		 $scope.carregando();
 		 $scope.mostrarLista = false;
 		 // Realizando os filtros

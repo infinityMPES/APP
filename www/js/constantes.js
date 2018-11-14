@@ -16,9 +16,9 @@ var Constantes = {
 	"APP_BASE"	 						: "imip",
 	"APP_BASE_TITULO"	 				: "Conxão Vida",
 	
-//	"APP_SERVICE"						: "http://conexaovidaimip.com.br/prod/",
 	"APP_SERVICE"						: "http://conexaovidaimip.com.br/dev/",
 //	"APP_SERVICE"						: "http://conexaovidaimip.com.br/teste/",
+//	"APP_SERVICE"						: "http://conexaovidaimip.com.br/prod/",
 //	"APP_SERVICE"						: "http://localhost/imip/ws-imip-dois/ws/",
 	
 	"APP_MSG_ERROR"						: "<center><span class='icon ion-android-alert' style='font-size:35px'></span><br>Ops...<br>Sem Conex�o!</center>",

@@ -338,3 +338,11 @@ a.botoes-inicios i.fa {
     text-align: right;
     display: block;
 }
+
+.abasNotificacao{
+	height: 60px;
+}
+.abasNotificacao .tab-item{
+	font-size: 14px !important;
+    padding: 5px;
+}
