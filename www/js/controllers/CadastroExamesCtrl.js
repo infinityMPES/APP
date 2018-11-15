@@ -126,7 +126,7 @@
 			mensagem   = "";
 			if(response.data.bolRetorno == true){
 				bolRetorno = true;
-				mensagem = "Cadastro Realizada Com Sucesso!";
+				mensagem = "Cadastro Realizado Com Sucesso!";
 			}else{
 				mensagem = response.data.strMensagem;
 			}

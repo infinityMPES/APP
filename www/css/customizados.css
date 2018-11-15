@@ -346,3 +346,16 @@ a.botoes-inicios i.fa {
 	font-size: 14px !important;
     padding: 5px;
 }
+
+.corpo{
+	background: #62aaa2 !important;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border: solid 2px;
+	border-radius: 5px;
+}
+
+.corpo::placeholder {
+	color: white;
+}

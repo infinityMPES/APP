@@ -106,14 +106,69 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
 			    headers: Util.headers($scope.token)
 			})
 			.then(function(response) {
-				 $scope.carregado();
+				$scope.carregado();
+				 
+				bolRetorno = false;
+				mensagem   = "";
+				if(response.data.bolRetorno == true){
+					bolRetorno = true;
+					mensagem = "Cadastro Realizado Com Sucesso!";
+					$scope.closeConfirmar();
+				}else{
+					mensagem = response.data.strMensagem;
+				}
+				
+				var alertPopup = $ionicPopup.alert({
+					title: (bolRetorno) ? 'Sucesso' : "Erro",
+					template: mensagem
+				});
+				alertPopup.then(function(res) { });
+				 
 			}, function(response) {
 				// Mensagem de erro
 				$scope.falhaCarregamento(response);
 		  });
 		 
 	 }
-	 
 	 /******* MODAL DE DETALHE ********/
+	 
+	 /****** filtrar notificações enviadas ****/
+	 $scope.mostrarLista = false;
+	 $scope.mostrarListaBusca = false;
+	 $scope.mostrarBusca = function(){
+		 $scope.mostrarLista = ($scope.mostrarLista) ? false : true;
+	 }
+	 $scope.listaNotificacoes = [];
+	 $scope.buscarNotificacao = function(){
+		 // �Mostrando o carregando
+		 $scope.carregando();
+		 $scope.mostrarLista = false;
+		 // Realizando os filtros
+		 $http({
+			 method: "POST",
+			    timeout:$scope.timeout,
+			    data: 'filtroBusca=' + JSON.stringify($scope.notificacaoData),
+			    url: $scope.strUrlServico + Constantes.APP_SERVICE_NOTIFICACOES_FILTRAR,
+			    headers: Util.headers($scope.token)
+			})
+			.then(function(response) {
+				 $scope.carregado();
+				 $scope.mostrarListaBusca = true;
+				 if(response.data.bolRetorno == true){
+					 $scope.listaNotificacoes = response.data.result;
+				 }
+				 // Mostrando a lista de usuários
+				 $scope.mostrarLista = true;
+				 // Criando a tabela
+				 Util.montarTabela('listaNotificacoes', $scope.listaNotificacoes, [{"data": "data_envio"},{"data": "titulo"}, {"data": "total"}]);
+			}, function(response) {
+				// Mensagem de erro
+				$scope.falhaCarregamento(response);
+		  });
+	 }
+	 
+	 $scope.mostarDetalhe = function(chave){
+		 console.log($scope.listaNotificacoes[chave]);
+	 }
 });
 

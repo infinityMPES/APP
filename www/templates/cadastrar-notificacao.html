@@ -14,59 +14,71 @@
         </div>
         <form name="formListarUsuario" id="formListarUsuario" class="formPadrao formListarUsuario im-wrapper ">
 				<div class="list">
-					<label class="item item-input cadastroPadrao item-select">
+					<label class="item item-input cadastroPadrao item-select" ng-show="notificacaoData.perfil_id != undefined">
 					    <div class="input-label corpadrao">
 					      Perfil
 					    </div>
-					    <select style="min-width: 75%;" name="sexo" ng-model="notificacaoData.perfil_id">
+					    <select style="min-width: 75%;" name="sexo" disabled="disabled" ng-model="notificacaoData.perfil_id">
 					      <option value="0">Todos os Perfis</option>
 					      <option ng-repeat="perfil in listaPerfis" value="{{perfil.id}}">{{perfil.descricao}}</option>
 					    </select>
 					</label>
-					
-					<label class="item item-input cadastroPadrao item-select">
+					<label class="item item-input cadastroPadrao item-select"  ng-show="notificacaoData.sexo != undefined">
 					    <div class="input-label corpadrao">
 					      Sexo
 					    </div>
-					    <select style="min-width: 75%;" name="sexo" ng-model="notificacaoData.sexo">
+					    <select style="min-width: 75%;" name="sexo" disabled="disabled" ng-model="notificacaoData.sexo">
 					      <option value="0">Ambos os Sexos</option>
 					      <option value="1">Masculino</option>
 					      <option value="2">Feminino</option>
 					    </select>
 					</label>
 					
-					<label class="item item-input cadastroPadrao item-select" >
+					<label class="item item-input cadastroPadrao item-select" ng-show="notificacaoData.cancer_id != undefined">
 					    <div class="input-label corpadrao">
 					      Câncer
 					    </div>
-					    <select style="min-width: 75%;" name="sexo" ng-model="notificacaoData.cancer_id" multiple="multiple">
+					    <select style="min-width: 75%;" name="sexo" ng-model="notificacaoData.cancer_id" disabled="disabled" multiple="multiple">
 					    	<option value="0">Todos Cancers</option>
 					    	<option ng-repeat="cancer in listaCancer" value="{{cancer.id}}">{{cancer.descricao}}</option>
 					    </select>
 					</label>
 					
-					<label class="item item-input cadastroPadrao item-select">
+					<label class="item item-input cadastroPadrao item-select" ng-show="notificacaoData.idade != undefined">
 					    <div class="input-label corpadrao">
 					    	Com Idade Acima de:
 					    </div>
-					    <select style="min-width: 2%;" name="sexo" ng-model="notificacaoData.cancer_id">
+					    <select style="min-width: 2%;" name="sexo" ng-model="notificacaoData.idade" disabled="disabled" >
 					    	<option ng-repeat="idade in listaIdade" value="{{idade}}">{{idade}}</option>
 					    </select>
 					</label>
-					<label class="item item-input cadastroPadrao"> 
+					<label class="item item-input cadastroPadrao" ng-show="notificacaoData.pep != undefined"> 
 						<i class="icon fa fa-user placeholder-icon" style="font-size: 24px"></i> 
-						{{notificacaoData.total}}
+						<input type="text" placeholder="Informe nº PEP" readonly="readonly" class="pep" name="pep" ng-model="notificacaoData.pep" >
 					</label>
 					<label class="item item-input cadastroPadrao"> 
 						<i class="icon fa fa-user placeholder-icon" style="font-size: 24px"></i> 
-						<input type="text" placeholder="Informe nº PEP" class="pep" name="pep" ng-model="notificacaoData.titulo" >
+						<span style="color: white;">Total de Destinatários: {{notificacaoData.total}}</span>
 					</label>
 					<label class="item item-input cadastroPadrao"> 
-						<i class="icon fa fa-user placeholder-icon" style="font-size: 24px"></i> 
-						<textarea rows="5" cols="10" placeholder="Texto com 144 caracteres" ng-model="notificacaoData.corpo" ></textarea>
+						<i class="icon fa fa-font" style="font-size: 24px; margin-right: 8px;"></i> 
+						<input type="text" placeholder="Título da Mensagem" maxlength="50" class="titulo" name="titulo" ng-model="notificacaoData.titulo" >
+					</label>
+					<label class="item item-input cadastroPadrao"> 
+						<i class="icon fa fa-file-text" style="font-size: 24px; margin-right: 8px;"></i> 
+						<textarea rows="5" cols="10" maxlength="144" class="corpo" placeholder="Texto com 144 caracteres" ng-model="notificacaoData.corpo" ></textarea>
 					</label>
 				</div>
-			<button class="button button-full botaoPadrao" ng-click="pesquisaNotificacao()">Pesquisar</button>
+			<div class="row">
+				<div class="col col-100">
+					<button class="button button-full botaoPadrao" ng-click="enviarNotificacao()">Cadastrar</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-100">
+					<button class="button button-full button-light" ng-click="closeConfirmar()">Cancelar</button>
+				</div>
+			</div>
 		</form>
     </ion-content>
 </ion-modal-view>

@@ -183,7 +183,17 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	      }
 	    }
 	})
-    
+	
+	.state('app.detalhe-notificacao', {
+	    url: '/detalhe-notificacao/:notificacaoId',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'templates/detalhe-notificacao.html',
+	        controller: 'DetalheNotificacoesCtrl'
+	      }
+	    }
+	})
+	
     .state('app', {
         url: '/app',
         abstract: true,
