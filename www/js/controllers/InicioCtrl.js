@@ -1,4 +1,4 @@
-﻿app.controller('InicioCtrl', function ($scope, $stateParams, ionicMaterialInk) {
+﻿app.controller('InicioCtrl', function ($scope, $stateParams, ionicMaterialInk, $state) {
     //ionic.material.ink.displayEffect();
     ionicMaterialInk.displayEffect();
     $scope.usuarioLogado(false);

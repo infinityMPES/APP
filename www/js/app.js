@@ -6,6 +6,8 @@
 var app = angular.module('starter', ['ionic', 'ionic-material']);
 //Essa vari�vel ir� conter as informa��es necess�rias dos ids do app no onesignal
 var idsOnesignal = {};
+// Essa variável irá conter o objeto de ação para caso o usuário esteja offline
+var urlAcaoOffiLine = {};
 
 app.run(function ($rootScope, $compile, $state, $ionicPlatform, $ionicHistory, $ionicPopup, $http) {
     $ionicPlatform.ready(function () {
@@ -20,8 +22,13 @@ app.run(function ($rootScope, $compile, $state, $ionicPlatform, $ionicHistory, $
         }
         
         if(!ionic.Platform.is('browser')) {
-        	 var notificationOpenedCallback = function(jsonData) {
+        	  var notificationOpenedCallback = function(jsonData) {
         	    console.log('Alberto - notificationOpenedCallback: ' + JSON.stringify(jsonData));
+        	    if(jsonData.notification.payload.additionalData.acao){
+        	    	console.log(jsonData.notification.payload.additionalData);
+        	    	// Redirecionando para a ação informada
+        	    	$state.go(jsonData.notification.payload.additionalData.acao, jsonData.notification.payload.additionalData.parametros);
+        	    }
         	  };
 
         	  window.plugins.OneSignal

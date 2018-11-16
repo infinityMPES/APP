@@ -46,16 +46,12 @@
 	 
 	 $scope.closeConfirmar = function() {
 		 $scope.modal.hide();
-		 $(".disable-user-behavior").show();
-		 $(".has-header").css("top", "44px");
-		 $(".confirmarCadastro").attr("style", "background: #ffffff !important");
+		 $scope.removerConfirmacao();
 	 };
 	  
 	 $scope.confirmarCadastro = function() {
 		 $scope.modal.show();
-		 $(".confirmarCadastro").attr("style", "background: #62aaa2 !important");
-		 $(".disable-user-behavior").hide();
-		 $(".has-header").css("top", "0px");
+		 $scope.configurarConfirmacao();
 	 };
 
 	 /******* MÉTODO QUE IRÁ CALCULAR O PRAZO****************/

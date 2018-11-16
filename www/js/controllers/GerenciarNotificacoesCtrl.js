@@ -4,9 +4,7 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
 	 
 	 $scope.mostrarLista = false; // Flag para mostrar a lista
 	 $scope.notificacaoData = {}; // Objeto filtro
-	 
 	 $scope.listaIdade = [];
-	 
 	 for(var inicio = 1; inicio<=100; inicio++){
 		 $scope.listaIdade.push(inicio);
 	 }
@@ -44,10 +42,10 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
 	 });
 	 
 	 /**
-	  * M�todo que ir� realizar o filtro dos usu�rios
+	  * Método que irá realizar o filtro dos usu�rios
 	  */
 	 $scope.pesquisaNotificacao = function(){
-		 // �Mostrando o carregando
+		 // Mostrando o carregando
 		 $scope.carregando();
 		 $scope.mostrarLista = false;
 		 // Realizando os filtros
@@ -64,6 +62,8 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
 					 $scope.notificacaoData.total = response.data.result[0].total;
 					 console.log($scope.notificacaoData.total)
 					 $scope.confirmarCadastro();
+					 $scope.notificacaoData.titulo = "";
+					 $scope.notificacaoData.corpo = "";
 				 }
 			}, function(response) {
 				// Mensagem de erro
@@ -81,16 +81,12 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
 	 
 	 $scope.closeConfirmar = function() {
 		 $scope.modal.hide();
-		 $(".disable-user-behavior").show();
-		 $(".has-header").css("top", "44px");
-		 $(".confirmarCadastro").attr("style", "background: #ffffff !important");
+		 $scope.removerConfirmacao();
 	 };
 	  
 	 $scope.confirmarCadastro = function() {
 		 $scope.modal.show();
-		 $(".confirmarCadastro").attr("style", "background: #62aaa2 !important");
-		 $(".disable-user-behavior").hide();
-		 $(".has-header").css("top", "0px");
+		 $scope.configurarConfirmacao();
 	 };
 	 
 	 $scope.enviarNotificacao = function(){
@@ -114,6 +110,7 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
 					bolRetorno = true;
 					mensagem = "Cadastro Realizado Com Sucesso!";
 					$scope.closeConfirmar();
+					$scope.notificacaoData = {}; // Objeto filtro
 				}else{
 					mensagem = response.data.strMensagem;
 				}
@@ -135,12 +132,14 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
 	 /****** filtrar notificações enviadas ****/
 	 $scope.mostrarLista = false;
 	 $scope.mostrarListaBusca = false;
-	 $scope.mostrarBusca = function(){
-		 $scope.mostrarLista = ($scope.mostrarLista) ? false : true;
+	 $scope.mostrarBusca = function(status){
+//		 $scope.mostrarLista = ($scope.mostrarLista) ? false : true;
+		 $scope.mostrarLista = (status == true); 
+		 console.log($scope.mostrarLista)
 	 }
 	 $scope.listaNotificacoes = [];
 	 $scope.buscarNotificacao = function(){
-		 // �Mostrando o carregando
+		 // Mostrando o carregando
 		 $scope.carregando();
 		 $scope.mostrarLista = false;
 		 // Realizando os filtros
