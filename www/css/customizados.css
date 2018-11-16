@@ -359,3 +359,8 @@ a.botoes-inicios i.fa {
 .corpo::placeholder {
 	color: white;
 }
+
+.datalhe-notificacao .item.ng-binding {
+    word-break: break-word;
+    white-space: normal !important;
+}
