@@ -34,6 +34,7 @@ var Constantes = {
 	"APP_SERVICE_VALIDAR_CADASTRO"				: "usuario/validarCadastro",
 	"APP_SERVICE_LISTAR_PERFIS"					: "usuario/listaPerfis",
 	"APP_SERVICE_LISTAR_CANCER"					: "usuario/listaCancer",
+	"APP_SERVICE_LISTAR_CIDADE"					: "usuario/listaCidade",
 	"APP_SERVICE_PESQUISAR_USUARIOS"			: "usuario/pesquisarUsuarios",
 	"APP_SERVICE_RECUPERAR_USUARIO_POR_ID"		: "usuario/recuperarUsuarioPorId",
 	"APP_SERVICE_EDITAR_USUARIO"				: "usuario/editarUsuario",
