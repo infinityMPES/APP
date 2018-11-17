@@ -338,3 +338,29 @@ a.botoes-inicios i.fa {
     text-align: right;
     display: block;
 }
+
+.abasNotificacao{
+	height: 60px;
+}
+.abasNotificacao .tab-item{
+	font-size: 14px !important;
+    padding: 5px;
+}
+
+.corpo{
+	background: #62aaa2 !important;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border: solid 2px;
+	border-radius: 5px;
+}
+
+.corpo::placeholder {
+	color: white;
+}
+
+.datalhe-notificacao .item.ng-binding {
+    word-break: break-word;
+    white-space: normal !important;
+}
