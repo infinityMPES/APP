@@ -9,69 +9,43 @@
             <strong class="title titulo-icone">
             	<i class="fa fa-check-circle-o" aria-hidden="true"></i>
             	<br />
-            	<span class="texto-icone">Enviar Notificação.</span>
+            	<span class="texto-icone">Confira seus dados antes de enviar.</span>
            	</strong>
         </div>
-        <form name="formListarUsuario" id="formListarUsuario" class="formPadrao formListarUsuario im-wrapper ">
-				<div class="list">
-					<label class="item item-input cadastroPadrao item-select" ng-show="notificacaoData.perfil_id != undefined">
+        <form name="cadastrarExamesConfirmar" id="cadastrarExamesConfirmar" class="formPadrao cadastroUsuario im-wrapper ">
+			<div class="list">
+				<label class="item item-input cadastroPadrao item-select">
 					    <div class="input-label corpadrao">
-					      Perfil
+					      Área do Exame:
 					    </div>
-					    <select style="min-width: 75%;" name="sexo" disabled="disabled" ng-model="notificacaoData.perfil_id">
-					      <option value="0">Todos os Perfis</option>
-					      <option ng-repeat="perfil in listaPerfis" value="{{perfil.id}}">{{perfil.descricao}}</option>
+					    <select style="min-width: 65%;" name="sexo" ng-model="exameData.area_id">
+					      <option ng-repeat="area in listaAreas" value="{{area.id}}">{{area.descricao}}</option>
 					    </select>
 					</label>
-					<label class="item item-input cadastroPadrao item-select"  ng-show="notificacaoData.sexo != undefined">
+					<label class="item item-input cadastroPadrao item-select">
 					    <div class="input-label corpadrao">
-					      Sexo
+					      Tipo de Exame:
 					    </div>
-					    <select style="min-width: 75%;" name="sexo" disabled="disabled" ng-model="notificacaoData.sexo">
-					      <option value="0">Ambos os Sexos</option>
-					      <option value="1">Masculino</option>
-					      <option value="2">Feminino</option>
+					    <select style="min-width: 65%;" name="sexo" ng-model="exameData.tipo_exame_id">
+					      <option ng-repeat="tipoExame in listaTipoExames" value="{{tipoExame.id}}">{{tipoExame.descricao}}</option>
 					    </select>
 					</label>
 					
-					<label class="item item-input cadastroPadrao item-select" ng-show="notificacaoData.cancer_id != undefined">
-					    <div class="input-label corpadrao">
-					      Câncer
-					    </div>
-					    <select style="min-width: 75%;" name="sexo" ng-model="notificacaoData.cancer_id" disabled="disabled" multiple="multiple">
-					    	<option value="0">Todos Câncers</option>
-					    	<option ng-repeat="cancer in listaCancer" value="{{cancer.id}}">{{cancer.descricao}}</option>
-					    </select>
+					<label class="item item-input cadastroPadrao "> 
+						<input type="text" placeholder="Data Coleta Exame: 99/99/9999" name="data_exame" class="data" ng-blur="calcularPrazo()" ng-model="exameData.data_exame" required>
+						<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
 					</label>
+					<span class="erro" ng-show="erros && !cadastrarUsuario.data_exame.$valid">Data Coleta Exame é Obrigatória</span> 
 					
-					<label class="item item-input cadastroPadrao item-select" ng-show="notificacaoData.idade != undefined">
-					    <div class="input-label corpadrao">
-					    	Com Idade Acima de:
-					    </div>
-					    <select style="min-width: 2%;" name="sexo" ng-model="notificacaoData.idade" disabled="disabled" >
-					    	<option ng-repeat="idade in listaIdade" value="{{idade}}">{{idade}}</option>
-					    </select>
+					<label class="item item-input cadastroPadrao "> 
+						<input type="text" placeholder="Data de Entrega Resultado: 99/99/9999" name="data_previsao" class="data" ng-model="exameData.data_previsao" required>
+						<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
 					</label>
-					<label class="item item-input cadastroPadrao" ng-show="notificacaoData.pep != undefined"> 
-						<i class="icon fa fa-user placeholder-icon" style="font-size: 24px"></i> 
-						<input type="text" placeholder="Informe nº PEP" readonly="readonly" class="pep" name="pep" ng-model="notificacaoData.pep" >
-					</label>
-					<label class="item item-input cadastroPadrao"> 
-						<i class="icon fa fa-user placeholder-icon" style="font-size: 24px"></i> 
-						<span style="color: white;">Total de Destinatários: {{notificacaoData.total}}</span>
-					</label>
-					<label class="item item-input cadastroPadrao"> 
-						<i class="icon fa fa-font" style="font-size: 24px; margin-right: 8px;"></i> 
-						<input type="text" placeholder="Título da Mensagem" maxlength="50" class="titulo" name="titulo" ng-model="notificacaoData.titulo" >
-					</label>
-					<label class="item item-input cadastroPadrao"> 
-						<i class="icon fa fa-file-text" style="font-size: 24px; margin-right: 8px;"></i> 
-						<textarea rows="5" cols="10" maxlength="144" class="corpo" placeholder="Texto com 144 caracteres" ng-model="notificacaoData.corpo" ></textarea>
-					</label>
-				</div>
+					<span class="erro" ng-show="erros && !cadastrarUsuario.data_previsao.$valid">Data de Entrega Resultado é Obrigatória</span> 
+			</div>
 			<div class="row">
 				<div class="col col-100">
-					<button class="button button-full botaoPadrao" ng-click="enviarNotificacao()">Cadastrar</button>
+					<button class="button button-full botaoPadrao" ng-click="salvar()">Cadastrar</button>
 				</div>
 			</div>
 			<div class="row">

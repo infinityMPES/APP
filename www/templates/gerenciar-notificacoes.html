@@ -13,18 +13,18 @@
         <br />
         
         <div class="row">
-        	<div class="tabs tabs-balanced tabs-icon-top abasNotificacao" style="position: static; margin-bottom: 5px; border-radius: 5px; background: #62aaa2 !important;">
-	             <a class="tab-item lista" ng-class="{'active': mostrarLista == false}" href="javascript:void(0)" ng-click="mostrarBusca(false)" style="border-right: dashed 1px;" >
+        	<div class="tabs tabs-balanced tabs-icon-top" style="position: static; margin-bottom: 5px; border-radius: 5px; background: #62aaa2 !important;">
+	             <a class="tab-item active lista" href="javascript:void(0)" ng-click="" style="border-right: dashed 1px;" >
 	                 <i class="icon fa fa-podcast"></i> Cadastrar Notificacao 
 	             </a>
-	             <a class="tab-item graficos" ng-class="{'active': mostrarLista == true}" href="javascript:void(0)" ng-click="mostrarBusca(true)">
+	             <a class="tab-item graficos" href="javascript:void(0)" ng-click="">
 	                 <i class="icon fa fa-search"></i> Buscar Notificações
 	             </a>
 	         </div>
         </div>
         
          
-        <form name="formListarUsuario" id="formListarUsuario" ng-show="!mostrarLista" class="formPadrao formListarUsuario im-wrapper ">
+        <form name="formListarUsuario" id="formListarUsuario" class="formPadrao formListarUsuario im-wrapper ">
 				<div class="list">
 					
 					<label class="item item-input cadastroPadrao item-select">
@@ -32,7 +32,6 @@
 					      Perfil
 					    </div>
 					    <select style="min-width: 75%;" name="sexo" ng-model="notificacaoData.perfil_id">
-					      <option value="0">Todos os Perfis</option>
 					      <option ng-repeat="perfil in listaPerfis" value="{{perfil.id}}">{{perfil.descricao}}</option>
 					    </select>
 					</label>
@@ -42,7 +41,6 @@
 					      Sexo
 					    </div>
 					    <select style="min-width: 75%;" name="sexo" ng-model="notificacaoData.sexo">
-					      <option value="0">Ambos os Sexos</option>
 					      <option value="1">Masculino</option>
 					      <option value="2">Feminino</option>
 					    </select>
@@ -52,17 +50,16 @@
 					    <div class="input-label corpadrao">
 					      Câncer
 					    </div>
-					    <select style="min-width: 75%;" name="sexo" ng-model="notificacaoData.cancer_id" multiple="multiple">
-					    	<option value="0">Todos Cancers</option>
-					    	<option ng-repeat="cancer in listaCancer" value="{{cancer.id}}">{{cancer.descricao}}</option>
+					    <select style="min-width: 75%;" name="sexo" ng-model="notificacaoData.cancer_id">
+					      <option ng-repeat="cancer in listaCancer" value="{{cancer.id}}">{{cancer.descricao}}</option>
 					    </select>
 					</label>
 					
 					<label class="item item-input cadastroPadrao item-select">
 					    <div class="input-label corpadrao">
-					    	Com Idade Acima de:
+					    	Com Idade Até:
 					    </div>
-					    <select style="min-width: 2%;" name="sexo" ng-model="notificacaoData.idade">
+					    <select style="min-width: 2%;" name="sexo" ng-model="notificacaoData.cancer_id">
 					    	<option ng-repeat="idade in listaIdade" value="{{idade}}">{{idade}}</option>
 					    </select>
 					</label>
@@ -71,58 +68,52 @@
 						<i class="icon fa fa-user placeholder-icon" style="font-size: 24px"></i> 
 						<input type="text" placeholder="Informe nº PEP" class="pep" name="pep" ng-model="notificacaoData.pep" >
 					</label>
-					<input type="hidden" ng-model="notificacaoData.total" >
+					
 				</div>
 			<button class="button button-full botaoPadrao" ng-click="pesquisaNotificacao()">Pesquisar</button>
 		</form>
-		<form name="formListarUsuario" id="formListarUsuario" ng-show="mostrarLista" class="formPadrao formListarUsuario im-wrapper ">
-			<div class="list">
-				<label class="item item-input cadastroPadrao "> 
-					<input type="text" placeholder="Data Envio: 99/99/9999" name="data_envio" class="data" ng-model="notificacaoData.data_envio" required>
-					<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
-				</label>
-				<label class="item item-input cadastroPadrao"> 
-					<i class="icon fa fa-font" style="font-size: 24px; margin-right: 8px;"></i> 
-					<input type="text" placeholder="Título da Mensagem" maxlength="50" class="titulo" name="titulo" ng-model="notificacaoData.titulo" >
-				</label>
-				
-			</div>
-			<button class="button button-full botaoPadrao" ng-click="buscarNotificacao()">Buscar</button>
-	    </form>
-	    
-		<hr ng-show="mostrarListaBusca && mostrarLista" />
 		
-		<div class="listagem" ng-show="mostrarListaBusca && mostrarLista">
+		<hr ng-show="mostrarLista" />
+		
+		<div class="listagem" ng-show="mostrarLista">
 			
-			<div class="row" >
+			<div class="tabs tabs-balanced tabs-icon-top" style="position: static; margin-bottom: 5px; border-radius: 5px; background: #62aaa2 !important;">
+                <a class="tab-item active lista" href="javascript:void(0)" ng-click="mostarListaF(true)" style="border-right: dashed 1px;" >
+                    <i class="icon fa fa-list-alt"></i> Exames 
+                </a>
+                <a class="tab-item graficos" href="javascript:void(0)" ng-click="mostarListaF(false)">
+                    <i class="icon fa fa-pie-chart"></i> Gráficos
+                </a>
+            </div>
+			<div class="row" ng-show="mostarListaTa">
 				<div class="col col-100">
-					<h3 class="tituloListagem">Notificações Enviadas</h3>
+					<h3 class="tituloListagem">Exames em Atraso</h3>
 				</div>
 			</div>
-			
-			<div class="row" >
+			<div class="row" ng-show="mostarListaTa">
 				<div class="col col-100 lista">
-					<table id="listaNotificacoes" class="display responsive nowrap" cellspacing="0" width="100%">
+					<table id="listaExames" class="display responsive nowrap" cellspacing="0" width="100%">
 						<thead>
 			            	<tr>
-				                <th>Data Envio</th>
-				                <th >Título</th>
-				                <th >Total Enviados</th>
+				                <th width="50%">Nome</th>
+				                <th width="50%">Dias Transcorridos</th>
 				            </tr>
 				        </thead>
 				        <tfoot>
 				            <tr>
-				                <th>Data Envio</th>
-				                <th >Título</th>
-				                <th >Total Enviados</th>
+				                <th width="50%">Nome</th>
+				                <th width="50%">Dias Transcorridos</th>
 				            </tr>
 				        </tfoot>
 					</table>
 				</div>
 			</div>
+			
 		</div>
+
     </ion-content>
 </ion-view>
+
 <style>
 	.bar.bar-header{
 	    box-shadow: none !important;
