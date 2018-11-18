@@ -26,7 +26,7 @@
 						<i class="icon fa fa-user placeholder-icon" style="font-size: 24px"></i> 
 						<input type="text" placeholder="Informe seu CPF: 999.999.999-99" class="cpf" name="login" ng-model="usuarioEdit.login" required>
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.login.$valid">CPF é Obrigatário</span> 
+					<span class="erro" ng-show="erros && !cadastrarUsuario.login.$valid">CPF é Obrigatório</span> 
 					
 					<label class="item item-input cadastroPadrao item-select">
 					    <div class="input-label corpadrao">
@@ -41,25 +41,25 @@
 						<i class="icon fa fa-lock placeholder-icon" style="font-size: 24px"></i> 
 						<input type="password" placeholder="Informe seu senha" class="senha" name="senha" ng-model="usuarioEdit.senha" required>
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.senha.$valid">Senha é Obrigatária</span>
+					<span class="erro" ng-show="erros && !cadastrarUsuario.senha.$valid">Senha é Obrigatória</span>
 					
 					<label class="item item-input cadastroPadrao "> 
 						<i class="icon fa fa-lock placeholder-icon" style="font-size: 24px"></i> 
 						<input type="password" placeholder="Confirme seu senha" class="senha" name="confirmacao_senha" ng-model="usuarioEdit.confirmacao_senha" required>
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.confirmacao_senha.$valid">Confirmação da Senha é Obrigatária</span> 
+					<span class="erro" ng-show="erros && !cadastrarUsuario.confirmacao_senha.$valid">Confirmação da Senha é Obrigatória</span> 
 					
 					<label class="item item-input cadastroPadrao "> 
 					 	<i class="icon fa fa-envelope placeholder-icon" style="font-size: 24px"></i> 
 						<input type="text" placeholder="Informe seu e-mail: exemplo@email.com" name="email" ng-model="usuarioEdit.email" required>
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.email.$valid">E-mail é Obrigatário</span>
+					<span class="erro" ng-show="erros && !cadastrarUsuario.email.$valid">E-mail é Obrigatório</span>
 					
 					<label class="item item-input cadastroPadrao"  ng-show="usuarioEdit.perfil_id == 1"> 
 					 	<i class="icon fa fa-file-text placeholder-icon" style="font-size: 24px"></i> 
 						<input type="text" placeholder="Informe Nº PEP" name="numero_pep" ng-model="usuarioEdit.numero_pep" required>
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.numero_pep.$valid">PEP é Obrigatário</span>
+					<span class="erro" ng-show="erros && !cadastrarUsuario.numero_pep.$valid">PEP é Obrigatório</span>
 					
 					<label class="item item-input cadastroPadrao item-select"  ng-show="usuarioEdit.perfil_id == 1">
 					    <div class="input-label corpadrao">
@@ -74,13 +74,13 @@
 						<i class="icon fa fa-id-card-o placeholder-icon" style="font-size: 24px"></i> 
 						<input type="text" placeholder="Informe seu nome" name="nome"  class="apenasLetras"  ng-model="usuarioEdit.nome" required>
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.nome.$valid">Nome é Obrigatário</span> 
+					<span class="erro" ng-show="erros && !cadastrarUsuario.nome.$valid">Nome é Obrigatório</span> 
 					
 					<label class="item item-input cadastroPadrao "> 
 						<input type="text" placeholder="Data Nascimento: 99/99/9999" name="data_nascimento" class="data" ng-model="usuarioEdit.data_nascimento" required>
 						<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.data_nascimento.$valid">Data de Nascimento é Obrigatário</span> 
+					<span class="erro" ng-show="erros && !cadastrarUsuario.data_nascimento.$valid">Data de Nascimento é Obrigatório</span> 
 					
 					<label class="item item-input cadastroPadrao item-select">
 					    <div class="input-label corpadrao">
@@ -91,18 +91,18 @@
 					      <option value="2">Feminino</option>
 					    </select>
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.sexo.$valid">Sexo é Obrigatário</span> 	
+					<span class="erro" ng-show="erros && !cadastrarUsuario.sexo.$valid">Sexo é Obrigatório</span> 	
 					
 					<label class="item item-input cadastroPadrao"  ng-show="usuarioEdit.perfil_id == 1"> 
 						<i class="icon fa fa-home placeholder-icon" style="font-size: 24px"></i> 
 						<input type="text" placeholder="Informe seu Endereço" name="endereco" ng-model="usuarioEdit.endereco" required>
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.endereco.$valid">Endereço é Obrigatário</span> 
+					<span class="erro" ng-show="erros && !cadastrarUsuario.endereco.$valid">Endereço é Obrigatório</span> 
 					
 					<label class="item item-input cadastroPadrao"  ng-show="usuarioEdit.perfil_id == 1"> 
 						<input type="text" placeholder="Informe sua cidade" name="cidade" ng-model="usuarioEdit.cidade" required>
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.cidade.$valid">Cidade é Obrigatária</span> 
+					<span class="erro" ng-show="erros && !cadastrarUsuario.cidade.$valid">Cidade é Obrigatória</span> 
 					
 					<label class="item item-input cadastroPadrao item-select" ng-show="usuarioEdit.perfil_id == 1">
 					    <div class="input-label corpadrao">
@@ -138,13 +138,13 @@
 							<option value="TO">TO</option>
 					    </select>
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.uf.$valid">UF é Obrigatário</span> 
+					<span class="erro" ng-show="erros && !cadastrarUsuario.uf.$valid">UF é Obrigatório</span> 
 								
 					<label class="item item-input cadastroPadrao" ng-show="usuarioEdit.perfil_id == 1"> 
 					 	<i class="icon fa fa-phone-square placeholder-icon" style="font-size: 24px"></i> 
 						<input type="text" placeholder="Primeiro contato: (99) 9999-9999" class="ddd_tel" name="contato" ng-model="usuarioEdit.contato" required>
 					</label>
-					<span class="erro" ng-show="erros && !cadastrarUsuario.contato.$valid">Contato é Obrigatário</span>
+					<span class="erro" ng-show="erros && !cadastrarUsuario.contato.$valid">Contato é Obrigatório</span>
 					
 					<label class="item item-input cadastroPadrao" ng-show="usuarioEdit.perfil_id == 1"> 
 						<i class="icon fa fa-phone-square placeholder-icon" style="font-size: 24px"></i> 
