@@ -20,9 +20,18 @@ app.run(function ($rootScope, $compile, $state, $ionicPlatform, $ionicHistory, $
         }
         
         if(!ionic.Platform.is('browser')) {
-        	 var notificationOpenedCallback = function(jsonData) {
-        	    console.log('Alberto - notificationOpenedCallback: ' + JSON.stringify(jsonData));
-        	  };
+        	  var notificationOpenedCallback = function(jsonData) {
+          	    console.log('Alberto - notificationOpenedCallback: ' + JSON.stringify(jsonData));
+          	    if(jsonData.notification.payload.additionalData.acao != undefined){
+          	    	console.log(jsonData.notification.payload.additionalData);
+          	    	// 	Redirecionando para a ação informada
+          	    	if(jsonData.notification.payload.additionalData.parametros != undefined){
+          	    		$state.go(jsonData.notification.payload.additionalData.acao, jsonData.notification.payload.additionalData.parametros);
+          	    	}else{
+          	    		$state.go(jsonData.notification.payload.additionalData.acao);
+          	    	}
+          	    }
+          	  };
 
         	  window.plugins.OneSignal
         	    .startInit(Constantes.APP_ID)
