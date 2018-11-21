@@ -154,24 +154,29 @@
 		 $scope.confirmarCadastro();
 	 }
 
+	 $scope.listaCidade = [];
 	 $scope.estadoEscolhido = function() {
 		$scope.carregando();
 		// Postando para URL
 		$http({
 			method: "GET",
 		    timeout:$scope.timeout,
-		    url: $scope.strUrlServico + Constantes.APP_SERVICE_LISTAR_CIDADE,
+		    url: $scope.strUrlServico + Constantes.APP_SERVICE_LISTAR_CIDADE+"?UF="+$scope.loginData.uf,
 		    headers: Util.headers($scope.token)
 		})
 		.then(function(response) {
 			// Disparando ação de load
 			$scope.carregado();
 			 // Validando caso haja um CPF ou Email cadastrado
-			if(response.data.bolRetorno == false){
-				$scope.listaCidade=  response.data.result;
+			if(response.data.bolRetorno == true){
+				$scope.listaCidade =  response.data.result;
 			}
 				
-		}, function(response) {});
+		}, function(response) { // Disparando ação de load
+			$scope.carregado();
+			// Mensagem de erro
+			$scope.falhaCarregamento(response);
+		});
 	};
 	 /*** FIM DA VALIDAÇÃO ***/
 });

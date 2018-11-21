@@ -86,7 +86,7 @@
 					    <div class="input-label corpadrao">
 					      Estado
 					    </div>
-					    <select name="uf" style="min-width: 75%;"  ng-model="loginData.uf">
+					    <select name="uf" style="min-width: 75%;"  ng-model="loginData.uf" ng-change="estadoEscolhido()">
 					        <option value="AC">AC</option>
 							<option value="AL">AL</option>
 							<option value="AM">AM</option>
@@ -118,15 +118,15 @@
 					</label>
 					<span class="erro" ng-show="erros && !cadastrarUsuario.uf.$valid">UF é Obrigatório</span> 
 					
-					<label class="item item-input cadastroPadrao item-select" ng-show="usuarioEdit.perfil_id == 1">
+					<label class="item item-input cadastroPadrao item-select">
 						<div class="input-label corpadrao">
 							Cidade
 						</div>
-						<select name="cidade" style="min-width: 75%;"  ng-model="usuarioEdit.cidade">
+						<select name="cidade" style="min-width: 75%;"  ng-model="loginData.cidade">
 								<option ng-repeat="cidade in listaCidade" value="{{cidade.nome}}" >{{cidade.nome}}</option>
 							</select>
-						</label>
-						<span class="erro" ng-show="erros && !cadastrarUsuario.cidade.$valid">Cidade é Obrigatória</span> 
+					</label>
+					<span class="erro" ng-show="erros && !cadastrarUsuario.cidade.$valid">Cidade é Obrigatória</span> 
 					
 					<label class="item item-input cadastroPadrao "> 
 					 	<i class="icon fa fa-phone-square placeholder-icon" style="font-size: 24px"></i> 
@@ -136,7 +136,7 @@
 					
 					<label class="item item-input cadastroPadrao "> 
 						<i class="icon fa fa-phone-square placeholder-icon" style="font-size: 24px"></i> 
-						<input type="text" placeholder="Segundo contato: (99) 9999-9999" class="ddd_tel" name="contato1" ng-model="loginData.contato1">
+						<input type="text" placeholder="Segundo contato: (99) 9999-9999" class="ddd_tel" name="contato1" ng-model="loginData.contato_dois">
 					</label>
 					
 				</div>

@@ -40,28 +40,43 @@
 		// Mensagem de erro
 		$scope.falhaCarregamento(response);
 	 });
+
+	 // Carregando o usuário
+	 setTimeout(function(){
+		 $scope.carregarUsuario();
+	 }, 2500);
 	 
-	 // Recuperando os dados do usuário
-	 $http({
-			method: "GET",
-		    timeout:$scope.timeout,
-		    url: $scope.strUrlServico + Constantes.APP_SERVICE_RECUPERAR_USUARIO_POR_ID + "?intIdUsuario="+$stateParams.usuarioId,
-		    headers: Util.headers($scope.token)
-	 }).then(function(response) {
-		 	// Disparando ação de load
-			$scope.carregado();
-			 if(response.data.bolRetorno == true){
-				 // Caso encontre o usuário
-				 $scope.usuarioEdit = response.data.result;
-			 }else{
-				var alertPopup = $ionicPopup.alert({
-					title: "Erro",
-					template: "Usuario Não Encontrado"
-				});
-				alertPopup.then(function(res) { });
-				}
-	 }, function(response) {});
-	 
+	 // Cerregando o usuário
+	 $scope.carregarUsuario = function(cidades){
+		 // Recuperando os dados do usuário
+		 $http({
+				method: "GET",
+			    timeout:$scope.timeout,
+			    url: $scope.strUrlServico + Constantes.APP_SERVICE_RECUPERAR_USUARIO_POR_ID + "?intIdUsuario="+$stateParams.usuarioId,
+			    headers: Util.headers($scope.token)
+		 }).then(function(response) {
+			 	// Disparando ação de load
+				$scope.carregado();
+				 if(response.data.bolRetorno == true){
+					 if(cidades == undefined ){
+						 // Disparando ação de load
+						 $scope.carregando();
+						 $scope.estadoEscolhido(response.data.result.uf);
+					 }else{
+						 // Caso encontre o usuário
+						 $scope.usuarioEdit = response.data.result;
+					 }
+
+				 }else{
+					var alertPopup = $ionicPopup.alert({
+						title: "Erro",
+						template: "Usuario Não Encontrado"
+					});
+					alertPopup.then(function(res) { });
+					}
+		 }, function(response) {});
+	 }
+
 	 /*** MÉTODO DE SALVAR OS DADOS ****/
 	 $scope.salvar = function(){
 		// Disparando ação de load
@@ -124,5 +139,31 @@
 		 console.log(errosValidacao)
 	 }
 	 /** FIM MÉTODO PARA VALIDAR AS INFORMAÇOES **/
+	 $scope.listaCidade = [];
+	 $scope.estadoEscolhido = function(uf) {
+		$scope.carregando();
+		// Postando para URL
+		$http({
+			method: "GET",
+		    timeout:$scope.timeout,
+		    url: $scope.strUrlServico + Constantes.APP_SERVICE_LISTAR_CIDADE+"?UF="+((uf != undefined) ? uf : $scope.usuarioEdit.uf),
+		    headers: Util.headers($scope.token)
+		}).then(function(response) {
+			// Disparando ação de load
+			$scope.carregado();
+			 // Validando caso haja um CPF ou Email cadastrado
+			if(response.data.bolRetorno == true){
+				$scope.listaCidade =  response.data.result;
+				if(uf != undefined) $scope.carregarUsuario(true);
+			}
+				
+		}, function(response) { // Disparando ação de load
+			$scope.carregado();
+			// Mensagem de erro
+			$scope.falhaCarregamento(response);
+		});
+	};
+	
+	
 });
 
