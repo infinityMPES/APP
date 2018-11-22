@@ -37,7 +37,7 @@
 			    		<span ng-show="exame.situacao == 0">Pendente</span>
 			    	</li>
 			    	<li ng-show="exame.situacao == 0">
-			    		<b>Média Entrega:</b> {{exame.media}} Dias
+			    		<b>Média Entrega:</b> <div ng-if="{{exame.mediaCalculada}} > 0"> {{exame.mediaCalculada}} Dias</div> <div ng-else>{{exame.media}} Dias</div>  
 			    	</li>
 			    	<li ng-show="exame.situacao == 0">
 			    		<button class="button button-full botaoPadrao" ng-click="confirmarRecebimento(exame.id)" style="font-size: 11px;">
