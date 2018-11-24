@@ -1,0 +1,53 @@
+<ion-view view-title="" class="esqueci-senha-titulo">
+    <ion-nav-title  class="esqueci-senha-titulo">
+        Informações da Notificação
+    </ion-nav-title>
+    <ion-content class="esqueci-senha detalhe">
+        <div class="bar bar-subheader bar-stable static text-center">
+            <strong class="title titulo-icone">
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                <br />
+            </strong>
+        </div>
+        <div class="list list-inset datalhe-notificacao">
+            <div class="item" ng-show="objNotificacao.perfil != undefined">
+                <b>Perfil:</b> {{objNotificacao.perfil}}
+            </div>
+            <div class="item"  ng-show="objNotificacao.cancer != undefined">
+                <b>Cancêr:</b> {{objNotificacao.cancer}}
+            </div>
+            <div class="item" ng-show="objNotificacao.sexo != undefined">
+                <b>Sexo:</b> {{objNotificacao.sexo}}
+            </div>
+            <div class="item" ng-show="objNotificacao.filtro.idade != undefined">
+                <b>Idade Acima De:</b> {{objNotificacao.filtro.idade}}
+            </div>
+            <div class="item" ng-show="objNotificacao.filtro.pep != undefined">
+                <b>Nº PEP:</b> {{objNotificacao.filtro.pep}}
+            </div>
+            <div class="item">
+                <b>Data Envio:</b> {{objNotificacao.data_envio}}
+            </div>
+            <div class="item">
+                <b>Título:</b> {{objNotificacao.titulo}}
+            </div>
+            <div class="item">
+                <b>Mensagem:</b> {{objNotificacao.mensagem}}
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+<style>
+    .bar.bar-header{
+        box-shadow: none !important;
+    }
+    .bar.bar-stable{
+        border: none !important;
+    }
+    .list-inset {
+        border-left: solid 1px #62aaa2 !important;
+    }	
+    .detalhe .list .item{
+        border-bottom: dashed 1px #62aaa2;
+    }
+</style>

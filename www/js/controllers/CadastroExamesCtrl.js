@@ -46,16 +46,10 @@
 	 
 	 $scope.closeConfirmar = function() {
 		 $scope.modal.hide();
-		 $(".disable-user-behavior").show();
-		 $(".has-header").css("top", "44px");
-		 $(".confirmarCadastro").attr("style", "background: #ffffff !important");
 	 };
 	  
 	 $scope.confirmarCadastro = function() {
 		 $scope.modal.show();
-		 $(".confirmarCadastro").attr("style", "background: #62aaa2 !important");
-		 $(".disable-user-behavior").hide();
-		 $(".has-header").css("top", "0px");
 	 };
 
 	 /******* MÉTODO QUE IRÁ CALCULAR O PRAZO****************/
@@ -126,7 +120,7 @@
 			mensagem   = "";
 			if(response.data.bolRetorno == true){
 				bolRetorno = true;
-				mensagem = "Cadastro Realizada Com Sucesso!";
+				mensagem = "Cadastro Realizado Com Sucesso!";
 			}else{
 				mensagem = response.data.strMensagem;
 			}

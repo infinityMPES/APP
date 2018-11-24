@@ -62,6 +62,7 @@ var Constantes = {
 	"APP_SERVICE_NOTIFICACOES_SETAR_LIDA"		: "notificacao/notificacoesLidas",
 	"APP_SERVICE_NOTIFICACOES_PERFIS"			: "notificacao/listaPerfis",
 	"APP_SERVICE_NOTIFICACOES_CANCER"			: "notificacao/listaCancer",
+        "APP_SERVICE_NOTIFICACOES_POR_ID"			: "notificacao/recuperarNotificacaoPorID",
 	/****** FIM MÓDULO DE NOTIFICAÇÕES *******/
 	
 	"APP_SERVICE_INICIO"						: "inicio",

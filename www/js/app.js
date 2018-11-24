@@ -103,17 +103,17 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }
     })
     
-    .state('app.gerenciar-usuario', {
-        url: '/gerenciar-usuario',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/gerenciar-usuarios.html',
-                controller: 'GerenciarUsuariosCtrl'
+        .state('app.gerenciar-usuario', {
+            url: '/gerenciar-usuario',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/gerenciar-usuarios.html',
+                    controller: 'GerenciarUsuariosCtrl'
+                }
             }
-        }
-    })
+        })
     
-    .state('app.editar-usuario', {
+        .state('app.editar-usuario', {
 	    url: '/editar-usuario/:usuarioId',
 	    views: {
 	      'menuContent': {
@@ -123,7 +123,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	    }
 	})
     
-    .state('app.cadastrar-usuario', {
+        .state('app.cadastrar-usuario', {
 	    url: '/cadastrar-usuario',
 	    views: {
 	      'menuContent': {
@@ -192,23 +192,33 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	      }
 	    }
 	})
+        
+        .state('app.detalhe-notificacao', {
+	    url: '/detalhe-notificacao/:notificacaoId',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'templates/detalhe-notificacao.html',
+	        controller: 'DetalheNotificacoesCtrl'
+	      }
+	    }
+	})
     
-    .state('app', {
-        url: '/app',
-        abstract: true,
-        templateUrl: 'templates/menu.html',
-        controller: 'AppCtrl'
-    })
+        .state('app', {
+            url: '/app',
+            abstract: true,
+            templateUrl: 'templates/menu.html',
+            controller: 'AppCtrl'
+        })
 
-    .state('app.lists', {
-        url: '/lists',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/lists.html',
-                controller: 'ListsCtrl'
+        .state('app.lists', {
+            url: '/lists',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/lists.html',
+                    controller: 'ListsCtrl'
+                }
             }
-        }
-    })
+        })
 
     .state('app.ink', {
         url: '/ink',
