@@ -363,18 +363,18 @@ Util.validaData = function(stringData)
  * Método que irá criar a tabela pelos parametros informados
  * 
  */
-Util.montarTabela =  function(idTabela, dados, colunas){
+Util.montarTabela =  function(idTabela, dados, colunas, ordenacao){
 	// Caso a tabela já esteja criada
 	$('#'+idTabela).dataTable().fnClearTable();
 	$('#'+idTabela).dataTable().fnDestroy();
-    
+    console.log(ordenacao)
 	// Iniciando a tabela
     $('#'+idTabela).DataTable({
     	language : {
 	        "decimal":        "",
 	        "emptyTable":     "Desculpe, nenhum registro encontrato",
 	        "info":           "Mostrando _START_ de _END_ of _TOTAL_ registros",
-	        "infoEmpty":      "Showing 0 to 0 of 0 entries",
+	        "infoEmpty":      "Mostrando 0 de 0",
 	        "infoFiltered":   "(filtrado de _MAX_ registros)",
 	        "infoPostFix":    "",
 	        "thousands":      ",",
@@ -400,7 +400,8 @@ Util.montarTabela =  function(idTabela, dados, colunas){
 //	    ],
 	    responsive: true,
         data: dados,
-        "columns": colunas
+        "columns": colunas,
+        order: ((ordenacao != undefined) ? ordenacao : [[ 1, "asc" ]])
     });
 }
 

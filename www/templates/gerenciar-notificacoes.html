@@ -24,7 +24,7 @@
         </div>
 
 
-        <form name="formListarUsuario" id="formListarUsuario" ng-show="!mostrarLista" class="formPadrao formListarUsuario im-wrapper ">
+        <form name="formFiltrarUsuario" id="formListarUsuario" ng-show="!mostrarLista" class="formPadrao formListarUsuario im-wrapper ">
             <div class="list">
 
                 <label class="item item-input cadastroPadrao item-select">
@@ -53,7 +53,7 @@
                         Câncer
                     </div>
                     <select style="min-width: 75%;" name="sexo" ng-model="notificacaoData.cancer_id" multiple="multiple">
-                        <option value="0">Todos Cancers</option>
+                        <option value="0">Todos Cânceres</option>
                         <option ng-repeat="cancer in listaCancer" value="{{cancer.id}}">{{cancer.descricao}}</option>
                     </select>
                 </label>
@@ -75,7 +75,7 @@
             </div>
             <button class="button button-full botaoPadrao" ng-click="pesquisaNotificacao()">Pesquisar</button>
         </form>
-        <form name="formListarUsuario" id="formListarUsuario" ng-show="mostrarLista" class="formPadrao formListarUsuario im-wrapper ">
+        <form name="formListarUsuarioPesquisar" id="formListarUsuario" ng-show="mostrarLista" class="formPadrao formListarUsuario im-wrapper ">
             <div class="list">
                 <label class="item item-input cadastroPadrao "> 
                     <input type="text" placeholder="Data Envio: 99/99/9999" name="data_envio" class="data" ng-model="notificacaoData.data_envio" required>

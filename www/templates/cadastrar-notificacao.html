@@ -9,10 +9,10 @@
             <strong class="title titulo-icone">
                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                 <br />
-                <span class="texto-icone">Enviar Notificação.</span>
+                <span class="texto-icone">Enviar Notificação</span>
             </strong>
         </div>
-        <form name="formListarUsuario" id="formListarUsuario" class="formPadrao formListarUsuario im-wrapper ">
+        <form name="formListarUsuarioCad" id="formListarUsuario" class="formPadrao formListarUsuario im-wrapper ">
             <div class="list">
                 <label class="item item-input cadastroPadrao item-select" ng-show="notificacaoData.perfil_id != undefined">
                     <div class="input-label corpadrao">
@@ -39,7 +39,7 @@
                         Câncer
                     </div>
                     <select style="min-width: 75%;" name="sexo" ng-model="notificacaoData.cancer_id" disabled="disabled" multiple="multiple">
-                        <option value="0">Todos Câncers</option>
+                        <option value="0">Todos Cânceres</option>
                         <option ng-repeat="cancer in listaCancer" value="{{cancer.id}}">{{cancer.descricao}}</option>
                     </select>
                 </label>

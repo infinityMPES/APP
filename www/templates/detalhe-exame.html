@@ -43,6 +43,13 @@
 		    <div class="item">
 				<b>Dias Atraso:</b> {{objExame.dias_atraso}}
 		    </div>
+		    
+		     <div class="item" ng-show="objExame.situacao == 0">
+				<button class="button button-full botaoPadrao" ng-click="confirmarRecebimento(objExame.id)" style="font-size: 11px;">
+	    			Confirmar Recebimento
+	   			</button>
+		    </div>
+		    
 		</div>
     </ion-content>
 </ion-view>

@@ -7,6 +7,8 @@
 	 $scope.carregando();
 	 // ´Mostrando o carregando
 	 $scope.carregando();
+	 // Verificando se o usuário logado é o mesmo que está editando
+	 $scope.bolEdit = false; 
 	 
 	 // Lista de perfis do sistema
 	 $scope.listaPerfis = [];
@@ -58,7 +60,8 @@
 			 	// Disparando ação de load
 				$scope.carregado();
 				 if(response.data.bolRetorno == true){
-					 if(cidades == undefined ){
+					 response.data.result.senha = "";
+					 if(cidades == undefined && response.data.perfil_id ==1){
 						 // Disparando ação de load
 						 $scope.carregando();
 						 $scope.estadoEscolhido(response.data.result.uf);
@@ -66,7 +69,10 @@
 						 // Caso encontre o usuário
 						 $scope.usuarioEdit = response.data.result;
 					 }
-
+					 console.log(response.data.result)
+					 console.log($scope.usuarioEdit)
+					 // Verificando se o usuário que está sendo editado é o mesmo que está logado
+					 $scope.bolEdit = ($scope.usuarioEdit.id == $scope.loginData.id);	
 				 }else{
 					var alertPopup = $ionicPopup.alert({
 						title: "Erro",

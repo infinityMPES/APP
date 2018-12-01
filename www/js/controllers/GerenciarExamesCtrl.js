@@ -87,7 +87,7 @@ app.controller('GerenciarExamesCtrl', function ($scope, $stateParams, ionicMater
 				 // Mostrando a lista de usuários
 				 $scope.mostrarLista = true;
 				 // Criando a tabela
-				 Util.montarTabela('listaExames', listaUsuarios, [{ "data": "nome" , "width" : '50px'},{ "data": "dias_atraso" }]);
+				 Util.montarTabela('listaExames', listaUsuarios, [{ "data": "nome" , "width" : '50px'},{ "data": "dias_atraso" }], [[ 1, "desc"]]);
 			}, function(response) {
 				// Mensagem de erro
 				$scope.falhaCarregamento(response);

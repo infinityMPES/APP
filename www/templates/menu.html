@@ -49,7 +49,9 @@
                    <img src="./img/imagens/icon_menu_gerenciar.png" /> Gerenciar Usuários
                 </ion-item>
                 <!-- FIM Visão Médica -->
-                
+                <ion-item nav-clear menu-close href="#/app/editar-usuario/{{loginData.id}}">
+                   <img src="./img/imagens/icon_menu_perfil.png" /> Minha Conta
+                </ion-item>
                 <ion-item nav-clear menu-close ng-click="sair()">
                    <img src="./img/imagens/icon_menu_sair.png" /> Sair
                 </ion-item>

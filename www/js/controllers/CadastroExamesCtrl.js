@@ -46,10 +46,12 @@
 	 
 	 $scope.closeConfirmar = function() {
 		 $scope.modal.hide();
+		 $scope.removerConfirmacao();
 	 };
 	  
 	 $scope.confirmarCadastro = function() {
 		 $scope.modal.show();
+		 $scope.configurarConfirmacao();
 	 };
 
 	 /******* MÉTODO QUE IRÁ CALCULAR O PRAZO****************/

@@ -29,7 +29,20 @@
 					</label>
 					<span class="erro" ng-show="erros && !cadastrarUsuario.login.$valid">CPF é Obrigatório</span> 
 					
-					<label class="item item-input cadastroPadrao item-select">
+					<label class="item item-input cadastroPadrao" ng-show="bolEdit"> 
+						<i class="icon fa fa-lock placeholder-icon" style="font-size: 24px"></i> 
+						<input type="password" placeholder="Informe seu senha" class="senha" name="senha" ng-model="usuarioEdit.senha" required>
+					</label>
+					<span class="erro" ng-show="erros && !cadastrarUsuario.senha.$valid">Senha é Obrigatória</span>
+					
+					<label class="item item-input cadastroPadrao" ng-show="bolEdit"> 
+						<i class="icon fa fa-lock placeholder-icon" style="font-size: 24px"></i> 
+						<input type="password" placeholder="Confirme seu senha" class="senha" name="confirmacao_senha" ng-model="usuarioEdit.confirmacao_senha" required>
+					</label>
+					<span class="erro" ng-show="erros && !cadastrarUsuario.confirmacao_senha.$valid">Confirmação da Senha é Obrigatória</span> 
+					
+					
+					<label class="item item-input cadastroPadrao item-select" ng-show="!bolEdit">
 					    <div class="input-label corpadrao">
 					      Perfil
 					    </div>

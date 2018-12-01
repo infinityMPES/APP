@@ -71,8 +71,6 @@
 		 
 	 }
 	 
-	 
-	 
 	 /*** MÉTODO DE FAZER CADASTRAR ****/
 	 $scope.cadastrar = function(){
 		 // Disparando ação de load

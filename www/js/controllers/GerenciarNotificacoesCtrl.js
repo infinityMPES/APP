@@ -161,7 +161,7 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
             // Mostrando a lista de usuários
             $scope.mostrarLista = true;
             // Criando a tabela
-            Util.montarTabela('listaNotificacoes', $scope.listaNotificacoes, [{"data": "data_envio"}, {"data": "titulo"}, {"data": "total"}]);
+            Util.montarTabela('listaNotificacoes', $scope.listaNotificacoes, [{"data": "data_envio"}, {"data": "titulo"}, {"data": "total"}], [ 0, "desc" ]);
         }, function (response) {
             // Mensagem de erro
             $scope.falhaCarregamento(response);

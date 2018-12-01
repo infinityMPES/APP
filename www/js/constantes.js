@@ -10,7 +10,7 @@ var Constantes = {
 	"APP_DATABASE_NAME"	 				: "imip_oncologia",
 	"APP_DATABASE_NAME_DISPLAY"			: "Imip Oncologia",
 	"APP_ID"	 						: "08582d2d-8cb3-4ca3-9c3d-b86be7ec5e8b",
-	"APP_VERSAO" 						: "0.1.0",
+	"APP_VERSAO" 						: "0.1.5",
 	
 	// BASE
 	"APP_BASE"	 						: "imip",
@@ -60,9 +60,9 @@ var Constantes = {
 	"APP_SERVICE_NOTIFICACOES_CADASTRAR"		: "notificacao/cadastrarNotificacao",
 	"APP_SERVICE_NOTIFICACOES_FILTRAR"			: "notificacao/filtrarNotificacoes",
 	"APP_SERVICE_NOTIFICACOES_SETAR_LIDA"		: "notificacao/notificacoesLidas",
-	"APP_SERVICE_NOTIFICACOES_PERFIS"			: "notificacao/listaPerfis",
-	"APP_SERVICE_NOTIFICACOES_CANCER"			: "notificacao/listaCancer",
-        "APP_SERVICE_NOTIFICACOES_POR_ID"			: "notificacao/recuperarNotificacaoPorID",
+	"APP_SERVICE_NOTIFICACOES_PERFIS"			: "usuario/listaPerfis",
+	"APP_SERVICE_NOTIFICACOES_CANCER"			: "usuario/listaCancer",
+    "APP_SERVICE_NOTIFICACOES_POR_ID"			: "notificacao/recuperarNotificacaoPorID",
 	/****** FIM MÓDULO DE NOTIFICAÇÕES *******/
 	
 	"APP_SERVICE_INICIO"						: "inicio",

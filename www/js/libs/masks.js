@@ -17,6 +17,20 @@ $(document).ready(function(){
 	              }
 	          }
 	      });
+		
+		$("input:not(.apenasLetras):text").keydown(function (e) {
+			
+			var tecla=(window.event)?event.keyCode:e.which;
+			 console.log(tecla)
+			 if(tecla == 32 || 9) return true;
+			 if((tecla > 47 && tecla < 58)) return true;
+			 if((tecla >= 97 && tecla <= 105)) return true;
+			 if((tecla > 65 && tecla < 90)||(tecla > 97 && tecla < 122)) return true;
+			 else{
+				 if (tecla != 8) return false;
+				 else return true;
+	        }
+	    });
 	},1000);
 	
 });

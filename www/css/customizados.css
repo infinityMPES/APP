@@ -96,8 +96,12 @@ input::placeholder {
 	font-size: 4em !important;
 }
 
-.texto-icone{
-	font-size: 14px !important;
+.texto-icone {
+    font-size: 0.8em !important;
+    word-break: break-word;
+    white-space: normal !important;
+    display: block;
+    line-height: initial;
 }
 
 .formPadrao{
