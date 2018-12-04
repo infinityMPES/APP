@@ -92,7 +92,7 @@
 			method: "POST",
 		    timeout:$scope.timeout,
 		    data: 'dadosUsuario=' + JSON.stringify($scope.usuarioEdit),
-		    url: $scope.strUrlServico + Constantes.APP_SERVICE_EDITAR_USUARIO,
+		    url: $scope.strUrlServico + Constantes.APP_SERVICE_EDITAR_USUARIO +"?validarSenha="+$scope.bolEdit,
 		    headers: Util.headers($scope.token)
 		})
 		.then(function(response) {

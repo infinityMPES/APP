@@ -125,6 +125,7 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
     
     $scope.sair = function (){
     	$scope.loginData = {};
+		$scope.configurarConfirmacao();
     	$scope.goTo('app.login');
     	$scope.configurarConfirmacao();
     }

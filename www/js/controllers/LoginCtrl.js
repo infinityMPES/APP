@@ -143,4 +143,9 @@
 		 }
 	 }
 	 /*** FIM MÉTODO SOLICITAR SENHA ***/
+	 $scope.configurarTopo = function(){
+		 setTimeout(function(){
+			 $scope.configurarConfirmacao();
+		 }, 500);
+	 }
 });

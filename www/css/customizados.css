@@ -20,7 +20,9 @@ GERAIS
 	background: #62aaa2 !important;
 	border-top: dashed 1px white;
 }
-
+.esconder-informacao{
+	display: none;
+}
 .avatar{
 	border-radius: 0%!important;
 }
@@ -315,6 +317,8 @@ a.botoes-inicios i.fa {
 
 .notificacao h2{
 	font-size: 20px;
+	overflow: inherit;
+    white-space: normal;
 }
 
 .notificacao p {
