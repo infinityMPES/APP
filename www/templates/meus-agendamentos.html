@@ -1,0 +1,43 @@
+<ion-view view-title="" class="esqueci-senha-titulo meus-agendamentos">
+	<ion-nav-title  class="esqueci-senha-titulo">
+		Minhas Consultas
+    </ion-nav-title>
+    <ion-content class="esqueci-senha">
+        <div class="bar bar-subheader bar-stable static text-center">
+            <strong class="title titulo-icone meus-agendamentos">
+            	<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+            	<br />
+            	<a class="btAdicionar links" href="#/app/cadastrar-agendamento"><img src="./img/imagens/button_add.png" /></a>
+           	</strong>
+        </div>
+		<div class="list agendamentos">
+			  <div class="item item-icon-left" ng-repeat="agendamento in listaAgendamento">
+			  	<i ng-show="agendamento.aceito == 2" class="icon fa fa-exclamation-triangle" aria-hidden="true" style="color: red"></i>
+			    <i ng-show="agendamento.aceito == 1" class="icon fa fa-check-circle-o" aria-hidden="true" style="color: #62aaa2"></i>
+			    <i ng-show="agendamento.aceito == 0" class="icon fa fa-clock-o" aria-hidden="true" style="color: yellow;"></i>
+			    <ul class="">
+			    	<li>
+			    		<b>Área:</b> {{agendamento.area}}
+			    	</li>
+			    	<li>
+			    		<b>Data da Consulta:</b> {{agendamento.data_solicitada}}
+			    	</li>
+			    	<li>
+			    		<b>Situação:</b>
+			    		<span ng-show="agendamento.aceito == 2">Recusado</span> 
+			    		<span ng-show="agendamento.aceito == 1">Aceito</span>
+			    		<span ng-show="agendamento.aceito == 0">Pendente</span>
+			    	</li>
+			    </ul>
+			  </div>
+		</div>
+    </ion-content>
+</ion-view>
+<style>
+	.bar.bar-header{
+	    box-shadow: none !important;
+	}
+	.bar.bar-stable{
+		border: none !important;
+	}
+</style>

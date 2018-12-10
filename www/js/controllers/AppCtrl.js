@@ -11,6 +11,8 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
        $scope.banco = (Constantes.APP_SERVICE == "http://conexaovidaimip.com.br/dev/") ? "DEV": "Teste";
        $scope.mostrarBanco = 1;
     }
+    
+   $scope.loginData = {"id":"112","perfil_id":"1","nome":"Karine Henrique da Silva","numero_pep":"123kb","contato":"(81) 99596-8432","sexo":"2","email":"karinehenrique23@gmail.com","login":"06662460419","cancer_id":"38","ultimo_acesso":"2018-12-09 14:09:14","strCpf":"06662460419"}
 
     var navIcons = document.getElementsByClassName('ion-navicon');
     for (var i = 0; i < navIcons.length; i++) {

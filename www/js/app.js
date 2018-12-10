@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('starter', ['ionic', 'ionic-material']);
+var app = angular.module('starter', ['ionic', 'ionic-material', '720kb.datepicker']);
 //Essa vari�vel ir� conter as informa��es necess�rias dos ids do app no onesignal
 var idsOnesignal = {};
 
@@ -193,7 +193,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	    }
 	})
         
-        .state('app.detalhe-notificacao', {
+    .state('app.detalhe-notificacao', {
 	    url: '/detalhe-notificacao/:notificacaoId',
 	    views: {
 	      'menuContent': {
@@ -202,13 +202,33 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	      }
 	    }
 	})
+	
+	.state('app.cadastrar-agendamento', {
+	    url: '/cadastrar-agendamento',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'templates/cadastrar-agendamento.html',
+	        controller: 'CadastroAgendamentoCtrl'
+	      }
+	    }
+	})
+	
+	.state('app.meus-agendamentos', {
+	    url: '/meus-agendamentos',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'templates/meus-agendamentos.html',
+	        controller: 'MeusAgendamentosCtrl'
+	      }
+	    }
+	})
     
-        .state('app', {
-            url: '/app',
-            abstract: true,
-            templateUrl: 'templates/menu.html',
-            controller: 'AppCtrl'
-        })
+    .state('app', {
+        url: '/app',
+        abstract: true,
+        templateUrl: 'templates/menu.html',
+        controller: 'AppCtrl'
+    })
 
         .state('app.lists', {
             url: '/lists',

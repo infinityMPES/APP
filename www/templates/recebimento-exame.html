@@ -14,11 +14,12 @@
         </div>
         <form name="formCadastroExame" id="formCadastroExame" class="formPadrao cadastroUsuario im-wrapper ">
 			<div class="list">
-				<label class="item item-input cadastroPadrao "> 
-					<input type="text" placeholder="Previsão da Entrega Exame: 99/99/9999" name="data_recebimento" class="data" ng-model="exameData.data_recebimento" required>
+				<label class="item item-input cadastroPadrao  item-stacked-label"> 
+					<span class="input-label">Data Recebimento Exame:</span>
+					<input type="date" ng-change="formatDate()" data-date-format="DD/MM/YYYY" placeholder="Data Recebimento Exame: 99/99/9999" name="data_recebimento" ng-model="exameData.data_recebimento_form" required>
+					<input type="hidden" ng-model="exameData.data_recebimento" />
 					<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
 				</label>
-				<span class="erro" ng-show="formCadastroExame.data_recebimento.$valid">Data Previsão Exame é Obrigatória</span> 
 			</div>
 			<div class="row">
 				<div class="col col-100">

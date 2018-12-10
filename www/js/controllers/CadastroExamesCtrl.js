@@ -1,4 +1,4 @@
-﻿app.controller('CadastroExamesCtrl', function ($scope, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal) {
+﻿app.controller('CadastroExamesCtrl', function ($scope, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal, $filter) {
 	 // Verificando se o usuário está logado
 	 $scope.usuarioLogado(true);
 	 
@@ -20,6 +20,17 @@
 		 	// Mensagem de erro
 			$scope.falhaCarregamento(response);
 	 });
+	 
+	 /**
+	  * Método que irá formatar a data
+	  */
+	 $scope.formatDate = function() {
+		 if($scope.exameData.data_exame_form != undefined && $scope.exameData.data_exame_form != "")
+			 $scope.exameData.data_exame = $filter('date')($scope.exameData.data_exame_form, "dd/MM/yyyy");
+		 
+		 if($scope.exameData.data_previsao_form != undefined && $scope.exameData.data_previsao_form != "")
+			 $scope.exameData.data_previsao = $filter('date')($scope.exameData.data_previsao_form, "dd/MM/yyyy");
+	 }
 	 
 	 // Lista de tipo de exames
 	 $scope.listaTipoExames = [];
@@ -132,13 +143,12 @@
 				template: mensagem
 			});
 			alertPopup.then(function(res) { });
-			
+			$scope.closeConfirmar();
 			// Redirecionando para o inicio
 			setTimeout(function(){
 				// Redirecionado para o inicio
 				if(bolRetorno){
 					$scope.exameData = {};
-					$scope.closeConfirmar();
 				}
 			}, 1500);
 		}, function(response) {

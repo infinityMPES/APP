@@ -1,0 +1,57 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeConfirmar()">Fechar</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="confirmarCadastro">
+  		<div class="bar bar-subheader bar-stable static text-center">
+            <strong class="title titulo-icone">
+            	<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+            	<br />
+            	<span class="texto-icone">Confira seus dados antes de enviar.</span>
+           	</strong>
+        </div>
+        <form name="cadastrarUsuario" id="formCadastroExame" class="formPadrao cadastroUsuario im-wrapper ">
+			<div class="list">
+				<label class="item item-input cadastroPadrao item-select">
+				    <div class="input-label corpadrao">
+				    	Área da Consulta:
+				    </div>
+				    <select disabled="disabled" style=" width: 45%;" name="sexo" ng-model="agendamentoData.area_id">
+				      <option ng-repeat="area in listaAreas" value="{{area.id}}">{{area.descricao}}</option>
+				    </select>
+				</label>
+				<label class="item item-input cadastroPadrao"> 
+					<input readonly="readonly"  ng-model="agendamentoData.data_solicitada" placeholder="Data Soliciata 99/99/9999" 
+						   name="data_solicitada" class="data" required type="text"  />
+					<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
+				</label>
+				<span class="erro" ng-show="erros && !cadastrarUsuario.data_solicitada.$valid">Data Solicitada é obrigatória</span> 
+				<label class="item item-input cadastroPadrao"> 
+                    <i class="icon fa fa-file-text" style="font-size: 24px; margin-right: 8px;"></i> 
+                    <textarea rows="5" cols="10" class="corpo" readonly="readonly" maxlength="144" name="descricao" placeholder="Descreva o motivo da sua solicitação" ng-model="agendamentoData.descricao" ></textarea>
+                </label>
+                <span class="erro" ng-show="erros && !cadastrarUsuario.descricao.$valid">Motivo é obrigatório</span> 
+			</div>
+			<div class="row">
+				<div class="col col-100">
+					<button class="button button-full botaoPadrao" ng-click="salvar()">Cadastrar</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-100">
+					<button class="button button-full button-light" ng-click="closeConfirmar()">Cancelar</button>
+				</div>
+			</div>
+		</form>
+    </ion-content>
+</ion-modal-view>
+<style>
+	.bar.bar-header{
+	    box-shadow: none !important;
+	}
+	.bar.bar-stable{
+		border: none !important;
+	}
+</style>

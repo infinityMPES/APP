@@ -1,4 +1,4 @@
-﻿app.controller('MeusExamesCtrl', function ($scope, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal) {
+﻿app.controller('MeusExamesCtrl', function ($scope, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal, $filter) {
 	 // Verificando se o usuário está logado
 	 $scope.exameData = {};
 	 // Disparando ação de load
@@ -6,6 +6,14 @@
 	 // Lista de exames
 	 $scope.listaExames = [];
 	 $scope.exame_id = 0;
+	 
+	 /**
+	  * Método que irá formatar a data
+	  */
+	 $scope.formatDate = function() {
+		 console.log("oi");
+		 $scope.exameData.data_recebimento = $filter('date')($scope.exameData.data_recebimento_form, "dd/MM/yyyy");
+	 }
 	 
 	 /** Método que irá recuperar os exames da base **/
 	 $scope.carregarExames = function(){

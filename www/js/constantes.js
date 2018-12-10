@@ -10,7 +10,7 @@ var Constantes = {
 	"APP_DATABASE_NAME"	 				: "imip_oncologia",
 	"APP_DATABASE_NAME_DISPLAY"			: "Imip Oncologia",
 	"APP_ID"	 						: "08582d2d-8cb3-4ca3-9c3d-b86be7ec5e8b",
-	"APP_VERSAO" 						: "0.1.6",
+	"APP_VERSAO" 						: "0.1.7",
 	
 	// BASE
 	"APP_BASE"	 						: "imip",
@@ -21,8 +21,8 @@ var Constantes = {
 //	"APP_SERVICE"						: "http://conexaovidaimip.com.br/teste/",
 //	"APP_SERVICE"						: "http://localhost/imip/ws-imip-dois/ws/",
 	
-	"APP_MSG_ERROR"						: "<center><span class='icon ion-android-alert' style='font-size:35px'></span><br>Ops...<br>Sem Conex�o!</center>",
-	"APP_MSG_TIMEOUT"					: "<center><span class='icon ion-android-alert' style='font-size:35px'></span><br>Ops...<br>Sem Conex�o!</center>",
+	"APP_MSG_ERROR"						: "<center><span class='icon ion-android-alert' style='font-size:35px'></span><br>Ops...<br>Sem Conexão!</center>",
+	"APP_MSG_TIMEOUT"					: "<center><span class='icon ion-android-alert' style='font-size:35px'></span><br>Ops...<br>Sem Conexão!</center>",
 	
 	// SERVICOS
 	/****** MÓDULO USUÁRIO ********/
@@ -64,6 +64,12 @@ var Constantes = {
 	"APP_SERVICE_NOTIFICACOES_CANCER"			: "usuario/listaCancer",
     "APP_SERVICE_NOTIFICACOES_POR_ID"			: "notificacao/recuperarNotificacaoPorID",
 	/****** FIM MÓDULO DE NOTIFICAÇÕES *******/
+    
+    /****** MÓDULO DE AGENDAMENTO *******/
+	"APP_SERVICE_AGENDAMENTO_LISTAR_USUARIO"	: "consulta/listarAgendamentosDoUsuarioPorId",
+	"APP_SERVICE_AGENDAMENTO_CADASTRAR"			: "consulta/cadastrarAgendamento",
+	
+	/****** FIM MÓDULO DE AGENDAMENTO *******/
 	
 	"APP_SERVICE_INICIO"						: "inicio",
 	"APP_SERVICE_PARAMETRO"						: "parametro",

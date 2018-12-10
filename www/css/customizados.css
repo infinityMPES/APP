@@ -148,6 +148,40 @@ table.dataTable td {
   white-space: normal !important;
 }
 
+.ui-widget-header {
+    background: #62aaa2 !important;
+    color: #ffffff !important;
+}
+
+datepicker input{
+	width: 87%;
+	float: left;
+	border-bottom: solid 1px #62aaa2 !important;
+}
+datepicker i.fa{
+	float: right;
+}
+
+._720kb-datepicker-calendar-header{
+	background: #62aaa2 !important;
+}
+
+input[type="date"]{
+	width: 85%;
+    float: left;
+}
+
+.item-input .fa-calendar{
+	float: right;
+}
+.item-input .input-label{
+	color: #62aaa2 !important;
+}
+
+.item-input .fa{
+	color:#62aaa2 !important;
+}
+
 /** ESTILO DA HOME **/
 [nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
     background: #62aaa2 !important;
@@ -374,3 +408,13 @@ a.botoes-inicios i.fa {
     word-break: break-word;
     white-space: normal !important;
  }
+ 
+ /** AGENDAMENTOS **/
+.agendamentos .item.item-icon-left {
+    border-bottom: dashed 1px #62aaa2;
+}
+.cadastroConsulta .descricao{
+    border: solid 1px #62aaa2;
+}
+
+ /** AGENDAMENTO **/

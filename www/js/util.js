@@ -570,6 +570,27 @@ Util.validarCamposExames = function(exameData){
 		 strMensagem += "Data Previsão é obrigatória";
 		 bolErros = true;	
 	 }
+	 return {strMensagem : strMensagem, bolErros : bolErros};
+}
+
+Util.validarCamposAgendamento = function(exameData){
+	 bolErros = false;	
+	 strMensagem = "";
 	 
+	 if(exameData.area_id == undefined || exameData.area_id == ""){
+		 strMensagem += "Área é obrigatória";
+		 bolErros = true;	
+	 }
+	 
+	 
+	 if(exameData.data_solicitada == undefined || exameData.data_solicitada == ""){
+		 strMensagem += "Data é obrigatória";
+		 bolErros = true;	
+	 }
+	 
+	 if(exameData.descricao == undefined || exameData.descricao == ""){
+		 strMensagem += "Motivo é obrigatório";
+		 bolErros = true;	
+	 }
 	 return {strMensagem : strMensagem, bolErros : bolErros};
 }

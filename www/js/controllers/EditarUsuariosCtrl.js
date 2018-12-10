@@ -9,7 +9,7 @@
 	 $scope.carregando();
 	 // Verificando se o usuário logado é o mesmo que está editando
 	 $scope.bolEdit = false; 
-	 
+	 $scope.listaCidade = [];
 	 // Lista de perfis do sistema
 	 $scope.listaPerfis = [];
 	 // Buscando os perfis cadastrados na base
@@ -61,7 +61,9 @@
 				$scope.carregado();
 				 if(response.data.bolRetorno == true){
 					 response.data.result.senha = "";
-					 if(cidades == undefined && response.data.perfil_id ==1){
+					 console.log($scope.listaCidade)
+					 console.log(response.data.result.perfil_id ==1)
+					 if(cidades == undefined && response.data.result.perfil_id ==1){
 						 // Disparando ação de load
 						 $scope.carregando();
 						 $scope.estadoEscolhido(response.data.result.uf);
@@ -69,8 +71,6 @@
 						 // Caso encontre o usuário
 						 $scope.usuarioEdit = response.data.result;
 					 }
-					 console.log(response.data.result)
-					 console.log($scope.usuarioEdit)
 					 // Verificando se o usuário que está sendo editado é o mesmo que está logado
 					 $scope.bolEdit = ($scope.usuarioEdit.id == $scope.loginData.id);	
 				 }else{
@@ -145,7 +145,6 @@
 		 console.log(errosValidacao)
 	 }
 	 /** FIM MÉTODO PARA VALIDAR AS INFORMAÇOES **/
-	 $scope.listaCidade = [];
 	 $scope.estadoEscolhido = function(uf) {
 		$scope.carregando();
 		// Postando para URL

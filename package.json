@@ -1,5 +1,5 @@
 {
-  "name": "Conexão Vida",
+  "name": "Conexao_Vida",
   "version": "0.0.1",
   "description": "Aplicativo para promover melhor comunicação entre o IMIP e os Pacientes",
   "devDependencies": {
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@ionic-native/onesignal": "^4.16.0",
+    "angularjs-datepicker": "^2.1.23",
     "cordova-android": "^6.2.3",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
