@@ -1,6 +1,6 @@
 <?xml version="2.0" encoding="UTF-8" standalone="yes"?>
 <widget id="io.ionic.conecao-vida" version="0.1.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Conexão_Vida</name>
+  <name>Conexão Vida</name>
   <description>Aplicativo de comunicação entre paciente pacientes e equipe do IMIP (Conexão Vida - IMIP)</description>
   <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
   <content src="index.html"/>

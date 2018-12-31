@@ -1,0 +1,81 @@
+<ion-view view-title="" class="esqueci-senha-titulo">
+    <ion-nav-title  class="esqueci-senha-titulo">
+        Agendar Consulta
+    </ion-nav-title>
+    <ion-content class="esqueci-senha detalhe">
+        <div class="bar bar-subheader bar-stable static text-center">
+            <strong class="title titulo-icone">
+                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                <br />
+                <span class="texto-icone">Confira os dados para marcar ou recusa o agendamento.</span>
+            </strong>
+        </div>
+        <div class="list list-inset datalhe-notificacao">
+        	<div class="item ng-binding">
+                <b>Responsavel:</b> 
+                <span ng-show="objAgendamento.responsavel != null">
+                	{{objAgendamento.responsavel}}
+                </span>
+                <span ng-show="objAgendamento.responsavel == null">
+                	Não há responsável para esse agendamento
+                </span>
+            </div>
+            <div class="item">
+                <b>Nome:</b> {{objAgendamento.nome}}
+            </div>
+            <div class="item">
+                <b>Pep:</b> {{objAgendamento.numero_pep}} 
+            </div>
+            <div class="item" >
+                <b>Área:</b> {{objAgendamento.area}}
+            </div>
+            <div class="item" >
+                <b>Data Soliciata:</b> {{objAgendamento.data_solicitada}}
+            </div>
+            <div class="item" >
+                <b>Motivo da consulta:</b> {{objAgendamento.descricao}}
+            </div>
+            <div class="item ng-binding">
+                <b>Data Agendada:</b> 
+                <span ng-show="objAgendamento.data_confirmada != null">
+                	{{objAgendamento.data_confirmada}}
+                </span>
+                <span ng-show="objAgendamento.data_confirmada == null">
+                	Não Houve Agendamento
+                </span>                
+            </div>
+            <div class="item">
+                <b>Situação:</b> {{objAgendamento.situacao}}
+            </div>
+            <div class="item" ng-show="objAgendamento.aceito == 0 && objAgendamento.usuario_responsavel == null">
+				<button class="button button-full botaoPadrao" ng-click="selecionarAgendamento(objAgendamento.id)" style="font-size: 11px;">
+	    			Selecionar Agendamento
+	   			</button>
+		    </div>
+		    <div class="item" ng-show="objAgendamento.usuario_responsavel != null && objAgendamento.aceito == 0">
+				<button class="button button-full botaoPadrao" ng-click="marcarAgendamento(objAgendamento.id)" style="font-size: 11px;">
+	    			Marcar Agendamento
+	   			</button>
+		    </div>
+		    <div class="item" ng-show="objAgendamento.aceito == 0">
+				<button class="button button-full button-assertive" ng-click="recusarAgendamento(objAgendamento.id)" style="font-size: 11px;">
+	    			Recusar Agendamento
+	   			</button>
+		    </div>
+        </div>
+    </ion-content>
+</ion-view>
+<style>
+    .bar.bar-header{
+        box-shadow: none !important;
+    }
+    .bar.bar-stable{
+        border: none !important;
+    }
+    .list-inset {
+        border-left: solid 1px #62aaa2 !important;
+    }	
+    .detalhe .list .item{
+        border-bottom: dashed 1px #62aaa2;
+    }
+</style>

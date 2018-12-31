@@ -1,0 +1,44 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeConfirmar()">Fechar</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="confirmarCadastro">
+        <div class="bar bar-subheader bar-stable static text-center">
+            <strong class="title titulo-icone">
+            	<i class="fa fa-check" aria-hidden="true"></i>
+            	<br />
+            	<span class="texto-icone">Confira os dados para marcar o agendamento.</span>
+           	</strong>
+        </div>
+        <form name="formCadastroExame" id="formCadastroExame" class="formPadrao cadastroUsuario im-wrapper ">
+			<div class="list">
+				<label class="item item-input cadastroPadrao  item-stacked-label"> 
+					<span class="input-label">Data da Consulta:</span>
+					<input type="date" ng-change="formatDate()" data-date-format="DD/MM/YYYY" placeholder="Data Recebimento Exame: 99/99/9999" name="data_recebimento" ng-model="agendamentoData.data_confirmada_form" required>
+					<input type="hidden" ng-model="agendamentoData.data_confirmada" />
+					<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
+				</label>
+			</div>
+			<div class="row">
+				<div class="col col-100">
+					<button class="button button-full botaoPadrao" ng-click="salvar()">Cadastrar</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-100">
+					<button class="button button-full button-light" ng-click="closeConfirmar()">Cancelar</button>
+				</div>
+			</div>
+		</form>
+    </ion-content>
+</ion-modal-view>
+<style>
+	.bar.bar-header{
+	    box-shadow: none !important;
+	}
+	.bar.bar-stable{
+		border: none !important;
+	}
+</style>

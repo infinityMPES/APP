@@ -69,6 +69,13 @@ var Constantes = {
 	"APP_SERVICE_AGENDAMENTO_LISTAR_USUARIO"	: "consulta/listarAgendamentosDoUsuarioPorId",
 	"APP_SERVICE_AGENDAMENTO_CADASTRAR"			: "consulta/cadastrarAgendamento",
 	
+	"APP_SERVICE_AGENDAMENTO_GERENCIAR"			: "consulta/filtrarAgendamento",
+	"APP_SERVICE_AGENDAMENTO_DETALHE"			: "consulta/recuperarConsultaPorID",	
+	"APP_SERVICE_AGENDAMENTO_RESPONSAVEL"		: "consulta/responsavelAgendamento",
+	"APP_SERVICE_AGENDAMENTO_RECUSAR"			: "consulta/recusarAgendamento",
+	"APP_SERVICE_AGENDAMENTO_CONFIRMAR"			: "consulta/confirmarAgendamento",
+	"APP_SERVICE_AGENDAMENTO_GRAFICO"			: "consulta/filtrarAgendamentoGrafico",
+	
 	/****** FIM MÓDULO DE AGENDAMENTO *******/
 	
 	"APP_SERVICE_INICIO"						: "inicio",

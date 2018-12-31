@@ -1,0 +1,143 @@
+<ion-view view-title="" class="esqueci-senha-titulo">
+	<ion-nav-title  class="esqueci-senha-titulo">
+		Agendar Consultas
+    </ion-nav-title>
+    <ion-content class="contentGerenciarUsuario">
+    	
+        <div class="bar bar-subheader bar-stable static text-center">
+            <strong class="title titulo-icone gerenciarUsuarios">
+            	<i class="fa fa-calendar" aria-hidden="true"></i>
+            	<br />
+           	</strong>
+        </div>
+        
+        <form name="formListarUsuario" id="formListarUsuario" class="formPadrao formListarUsuario im-wrapper ">
+			<div class="list">
+				
+				<label class="item item-input cadastroPadrao item-select">
+				    <div class="input-label corpadrao">
+				      Área:
+				    </div>
+				    <select style="width: 45%;" name="sexo" ng-model="agendamentoData.area_id">
+				      <option ng-repeat="area in listaAreas" value="{{area.id}}">{{area.descricao}}</option>
+				    </select>
+				</label>
+				
+				<label class="item item-input cadastroPadrao"> 
+					<i class="icon fa fa-user placeholder-icon" style="font-size: 24px"></i> 
+					<input type="text" placeholder="Informe nº PEP" class="pep" name="pep" ng-model="agendamentoData.pep" >
+				</label>
+				
+				<label class="item item-input cadastroPadrao item-select">
+				    <div class="input-label corpadrao">
+				      Situação:
+				    </div>
+				    <select style="width: 45%;" name="sexo" ng-model="agendamentoData.situacao">
+				      <option value="0" selected="selected">Pendente</option>
+				      <option value="1">Marcado</option>
+				      <option value="2">Rejeitado</option>
+				    </select>
+				</label>
+				
+				<label class="item item-input cadastroPadrao  item-stacked-label"> 
+					<span class="input-label">Data Inicio:</span>
+                    <input type="date" ng-change="formatDate()" data-date-format="DD/MM/YYYY" ng-model="agendamentoData.data_solicitada_inicio_form"  />
+                    <input type="hidden" ng-model="agendamentoData.data_solicitada_inicio" />
+                    <i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i>
+                </label>
+               
+                <label class="item item-input cadastroPadrao  item-stacked-label"> 
+					<span class="input-label">Data Fim:</span>
+                    <input type="date" ng-change="formatDate()" data-date-format="DD/MM/YYYY" ng-model="agendamentoData.data_solicitada_fim_form"  />
+                    <input type="hidden" ng-model="agendamentoData.data_solicitada_fim" />
+                    <i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i>
+                </label>
+			</div>
+			<button class="button button-full botaoPadrao" ng-click="pesquisaExames()">Pesquisar</button>
+		</form>
+		
+		<hr ng-show="mostrarLista" />
+		
+		<div class="listagem" ng-show="mostrarLista">
+			
+			<div class="tabs tabs-balanced tabs-icon-top" style="position: static; margin-bottom: 5px; border-radius: 5px; background: #62aaa2 !important;">
+                <a class="tab-item active lista" href="javascript:void(0)" ng-click="mostarListaF(true)" style="border-right: dashed 1px;" >
+                    <i class="icon fa fa-list-alt"></i> Exames 
+                </a>
+                <a class="tab-item graficos" href="javascript:void(0)" ng-click="mostarListaF(false)">
+                    <i class="icon fa fa-pie-chart"></i> Gráficos
+                </a>
+            </div>
+			<div class="row" ng-show="mostarListaTa">
+				<div class="col col-100">
+					<h3 class="tituloListagem">Consultas Solicitadas</h3>
+				</div>
+			</div>
+			<div class="row" ng-show="mostarListaTa">
+				<div class="col col-100 lista">
+					<table id="listaAgendamento" class="display responsive nowrap" cellspacing="0" width="100%">
+						<thead>
+			            	<tr>
+				                <th width="50%">Nome</th>
+				                <th width="50%">Situação</th>
+				                <th width="50%">Data Consulta</th>
+				            </tr>
+				        </thead>
+				        <tfoot>
+				            <tr>
+				                <th width="50%">Nome</th>
+				                <th width="50%">Situação</th>
+				                <th width="50%">Data Consulta</th>
+				            </tr>
+				        </tfoot>
+					</table>
+				</div>
+			</div>
+			
+			<div class="row" ng-show="!mostarListaTa">
+				<div class="col col-100 ">
+				
+					<div class="tabs tabs-balanced tabs-icon-top" style="position: static; margin-bottom: 5px; border-radius: 5px; background: #62aaa2 !important;">
+		                <a class="tab-item active lista" href="javascript:void(0)" ng-click="mostarGraficoTipo(1)" style="border-right: dashed 1px;" >
+		                    <i class="icon icon-left fa fa-pie-chart"></i> Pizza 
+		                </a>
+		                <a class="tab-item graficos" href="javascript:void(0)" ng-click="mostarGraficoTipo(2)">
+		                    <i class="icon fa fa-bar-chart"></i> Barra
+		                </a>
+		            </div>
+		            
+					<div id="graficoPizza" style="width: 90%; height: 1100px;" ng-show="mostarGrafico == 1">
+						<div id="pizzaPorAreaAgendamento" style="width: 100%; height: 350px;">
+						</div>
+						<hr style="width: 110%;" />
+						<div id="pizzaPorData" style="width: 100%; height: 350px;">
+						</div>
+						<hr style="width: 110%;" />
+						<div id="pizzaPorUsuario" style="width: 100%; height: 350px;">
+						</div>
+					</div>
+					<div id="graficoBarra" style="width: 90%; height: 1100px;" ng-show="mostarGrafico == 2">
+						<div id="barraPorAreaAgendamento" style="width: 100%; height: 350px;">
+						</div>
+						<hr style="width: 110%;" />
+						<div id="barraPorData" style="width: 100%; height: 350px;">
+						</div>
+						<hr style="width: 110%;" />
+						<div id="barraPorUsuario" style="width: 100%; height: 350px;">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    </ion-content>
+</ion-view>
+
+<style>
+	.bar.bar-header{
+	    box-shadow: none !important;
+	}
+	.bar.bar-stable{
+		border: none !important;
+	}
+</style>

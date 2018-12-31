@@ -103,7 +103,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }
     })
     
-        .state('app.gerenciar-usuario', {
+    .state('app.gerenciar-usuario', {
             url: '/gerenciar-usuario',
             views: {
                 'menuContent': {
@@ -111,9 +111,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     controller: 'GerenciarUsuariosCtrl'
                 }
             }
-        })
+    })
     
-        .state('app.editar-usuario', {
+    .state('app.editar-usuario', {
 	    url: '/editar-usuario/:usuarioId',
 	    views: {
 	      'menuContent': {
@@ -123,7 +123,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	    }
 	})
     
-        .state('app.cadastrar-usuario', {
+    .state('app.cadastrar-usuario', {
 	    url: '/cadastrar-usuario',
 	    views: {
 	      'menuContent': {
@@ -222,6 +222,26 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	      }
 	    }
 	})
+	
+	.state('app.gerenciar-agendamento', {
+	    url: '/gerenciar-agendamento',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'templates/gerenciar-agendamento.html',
+	        controller: 'GerenciarAgendamentoCtrl'
+	      }
+	    }
+	})
+	
+	.state('app.detalhe-agendamento', {
+	    url: '/detalhe-agendamento/:agendamentoId',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'templates/detalhe-agendamento.html',
+	        controller: 'DetalheAgendamentoCtrl'
+	      }
+	    }
+	})
     
     .state('app', {
         url: '/app',
@@ -230,7 +250,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'AppCtrl'
     })
 
-        .state('app.lists', {
+    .state('app.lists', {
             url: '/lists',
             views: {
                 'menuContent': {
