@@ -3,11 +3,15 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('starter', ['ionic', 'ionic-material', '720kb.datepicker']);
+var app = angular.module('starter', ['ionic', 'ionic-material', '720kb.datepicker', 'ngCordova']);
 //Essa vari�vel ir� conter as informa��es necess�rias dos ids do app no onesignal
 var idsOnesignal = {};
+var db = null;
+var jsonData = {};
+//Login do Usuário
+var loginData = null;
 
-app.run(function ($rootScope, $compile, $state, $ionicPlatform, $ionicHistory, $ionicPopup, $http) {
+app.run(function ($rootScope, $compile, $state, $ionicPlatform, $ionicHistory, $ionicPopup, $http, $cordovaSQLite) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -19,17 +23,29 @@ app.run(function ($rootScope, $compile, $state, $ionicPlatform, $ionicHistory, $
             StatusBar.styleDefault();
         }
         
+        var limparIntervalo = function (intervalo) {
+            clearInterval(intervalo);
+        };
+        
         if(!ionic.Platform.is('browser')) {
         	  var notificationOpenedCallback = function(jsonData) {
           	    console.log('Alberto - notificationOpenedCallback: ' + JSON.stringify(jsonData));
           	    if(jsonData.notification.payload.additionalData.acao != undefined){
           	    	console.log(jsonData.notification.payload.additionalData);
-          	    	// 	Redirecionando para a ação informada
-          	    	if(jsonData.notification.payload.additionalData.parametros != undefined){
-          	    		$state.go(jsonData.notification.payload.additionalData.acao, jsonData.notification.payload.additionalData.parametros);
-          	    	}else{
-          	    		$state.go(jsonData.notification.payload.additionalData.acao);
-          	    	}
+          	    	// iniciando os intervalos
+          	    	 var intervalo = setInterval(function(){
+          	    		 // caso o usuário tenha sido informado
+          	    		 if(loginData != null){
+          	    			if(jsonData.notification.payload.additionalData.parametros != undefined){
+                  	    		$state.go(jsonData.notification.payload.additionalData.acao, jsonData.notification.payload.additionalData.parametros);
+                  	    	}else{
+                  	    		$state.go(jsonData.notification.payload.additionalData.acao);
+                  	    	}
+          	    			limparIntervalo(intervalo);
+          	    		 }else{
+          	    			console.log(loginData);
+          	    		 }
+          	        }, 500);
           	    }
           	  };
 
@@ -239,6 +255,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	      'menuContent': {
 	        templateUrl: 'templates/detalhe-agendamento.html',
 	        controller: 'DetalheAgendamentoCtrl'
+	      }
+	    }
+	})
+	
+	.state('app.servicos-imip', {
+	    url: '/servicos-imip',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'templates/servicos-imip.html',
+	        controller: 'ServicosImipCtrl'
 	      }
 	    }
 	})

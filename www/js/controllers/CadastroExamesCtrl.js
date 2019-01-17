@@ -157,7 +157,7 @@
 			$scope.carregado();
 			
 			// Mensagem de erro
-			$scope.falhaCarregamento(response);
+			$scope.falhaCarregamento(response, true);
 		});
 	 }
 	 /*** FIM MÉTODO SALVAR OS DADOS ***/

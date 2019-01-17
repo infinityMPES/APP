@@ -120,7 +120,6 @@ google.charts.setOnLoadCallback(graficoPizzaAgendamento);
  * @returns {Boolean}
  */
 function graficoPizzaAgendamento() {
-	console.log(totaisGrafico)
 	if(totaisGrafico.length == 0) return false;
 	dados = [['Area', 'Total']];
 	for(var intChave = 0; intChave<totaisGrafico.arrAgendamentoPorAera.length; intChave++){
@@ -188,7 +187,6 @@ google.charts.setOnLoadCallback(graficoBarraAgendamento);
  */
 function graficoBarraAgendamento() {
 	
-	console.log(totaisGrafico)
 	if(totaisGrafico.length == 0) return false;
 	dados = [['Area', 'Total']];
 	for(var intChave = 0; intChave<totaisGrafico.arrAgendamentoPorAera.length; intChave++){
@@ -196,7 +194,6 @@ function graficoBarraAgendamento() {
 		valor[1] *= 1;  
 		dados.push(valor);
 	}
-	console.log(dados)
 	var data = google.visualization.arrayToDataTable(dados);
 	var options = {
 	    title: 'Agendamentos Por Área',

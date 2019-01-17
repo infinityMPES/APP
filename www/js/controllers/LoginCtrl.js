@@ -52,16 +52,10 @@
 					alertPopup.then(function(res) {
 					});
 				}else if(response.data.result != null && response.data.result != undefined){
-					$scope.setLogin(response.data.result);
-					var alertPopup = $ionicPopup.alert({
-						title: 'Sucesso',
-						template: 'Aguarde, você sera redirecionado!'
-					});
-					alertPopup.then(function(res) {
-					});
-					$scope.removerConfirmacao();
-					// Redirecionado para o inicio
-					$scope.goTo("app.inicio");
+					// Setando o login
+					$scope.setLogin(response.data.result, true);
+					// Redirecionando e informando
+					$scope.redirecionamentoLogin(true);
 				}
 				 
 			}, function(response) {
