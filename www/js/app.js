@@ -146,6 +146,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
     
     .state('app.editar-usuario', {
+    	cache: false,
 	    url: '/editar-usuario/:usuarioId',
 	    views: {
 	      'menuContent': {
@@ -156,6 +157,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	})
     
     .state('app.cadastrar-usuario', {
+    	
 	    url: '/cadastrar-usuario',
 	    views: {
 	      'menuContent': {
@@ -176,6 +178,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	})
 	
 	.state('app.meus-exames', {
+		cache: false,
 	    url: '/meus-exames',
 	    views: {
 	      'menuContent': {
@@ -186,6 +189,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	})
 	
 	.state('app.acompanhar-exames', {
+		cache: false,
 	    url: '/acompanhar-exames',
 	    views: {
 	      'menuContent': {
@@ -196,6 +200,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	})
 	
 	.state('app.detalhe-exame', {
+		cache: false,
 	    url: '/detalhe-exame/:exameId',
 	    views: {
 	      'menuContent': {
@@ -206,6 +211,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	})
 	
 	.state('app.minhas-notificacoes', {
+		cache: false,
 	    url: '/minhas-notificacoes',
 	    views: {
 	      'menuContent': {
@@ -226,6 +232,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	})
         
     .state('app.detalhe-notificacao', {
+    	cache: false,
 	    url: '/detalhe-notificacao/:notificacaoId',
 	    views: {
 	      'menuContent': {
@@ -246,6 +253,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	})
 	
 	.state('app.meus-agendamentos', {
+		cache: false,
 	    url: '/meus-agendamentos',
 	    views: {
 	      'menuContent': {
@@ -266,6 +274,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	})
 	
 	.state('app.detalhe-agendamento', {
+		cache: false,
 	    url: '/detalhe-agendamento/:agendamentoId',
 	    views: {
 	      'menuContent': {

@@ -259,8 +259,6 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
     }
     
     $scope.falhaCarregamento = function(erro){
-    	console.log(erro.config.data); 
-    	console.log(erro.config.url);
     	$scope.carregado();
     	var alertPopup = $ionicPopup.alert({
 			title: 'Erro',

@@ -61,8 +61,6 @@
 				$scope.carregado();
 				 if(response.data.bolRetorno == true){
 					 response.data.result.senha = "";
-					 console.log($scope.listaCidade)
-					 console.log(response.data.result.perfil_id ==1)
 					 if(cidades == undefined && response.data.result.perfil_id ==1){
 						 // Disparando ação de load
 						 $scope.carregando();
@@ -113,9 +111,10 @@
 			});
 			alertPopup.then(function(res) { });
 		}, function(response) {
-			console.log(response);
 			// Disparando ação de load
 			$scope.carregado();
+			// Mensagem de erro
+			$scope.falhaCarregamento(response);
 		});
 	 }
 	 /*** FIM MÉTODO SALVAR OS DADOS ***/

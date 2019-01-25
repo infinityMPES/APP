@@ -7,7 +7,6 @@ $(document).ready(function(){
 		definirMascaras()
 		
 		 $('.apenasLetras').keydown(function (e) {
-			 console.log("letras")
 	          if (e.shiftKey || e.ctrlKey || e.altKey) {
 	              e.preventDefault();
 	          } else {

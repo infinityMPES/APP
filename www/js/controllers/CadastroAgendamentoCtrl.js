@@ -22,9 +22,10 @@
 	 $http({
 		method: "GET",
 	    timeout:$scope.timeout,
-	    url: $scope.strUrlServico + Constantes.APP_SERVICE_EXAMES_LISTAR_AREAS + "?todos=false",
+	    url: $scope.strUrlServico + Constantes.APP_SERVICE_EXAMES_LISTAR_AREAS + "?todos=false&agendamento",
 	    headers: Util.headers($scope.token)
 	 }).then(function(response) {
+		 console.log($scope.strUrlServico + Constantes.APP_SERVICE_EXAMES_LISTAR_AREAS + "?todos=false&agendamento");
 		 if(response.data.bolRetorno == true){
 			 $scope.listaAreas = response.data.result;
 		 }
