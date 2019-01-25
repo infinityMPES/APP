@@ -71,6 +71,9 @@
 					 }
 					 // Verificando se o usuário que está sendo editado é o mesmo que está logado
 					 $scope.bolEdit = ($scope.usuarioEdit.id == $scope.loginData.id);	
+					 $scope.notificacaoData.pep = $scope.usuarioEdit.numero_pep;
+					 $scope.notificacaoData.total = 1;
+					 
 				 }else{
 					var alertPopup = $ionicPopup.alert({
 						title: "Erro",

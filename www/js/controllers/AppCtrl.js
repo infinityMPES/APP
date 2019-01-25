@@ -2,14 +2,14 @@ var isOnline = null;
 	
 var isOffline = null;
 
-app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout, $ionicHistory, $state, $ionicLoading, $cordovaSQLite, $ionicPopup, $rootScope, $cordovaNetwork) {
+app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout, $ionicHistory, $state, $ionicLoading, $cordovaSQLite, $ionicPopup, $rootScope, $cordovaNetwork, $http) {
     // Form data for the login modal
     $scope.loginData = {};
     $scope.versaoApp = Constantes.APP_VERSAO;
     $scope.mostrarBanco = 0;
-    if(Constantes.APP_SERVICE == "http://conexaovidaimip.com.br/dev/" 
-       || Constantes.APP_SERVICE == "http://conexaovidaimip.com.br/teste/"){
-       $scope.banco = (Constantes.APP_SERVICE == "http://conexaovidaimip.com.br/dev/") ? "DEV": "Teste";
+    if(Constantes.APP_SERVICE == "https://conexaovidaimip1.websiteseguro.com/dev/" 
+       || Constantes.APP_SERVICE == "https://conexaovidaimip1.websiteseguro.com/teste/"){
+       $scope.banco = (Constantes.APP_SERVICE == "https://conexaovidaimip1.websiteseguro.com/dev/") ? "DEV": "Teste";
        $scope.mostrarBanco = 1;
     }
     
@@ -284,4 +284,66 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
 			 $(".has-header").css("top", "44px");
     	 }, 500);
     }
+    
+    /******** MÓDULO DE NOTIFICAÇÃO ***********/
+    
+    $scope.notificacaoData = {}; // Objeto filtro
+    
+    /** MODAL DE CONFIMAÇÃO **/
+    $ionicModal.fromTemplateUrl('templates/cadastrar-notificacao.html', {
+        scope: $scope
+    }).then(function (modal) {
+        $scope.modal = modal;
+    });
+
+    $scope.closeConfirmarNotificacao = function () {
+        $scope.modal.hide();
+        $scope.removerConfirmacao();
+    };
+
+    $scope.confirmarCadastroNotificacao = function () {
+        $scope.modal.show();
+        $scope.configurarConfirmacao();
+    };
+
+    $scope.enviarNotificacao = function () {
+        // �Mostrando o carregando
+        $scope.carregando();
+        $scope.mostrarLista = false;
+        // Realizando os filtros
+        $http({
+            method: "POST",
+            timeout: $scope.timeout,
+            data: 'dadosNotificacao=' + JSON.stringify($scope.notificacaoData),
+            url: $scope.strUrlServico + Constantes.APP_SERVICE_NOTIFICACOES_CADASTRAR,
+            headers: Util.headers($scope.token)
+        }).then(function (response) {
+            $scope.carregado();
+
+            bolRetorno = false;
+            mensagem = "";
+            if (response.data.bolRetorno == true) {
+                bolRetorno = true;
+                mensagem = "Cadastro Realizado Com Sucesso!";
+                $scope.closeConfirmarNotificacao();
+                $scope.notificacaoData = {}; // Objeto filtro
+            } else {
+                mensagem = response.data.strMensagem;
+            }
+
+            var alertPopup = $ionicPopup.alert({
+                title: (bolRetorno) ? 'Sucesso' : "Erro",
+                template: mensagem
+            });
+            alertPopup.then(function (res) { });
+
+        }, function (response) {
+            // Mensagem de erro
+            $scope.falhaCarregamento(response);
+        });
+
+    }
+    /******* MODAL DE DETALHE ********/
+    
+    /******** MÓDULO DE NOTIFICAÇÃO ***********/
 });

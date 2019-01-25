@@ -3,7 +3,6 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
     $scope.usuarioLogado(true);
 
     $scope.mostrarLista = false; // Flag para mostrar a lista
-    $scope.notificacaoData = {}; // Objeto filtro
 
     $scope.listaIdade = [];
 
@@ -63,7 +62,7 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
                     if (response.data.bolRetorno == true) {
                         $scope.notificacaoData.total = response.data.result[0].total;
                         console.log($scope.notificacaoData.total)
-                        $scope.confirmarCadastro();
+                        $scope.confirmarCadastroNotificacao();
                         $scope.notificacaoData.titulo = "";
                         $scope.notificacaoData.corpo = "";
                     }
@@ -74,62 +73,6 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
                 );
 
     }
-
-    /** MODAL DE CONFIMAÇÃO **/
-    $ionicModal.fromTemplateUrl('templates/cadastrar-notificacao.html', {
-        scope: $scope
-    }).then(function (modal) {
-        $scope.modal = modal;
-    });
-
-    $scope.closeConfirmar = function () {
-        $scope.modal.hide();
-        $scope.removerConfirmacao();
-    };
-
-    $scope.confirmarCadastro = function () {
-        $scope.modal.show();
-        $scope.configurarConfirmacao();
-    };
-
-    $scope.enviarNotificacao = function () {
-        // �Mostrando o carregando
-        $scope.carregando();
-        $scope.mostrarLista = false;
-        // Realizando os filtros
-        $http({
-            method: "POST",
-            timeout: $scope.timeout,
-            data: 'dadosNotificacao=' + JSON.stringify($scope.notificacaoData),
-            url: $scope.strUrlServico + Constantes.APP_SERVICE_NOTIFICACOES_CADASTRAR,
-            headers: Util.headers($scope.token)
-        }).then(function (response) {
-            $scope.carregado();
-
-            bolRetorno = false;
-            mensagem = "";
-            if (response.data.bolRetorno == true) {
-                bolRetorno = true;
-                mensagem = "Cadastro Realizado Com Sucesso!";
-                $scope.closeConfirmar();
-                $scope.notificacaoData = {}; // Objeto filtro
-            } else {
-                mensagem = response.data.strMensagem;
-            }
-
-            var alertPopup = $ionicPopup.alert({
-                title: (bolRetorno) ? 'Sucesso' : "Erro",
-                template: mensagem
-            });
-            alertPopup.then(function (res) { });
-
-        }, function (response) {
-            // Mensagem de erro
-            $scope.falhaCarregamento(response);
-        });
-
-    }
-    /******* MODAL DE DETALHE ********/
 
     /****** filtrar notificações enviadas ****/
     $scope.mostrarLista = false;
