@@ -27,7 +27,23 @@ app.run(function ($rootScope, $compile, $state, $ionicPlatform, $ionicHistory, $
             clearInterval(intervalo);
         };
         
+        
+        
         if(!ionic.Platform.is('browser')) {
+        		
+//        	cordova.plugins.backgroundMode.on('enable', function(){
+//                //your code here, will execute when background tasks is enabled
+//                loop();
+//            });
+//
+//            function loop(){
+//                console.log("service conexão vida");
+//                setTimeout(loop, 1000);
+//            }
+//
+//            cordova.plugins.backgroundMode.enable();
+            
+        	
         	  var notificationOpenedCallback = function(jsonData) {
           	    console.log('Alberto - notificationOpenedCallback: ' + JSON.stringify(jsonData));
           	    if(jsonData.notification.payload.additionalData.acao != undefined){

@@ -4,7 +4,7 @@ var isOffline = null;
 
 app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout, $ionicHistory, $state, $ionicLoading, $cordovaSQLite, $ionicPopup, $rootScope, $cordovaNetwork) {
     // Form data for the login modal
-    $scope.loginData = loginData;
+    $scope.loginData = {};
     $scope.versaoApp = Constantes.APP_VERSAO;
     $scope.mostrarBanco = 0;
     if(Constantes.APP_SERVICE == "http://conexaovidaimip.com.br/dev/" 
@@ -261,7 +261,7 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
     $scope.falhaCarregamento = function(erro){
     	console.log(erro.config.data); 
     	console.log(erro.config.url);
-    	
+    	$scope.carregado();
     	var alertPopup = $ionicPopup.alert({
 			title: 'Erro',
 			template: 'Desculpe, ocorreu algum erro ao realizar essa operação!'

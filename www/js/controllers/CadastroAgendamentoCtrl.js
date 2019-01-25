@@ -22,7 +22,7 @@
 	 $http({
 		method: "GET",
 	    timeout:$scope.timeout,
-	    url: $scope.strUrlServico + Constantes.APP_SERVICE_EXAMES_LISTAR_AREAS,
+	    url: $scope.strUrlServico + Constantes.APP_SERVICE_EXAMES_LISTAR_AREAS + "?todos=false",
 	    headers: Util.headers($scope.token)
 	 }).then(function(response) {
 		 if(response.data.bolRetorno == true){

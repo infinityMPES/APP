@@ -6,7 +6,7 @@
 	 $scope.logar = function(){
 		 // Disparando ação de load
 		 $scope.carregando();
-		 
+		 console.log($scope.loginData);
 		 $scope.erros=false;
 		// Validando campos obrigatórios
 		 if(  

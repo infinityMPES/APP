@@ -373,7 +373,7 @@ Util.montarTabela =  function(idTabela, dados, colunas, ordenacao){
     $('#'+idTabela).DataTable({
     	language : {
 	        "decimal":        "",
-	        "emptyTable":     "Desculpe, nenhum registro encontrato",
+	        "emptyTable":     "Desculpe, nenhum registro encontrado",
 	        "info":           "Mostrando _START_ de _END_ of _TOTAL_ registros",
 	        "infoEmpty":      "Mostrando 0 de 0",
 	        "infoFiltered":   "(filtrado de _MAX_ registros)",

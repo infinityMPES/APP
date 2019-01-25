@@ -10,7 +10,7 @@ var Constantes = {
 	"APP_DATABASE_NAME"	 				: "imip_oncologia",
 	"APP_DATABASE_NAME_DISPLAY"			: "Imip Oncologia",
 	"APP_ID"	 						: "08582d2d-8cb3-4ca3-9c3d-b86be7ec5e8b",
-	"APP_VERSAO" 						: "1.0.0",
+	"APP_VERSAO" 						: "1.0.1",
 	
 	// BASE
 	"APP_BASE"	 						: "imip",
