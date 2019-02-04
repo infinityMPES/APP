@@ -400,6 +400,10 @@ a.botoes-inicios i.fa {
 	border-radius: 5px;
 }
 
+.interacao-notificacao{
+	background: #bff3ed;
+}
+
 .corpo::placeholder {
 	color: white;
 }
@@ -408,6 +412,44 @@ a.botoes-inicios i.fa {
     word-break: break-word;
     white-space: normal !important;
  }
+ 
+.notificacao-equipe:before{
+    width: 0;
+    height: 0;
+    content:"";
+    top:-5px;
+    left:-14px;
+    position:relative;
+    border-style: solid;
+    border-width: 0 13px 13px 0;
+    border-color: transparent #ffffff transparent transparent;            
+}
+
+.notificacao-paciente:after{
+    width: 0;
+    height: 0;
+    content:"";
+    top:-5px;
+    left:14px;
+    position:relative;
+    border-style: solid;
+    border-width: 13px 13px 0 0;
+    border-color: whitesmoke transparent transparent transparent;           
+}
+ .notificacao-paciente {
+ 	background: #62aaa2;
+ 	color: white !important;
+ 	text-align: right !important;
+ }
+ 
+.notificacao-paciente h2, .notificacao-paciente span , .notificacao-paciente p{
+ 	color: white !important;
+	text-align: right !important;
+}
+ 
+.notificacao-paciente i{
+ 	display: none;
+}
  
  /** AGENDAMENTOS **/
 .agendamentos .item.item-icon-left {

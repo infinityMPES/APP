@@ -14,17 +14,20 @@
 
         <div class="row">
             <div class="tabs tabs-balanced tabs-icon-top abasNotificacao" style="position: static; margin-bottom: 5px; border-radius: 5px; background: #62aaa2 !important;">
-                <a class="tab-item lista" ng-class="{'active': mostrarLista == false}" href="javascript:void(0)" ng-click="mostrarBusca(false)" style="border-right: dashed 1px;" >
-                    <i class="icon fa fa-podcast"></i> Cadastrar Notificacao 
+                <a class="tab-item lista" ng-class="{'active': mostrarLista == 1}" href="javascript:void(0)" ng-click="mostrarBusca(1)" style="border-right: dashed 1px;" >
+                    <i class="icon fa fa-podcast"></i> Cadastrar 
                 </a>
-                <a class="tab-item graficos" ng-class="{'active': mostrarLista == true}" href="javascript:void(0)" ng-click="mostrarBusca(true)">
-                    <i class="icon fa fa-search"></i> Buscar Notificações
+                <a class="tab-item graficos" ng-class="{'active': mostrarLista == 2}" href="javascript:void(0)" ng-click="mostrarBusca(2)" style="border-right: dashed 1px;" >
+                    <i class="icon fa fa-search"></i> Buscar
+                </a>
+                <a class="tab-item graficos" ng-class="{'active': mostrarLista == 3}" href="javascript:void(0)" ng-click="mostrarBusca(3)">
+                    <i class="icon fa fa-comment"></i> Responder
                 </a>
             </div>
         </div>
 
 
-        <form name="formFiltrarUsuario" id="formListarUsuario" ng-show="!mostrarLista" class="formPadrao formListarUsuario im-wrapper ">
+        <form name="formFiltrarUsuario" id="formListarUsuario" ng-show="mostrarLista == 1" class="formPadrao formListarUsuario im-wrapper ">
             <div class="list">
 
                 <label class="item item-input cadastroPadrao item-select">
@@ -75,10 +78,10 @@
             </div>
             <button class="button button-full botaoPadrao" ng-click="pesquisaNotificacao()">Pesquisar</button>
         </form>
-        <form name="formListarUsuarioPesquisar" id="formListarUsuario" ng-show="mostrarLista" class="formPadrao formListarUsuario im-wrapper ">
+        <form name="formListarUsuarioPesquisar" id="formListarUsuario" ng-show="mostrarLista == 2" class="formPadrao formListarUsuario im-wrapper ">
             <div class="list">
                 <label class="item item-input cadastroPadrao "> 
-                    <input type="text" placeholder="Data Envio: 99/99/9999" name="data_envio" class="data" ng-model="notificacaoData.data_envio" required>
+                    <input type="text" placeholder="Data Envio: 99/99/9999" name="data_envio" class="data" ng-model="notificacaoData.data_envio">
                     <i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
                 </label>
                 <label class="item item-input cadastroPadrao"> 
@@ -90,9 +93,9 @@
             <button class="button button-full botaoPadrao" ng-click="buscarNotificacao()">Buscar</button>
         </form>
 
-        <hr ng-show="mostrarListaBusca && mostrarLista" />
+        <hr ng-show="mostrarLista == 2" />
 
-        <div class="listagem" ng-show="mostrarListaBusca && mostrarLista">
+        <div class="listagem" ng-show="mostrarLista == 2">
 
             <div class="row" >
                 <div class="col col-100">
@@ -121,6 +124,53 @@
                 </div>
             </div>
         </div>
+        
+        <form name="formListarUsuarioPesquisar" id="formListarUsuario" ng-show="mostrarLista == 3" class="formPadrao formListarUsuario im-wrapper ">
+            <div class="list">
+                <label class="item item-input cadastroPadrao "> 
+                    <input type="text" placeholder="Data Recebimento: 99/99/9999" name="data_envio" class="data" ng-model="notificacaoData.data_recebimento">
+                    <i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
+                </label>
+                <label class="item item-input cadastroPadrao"> 
+                    <i class="icon fa fa-user" style="font-size: 24px; margin-right: 8px;"></i> 
+                    <input type="text" placeholder="Nº do PEP" maxlength="50" class="titulo" name="pep" ng-model="notificacaoData.pep" >
+                </label>
+            </div>
+            <button class="button button-full botaoPadrao" ng-click="buscarNotificacaoResposta()">Buscar</button>
+        </form>
+
+        <hr ng-show="mostrarLista == 3" />
+
+        <div class="listagem" ng-show="mostrarLista == 3">
+
+            <div class="row" >
+                <div class="col col-100">
+                    <h3 class="tituloListagem">Notificações Recebidas</h3>
+                </div>
+            </div>
+
+            <div class="row" >
+                <div class="col col-100 lista">
+                    <table id="listaNotificacoesRecebidas" class="display responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                            	<th>Paciente (PEP)</th>
+                                <th>Data Envio</th>
+                                <th>Título</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Paciente (PEP)</th>
+                                <th>Data Envio</th>
+                                <th>Título</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
     </ion-content>
 </ion-view>
 <style>

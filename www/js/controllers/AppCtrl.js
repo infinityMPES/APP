@@ -238,7 +238,7 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
     		alertPopup.then(function(res) {
     		});
     		$scope.removerConfirmacao();
-    		// Redirecionado para o inicio
+//    		 Redirecionado para o inicio
     		$scope.goTo("app.inicio");
     	}
     }
@@ -289,6 +289,24 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
     
     $scope.notificacaoData = {}; // Objeto filtro
     
+    // Lista de perfis do sistema
+    $scope.listaPerfis = [];
+    
+	// Buscando os perfis cadastrados na base
+    $http({
+        method: "GET",
+        timeout: $scope.timeout,
+        url: $scope.strUrlServico + Constantes.APP_SERVICE_LISTAR_PERFIS,
+        headers: Util.headers($scope.token)
+    }).then(function (response) {
+        if (response.data.bolRetorno == true) {
+            $scope.listaPerfis = response.data.result;
+        }
+    }, function (response) {
+        // Mensagem de erro
+        $scope.falhaCarregamento(response);
+    });
+    
     /** MODAL DE CONFIMAÇÃO **/
     $ionicModal.fromTemplateUrl('templates/cadastrar-notificacao.html', {
         scope: $scope
@@ -304,10 +322,48 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
     $scope.confirmarCadastroNotificacao = function () {
         $scope.modal.show();
         $scope.configurarConfirmacao();
+        $scope.notificacaoData.usuario_criacao_id = $scope.loginData.id;
+		$scope.notificacaoData.envio_paciente = 0;
     };
+    
+    $scope.notificacaoUsuario = function(idNotificacao){
+    	$scope.notificacaoData.perfil_id = "2";
+		$scope.notificacaoData.total = 1;
+		$scope.notificacaoData.usuario_criacao_id = $scope.loginData.id;
+		$scope.notificacaoData.envio_paciente = 1;
+		$scope.notificacaoData.notificacao_criacao_id = idNotificacao;
+		
+    	$scope.confirmarCadastroNotificacao();
+    	setTimeout(function(){
+    		$scope.notificacaoData.perfil_id = "2";
+    		$scope.notificacaoData.total = 1;
+    		$scope.notificacaoData.usuario_criacao_id = $scope.loginData.id;
+    		$scope.notificacaoData.envio_paciente = 1;
+    		$scope.notificacaoData.notificacao_criacao_id = idNotificacao;
+    		console.log($scope.notificacaoData)
+    	}, 1500);
+    }
+    
+    $scope.notificacaoUsuarioEquipe = function(idNotificacao){
+    	$scope.notificacaoData.perfil_id = "1";
+		$scope.notificacaoData.total = 1;
+		$scope.notificacaoData.usuario_criacao_id = $scope.loginData.id;
+		$scope.notificacaoData.envio_paciente = 0;
+		$scope.notificacaoData.notificacao_criacao_id = idNotificacao;
+		
+    	$scope.confirmarCadastroNotificacao();
+    	setTimeout(function(){
+    		$scope.notificacaoData.perfil_id = "1";
+    		$scope.notificacaoData.total = 1;
+    		$scope.notificacaoData.usuario_criacao_id = $scope.loginData.id;
+    		$scope.notificacaoData.envio_paciente = 0;
+    		$scope.notificacaoData.notificacao_criacao_id = idNotificacao;
+    		console.log($scope.notificacaoData)
+    	}, 1500);
+    }
 
     $scope.enviarNotificacao = function () {
-        // �Mostrando o carregando
+        // Mostrando o carregando
         $scope.carregando();
         $scope.mostrarLista = false;
         // Realizando os filtros

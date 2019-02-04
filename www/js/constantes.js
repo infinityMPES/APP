@@ -10,14 +10,14 @@ var Constantes = {
 	"APP_DATABASE_NAME"	 				: "imip_oncologia",
 	"APP_DATABASE_NAME_DISPLAY"			: "Imip Oncologia",
 	"APP_ID"	 						: "08582d2d-8cb3-4ca3-9c3d-b86be7ec5e8b",
-	"APP_VERSAO" 						: "1.1.3",
+	"APP_VERSAO" 						: "1.1.4",
 	
 	// BASE
 	"APP_BASE"	 						: "imip",
 	"APP_BASE_TITULO"	 				: "Conxão Vida",
 	
-	"APP_SERVICE"						: "https://conexaovidaimip1.websiteseguro.com/prod/",
-//	"APP_SERVICE"						: "https://conexaovidaimip1.websiteseguro.com/dev/",
+//	"APP_SERVICE"						: "https://conexaovidaimip1.websiteseguro.com/prod/",
+	"APP_SERVICE"						: "https://conexaovidaimip1.websiteseguro.com/dev/",
 //	"APP_SERVICE"						: "https://conexaovidaimip1.websiteseguro.com/teste/",
 //	"APP_SERVICE"						: "http://localhost/imip/ws-imip-dois/ws/",
 	
@@ -59,6 +59,7 @@ var Constantes = {
 	"APP_SERVICE_NOTIFICACOES_BUSCAR_TOTAL"		: "notificacao/filtrarTotalUsuariosEnvio",
 	"APP_SERVICE_NOTIFICACOES_CADASTRAR"		: "notificacao/cadastrarNotificacao",
 	"APP_SERVICE_NOTIFICACOES_FILTRAR"			: "notificacao/filtrarNotificacoes",
+	"APP_SERVICE_NOTIFICACOES_FILTRAR_RESPOSTAS": "notificacao/filtrarRespostasNotificacao",
 	"APP_SERVICE_NOTIFICACOES_SETAR_LIDA"		: "notificacao/notificacoesLidas",
 	"APP_SERVICE_NOTIFICACOES_PERFIS"			: "usuario/listaPerfis",
 	"APP_SERVICE_NOTIFICACOES_CANCER"			: "usuario/listaCancer",

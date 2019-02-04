@@ -3,10 +3,12 @@
 		Notificações
     </ion-nav-title>
     <ion-content class="esqueci-senha">
+    	<ion-refresher on-refresh="doRefresh()" pullingIcon="arrow-dropdown" pulling-text="" refreshing-text="Buscando Notificações..." refreshingSpinner="circles"></ion-refresher>
         <div class="bar bar-subheader bar-stable static text-center">
             <strong class="title titulo-icone meus-notificacaos">
             	<i class="fa fa-paper-plane" aria-hidden="true"></i>
             	<br />
+            	<a class="btAdicionar links" href="javascript:void(0)" ng-click="notificacaoUsuario()"><img src="./img/imagens/button_add.png" /></a>
            	</strong>
         </div>
         <div style="padding: 6%;">
@@ -14,11 +16,13 @@
         	<span style="float: right;" class="texto-icone">Data do envio</span>
         	
         </div>
-
 		<div class="list">
-			<div class="item item-icon-left notificacao " ng-class="{'naoLida': notificacao.visualizou == '0'}" ng-repeat="notificacao in listaNotificacoes">
+			<div class="item item-icon-left notificacao" ng-click='clickLink(notificacao);' ng-class="{'naoLida': notificacao.visualizou == '0', 'interacao-notificacao': notificacao.total > 0}" ng-repeat="notificacao in listaNotificacoes">
 				<ul>
 					<li>
+						<span style="color: #35847b;   float: right;    display: block;    font-size: 2.0em;" ng-show="notificacao.total > 0">
+							<i class="fa fa-commenting"></i>
+						</span>
 						<h2>{{notificacao.titulo}}</h2>
 					</li>
 					<li>

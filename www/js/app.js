@@ -7,7 +7,7 @@ var app = angular.module('starter', ['ionic', 'ionic-material', '720kb.datepicke
 //Essa vari�vel ir� conter as informa��es necess�rias dos ids do app no onesignal
 var idsOnesignal = {};
 var db = null;
-var jsonData = {};
+var jsonDataParametro = {};
 //Login do Usuário
 var loginData = null;
 
@@ -27,41 +27,37 @@ app.run(function ($rootScope, $compile, $state, $ionicPlatform, $ionicHistory, $
             clearInterval(intervalo);
         };
         
-        
+        var intervalo;
         
         if(!ionic.Platform.is('browser')) {
         		
-//        	cordova.plugins.backgroundMode.on('enable', function(){
-//                //your code here, will execute when background tasks is enabled
-//                loop();
-//            });
-//
-//            function loop(){
-//                console.log("service conexão vida");
-//                setTimeout(loop, 1000);
-//            }
-//
-//            cordova.plugins.backgroundMode.enable();
-            
-        	
         	  var notificationOpenedCallback = function(jsonData) {
+        		jsonDataParametro = jsonData;
           	    console.log('Alberto - notificationOpenedCallback: ' + JSON.stringify(jsonData));
           	    if(jsonData.notification.payload.additionalData.acao != undefined){
           	    	console.log(jsonData.notification.payload.additionalData);
-          	    	// iniciando os intervalos
-          	    	 var intervalo = setInterval(function(){
-          	    		 // caso o usuário tenha sido informado
-          	    		 if(loginData != null){
-          	    			if(jsonData.notification.payload.additionalData.parametros != undefined){
-                  	    		$state.go(jsonData.notification.payload.additionalData.acao, jsonData.notification.payload.additionalData.parametros);
-                  	    	}else{
-                  	    		$state.go(jsonData.notification.payload.additionalData.acao);
-                  	    	}
-          	    			limparIntervalo(intervalo);
-          	    		 }else{
-          	    			console.log(loginData);
-          	    		 }
-          	        }, 500);
+          	    	if(loginData != null){
+	  	    			if(jsonData.notification.payload.additionalData.parametros != undefined){
+	          	    		$state.go(jsonData.notification.payload.additionalData.acao, jsonData.notification.payload.additionalData.parametros);
+	          	    	}else{
+	          	    		$state.go(jsonData.notification.payload.additionalData.acao);
+	          	    	}
+	  	    		 }else{
+	  	    			 // iniciando os intervalos
+	           	    	 intervalo = setInterval(function(){
+	           	    		 // caso o usuário tenha sido informado
+	           	    		 if(jsonDataParametro != null){
+	           	    			if(jsonDataParametro.notification.payload.additionalData.parametros != undefined){
+	                   	    		$state.go(jsonDataParametro.notification.payload.additionalData.acao, jsonDataParametro.notification.payload.additionalData.parametros);
+	                   	    	}else{
+	                   	    		$state.go(jsonDataParametro.notification.payload.additionalData.acao);
+	                   	    	}
+	           	    			limparIntervalo(intervalo);
+	           	    		 }else{
+	           	    			console.log(loginData);
+	           	    		 }
+	           	        }, 500);
+	  	    		 }
           	    }
           	  };
 
@@ -284,6 +280,28 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	    }
 	})
 	
+	.state('app.thread-notificacao', {
+    	cache: false,
+        url: '/thread-notificacao/:notificacaoId',
+    	views: {
+  	      'menuContent': {
+  	        templateUrl: 'templates/thread-notificacao.html',
+  	        controller: 'ThreadCtrl'
+  	      }
+  	    }
+    })
+    
+    .state('app.thread-notificacao-equipe', {
+    	cache: false,
+        url: '/thread-notificacao-equipe/:notificacaoId',
+    	views: {
+  	      'menuContent': {
+  	        templateUrl: 'templates/thread-notificacao-equipe.html',
+  	        controller: 'ThreadEquipeCtrl'
+  	      }
+  	    }
+    })
+	
 	.state('app.servicos-imip', {
 	    url: '/servicos-imip',
 	    views: {
@@ -293,6 +311,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	      }
 	    }
 	})
+	
     
     .state('app', {
         url: '/app',
@@ -300,6 +319,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'templates/menu.html',
         controller: 'AppCtrl'
     })
+    
+    
 
     .state('app.lists', {
             url: '/lists',

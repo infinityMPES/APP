@@ -1,8 +1,17 @@
-﻿app.controller('MinhasNotificacoesCtrl', function ($scope, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal) {
+﻿app.controller('MinhasNotificacoesCtrl', function ($scope, ionicMaterialInk, $http, $ionicSideMenuDelegate, $ionicPopup, $ionicModal, $state, $ionicScrollDelegate) {
 	 // Disparando ação de load
 	 $scope.carregando();
 	 // Lista de exames
 	 $scope.listaNotificacoes = [];
+	 
+	 $scope.scrollMainToTop = function() {
+		 console.log("aqui");
+		    $ionicScrollDelegate.$getByHandle('mainScroll').scrollTop();
+	 };
+	  
+	 $scope.doRefresh = function() {
+		  $scope.carregarNotificacoes();
+     };
 	 
 	 /** Método que irá recuperar os exames da base **/
 	 $scope.carregarNotificacoes = function(){
@@ -13,6 +22,7 @@
 			    url: $scope.strUrlServico + Constantes.APP_SERVICE_NOTIFICACOES_LISTAR_USUARIO + "?intIdUsuario="+(($scope.loginData.id == undefined) ? 1 : $scope.loginData.id),
 			    headers: Util.headers($scope.token)
 		 }).then(function(response) {
+			 $scope.$broadcast('scroll.refreshComplete');
 			 	// Disparando ação de load
 				$scope.carregado();
 				 if(response.data.bolRetorno == true){
@@ -25,7 +35,7 @@
 						template: "Nenhuma notificação Cadastrado!"
 					});
 					alertPopup.then(function(res) { });
-					}
+				}
 		 }, function(response) {
 			// Mensagem de erro
 			$scope.falhaCarregamento(response);
@@ -33,6 +43,11 @@
 	 }
 	 // Recuperando os notificações
 	 $scope.carregarNotificacoes();
+	 
+	 $scope.clickLink = function(notificacao){
+		if(notificacao.total > 0)
+			$state.go("app.thread-notificacao", { notificacaoId : notificacao.id});
+     };
 	 
 	 /** Método que irá recuperar os exames da base **/
 	 $scope.setarLidas = function(){

@@ -49,6 +49,7 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
         // �Mostrando o carregando
         $scope.carregando();
         $scope.mostrarLista = false;
+        
         // Realizando os filtros
         $http({
             method: "POST",
@@ -75,18 +76,15 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
     }
 
     /****** filtrar notificações enviadas ****/
-    $scope.mostrarLista = false;
-    $scope.mostrarListaBusca = false;
+    $scope.mostrarLista = 1;
     $scope.mostrarBusca = function (status) {
-//		 $scope.mostrarLista = ($scope.mostrarLista) ? false : true;
-        $scope.mostrarLista = (status == true);
+        $scope.mostrarLista = status;
         console.log($scope.mostrarLista)
     }
     $scope.listaNotificacoes = [];
     $scope.buscarNotificacao = function () {
         // Mostrando o carregando
         $scope.carregando();
-        $scope.mostrarLista = false;
         // Realizando os filtros
         $http({
             method: "POST",
@@ -101,10 +99,39 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
             if (response.data.bolRetorno == true) {
                 $scope.listaNotificacoes = response.data.result;
             }
-            // Mostrando a lista de usuários
-            $scope.mostrarLista = true;
             // Criando a tabela
             Util.montarTabela('listaNotificacoes', $scope.listaNotificacoes, [{"data": "data_envio"}, {"data": "titulo"}, {"data": "total"}], [ 0, "desc" ]);
+        }, function (response) {
+            // Mensagem de erro
+            $scope.falhaCarregamento(response);
+        });
+
+    }
+
+    $scope.mostarDetalhe = function (chave) {
+        console.log($scope.listaNotificacoes[chave]);
+    }
+    /******* MODAL DE DETALHE ********/
+    
+    $scope.listaNotificacoesResposta = [];
+    $scope.buscarNotificacaoResposta = function () {
+        // Mostrando o carregando
+        $scope.carregando();
+        // Realizando os filtros
+        $http({
+            method: "POST",
+            timeout: $scope.timeout,
+            data: 'filtroBusca=' + JSON.stringify($scope.notificacaoData),
+            url: $scope.strUrlServico + Constantes.APP_SERVICE_NOTIFICACOES_FILTRAR_RESPOSTAS,
+            headers: Util.headers($scope.token)
+        })
+        .then(function (response) {
+            $scope.carregado();
+            if (response.data.bolRetorno == true) {
+                $scope.listaNotificacoesResposta = response.data.result;
+            }
+            // Criando a tabela
+            Util.montarTabela('listaNotificacoesRecebidas', $scope.listaNotificacoesResposta, [{"data": "paciente"}, {"data": "data_envio"}, {"data": "titulo"}], [1, "desc" ]);
         }, function (response) {
             // Mensagem de erro
             $scope.falhaCarregamento(response);

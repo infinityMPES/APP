@@ -1,0 +1,57 @@
+<ion-view view-title="" class="esqueci-senha-titulo">
+    <ion-nav-title  class="esqueci-senha-titulo">
+        Notificação 
+    </ion-nav-title>
+    <ion-content class="esqueci-senha detalhe">
+    	<ion-refresher on-refresh="doRefresh()" pullingIcon="arrow-dropdown" pulling-text="" refreshing-text="Buscando Notificações..." refreshingSpinner="circles"></ion-refresher>
+        <div class="bar bar-subheader bar-stable static text-center">
+            <strong class="title titulo-icone">
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                <br />
+                <a class="btAdicionar links" href="javascript:void(0)" ng-click="notificacaoUsuario(objNotificacao.id)"><img src="./img/imagens/button_add.png" /></a>
+            </strong>
+        </div>
+        <div class="list">
+            <div class="item" >
+	            <div class="list card stable-bg notificacao-paciente" style="margin-bottom: 0px;">
+	                <div class="item item-body">
+	                	<h2 style="border-bottom: dotted 1px;">{{objNotificacao.titulo}}</h2>
+	                    <p>{{objNotificacao.mensagem}}</p>
+	                    <p>
+	                       <span style="float: left;"><i class="fa fa-users" aria-hidden="true"></i></span>
+	                       <span class="dataNotificacao">{{objNotificacao.data_envio}}</span>
+	                    </p>
+	                </div>
+                </div>
+            </div>
+            <div class="item" >
+	            <div class="list card stable-bg" ng-class="{'notificacao-paciente': notificacao.envio_paciente == '1', 'notificacao-equipe': notificacao.envio_paciente == '0'}" ng-repeat="notificacao in objNotificacao.filhos">
+	                <div class="item item-body" >
+	                	<h2 style="border-bottom: dotted 1px;">
+	                		{{notificacao.titulo}}
+                		</h2>
+	                    <p>{{notificacao.mensagem}}</p>
+	                    <p>
+	                    	<span style="float: left;" ><i  class="fa fa-users" aria-hidden="true"></i></span>
+	                        <span class="dataNotificacao">{{notificacao.data_envio}}</span>
+	                    </p>
+	                </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+<style>
+    .bar.bar-header{
+        box-shadow: none !important;
+    }
+    .bar.bar-stable{
+        border: none !important;
+    }
+    .list-inset {
+        border-left: solid 1px #62aaa2 !important;
+    }	
+    .detalhe .list .item{
+        border-bottom: dashed 1px #62aaa2;
+    }
+</style>
