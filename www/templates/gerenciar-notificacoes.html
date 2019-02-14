@@ -128,12 +128,12 @@
         <form name="formListarUsuarioPesquisar" id="formListarUsuario" ng-show="mostrarLista == 3" class="formPadrao formListarUsuario im-wrapper ">
             <div class="list">
                 <label class="item item-input cadastroPadrao "> 
-                    <input type="text" placeholder="Data Recebimento: 99/99/9999" name="data_envio" class="data" ng-model="notificacaoData.data_recebimento">
+                    <input type="text" placeholder="Data Recebimento: 99/99/9999" name="data_envio" class="data" ng-model="notificacaoDataResposta.data_recebimento">
                     <i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 
                 </label>
                 <label class="item item-input cadastroPadrao"> 
                     <i class="icon fa fa-user" style="font-size: 24px; margin-right: 8px;"></i> 
-                    <input type="text" placeholder="Nº do PEP" maxlength="50" class="titulo" name="pep" ng-model="notificacaoData.pep" >
+                    <input type="text" placeholder="Nº do PEP" maxlength="50" class="titulo" name="pep" ng-model="notificacaoDataResposta.pep" >
                 </label>
             </div>
             <button class="button button-full botaoPadrao" ng-click="buscarNotificacaoResposta()">Buscar</button>

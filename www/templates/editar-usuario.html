@@ -31,13 +31,13 @@
 					
 					<label class="item item-input cadastroPadrao" ng-show="bolEdit"> 
 						<i class="icon fa fa-lock placeholder-icon" style="font-size: 24px"></i> 
-						<input type="password" placeholder="Informe seu senha" class="senha" name="senha" ng-model="usuarioEdit.senha" required>
+						<input type="password" placeholder="Informe sua senha" class="senha" name="senha" ng-model="usuarioEdit.senha" required>
 					</label>
 					<span class="erro" ng-show="erros && !cadastrarUsuario.senha.$valid">Senha é Obrigatória</span>
 					
 					<label class="item item-input cadastroPadrao" ng-show="bolEdit"> 
 						<i class="icon fa fa-lock placeholder-icon" style="font-size: 24px"></i> 
-						<input type="password" placeholder="Confirme seu senha" class="senha" name="confirmacao_senha" ng-model="usuarioEdit.confirmacao_senha" required>
+						<input type="password" placeholder="Confirme sua senha" class="senha" name="confirmacao_senha" ng-model="usuarioEdit.confirmacao_senha" required>
 					</label>
 					<span class="erro" ng-show="erros && !cadastrarUsuario.confirmacao_senha.$valid">Confirmação da Senha é Obrigatória</span> 
 					
@@ -59,7 +59,7 @@
 					
 					<label class="item item-input cadastroPadrao"  ng-show="usuarioEdit.perfil_id == 1"> 
 					 	<i class="icon fa fa-file-text placeholder-icon" style="font-size: 24px"></i> 
-						<input type="text" placeholder="Informe Nº PEP" name="numero_pep" ng-model="usuarioEdit.numero_pep" required>
+						<input type="text" placeholder="Informe Nº PEP" name="numero_pep" class="pep" ng-model="usuarioEdit.numero_pep" required>
 					</label>
 					<span class="erro" ng-show="erros && !cadastrarUsuario.numero_pep.$valid">PEP é Obrigatório</span>
 					

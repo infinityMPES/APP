@@ -29,14 +29,14 @@
 					    </select>
 					</label>
 					<label class="item item-input cadastroPadrao item-stacked-label"> 
-						<span class="input-label">Data Coleta Exame:</span>
+						<span class="input-label">Data da Coleta do Exame:</span>
 						<input type="date" ng-change="formatDate()" data-date-format="DD/MM/YYYY" placeholder="Data Coleta Exame: 99/99/9999" id="data_exame" name="data_exame" ng-model="exameData.data_exame_form" required>
 						<input type="hidden" ng-model="exameData.data_exame" />
 						<i class="icon fa fa-calendar placeholder-icon" for="data_exame" style="font-size: 24px"></i> 
 					</label>
 					<span class="erro" ng-show="erros && !cadastrarUsuario.data_exame.$valid">Data de Coleta do Exame é Obrigatória</span> 
 					<label class="item item-input cadastroPadrao  item-stacked-label"> 
-						<span class="input-label">Data de Entrega Resultado:</span>
+						<span class="input-label">Data de Entrega do Resultado:</span>
 						<input type="date" ng-change="formatDate()" placeholder="Data de Entrega Resultado: 99/99/9999" name="data_previsao" ng-model="exameData.data_previsao_form" required>
 						<input type="hidden" 	ng-model="exameData.data_previsao" />
 						<i class="icon fa fa-calendar placeholder-icon" style="font-size: 24px"></i> 

@@ -31,6 +31,8 @@ app.run(function ($rootScope, $compile, $state, $ionicPlatform, $ionicHistory, $
         
         if(!ionic.Platform.is('browser')) {
         		
+        	  screen.orientation.lock('portrait');
+        	
         	  var notificationOpenedCallback = function(jsonData) {
         		jsonDataParametro = jsonData;
           	    console.log('Alberto - notificationOpenedCallback: ' + JSON.stringify(jsonData));

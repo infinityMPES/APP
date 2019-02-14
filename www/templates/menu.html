@@ -28,19 +28,15 @@
         </ion-header-bar>
         <ion-content class="stable-bg has-expanded-header">
             <ion-list>
-            	
             	<ion-item nav-clear menu-close href="#/app/inicio" ng-show="loginData.perfil_id == 1 || loginData.perfil_id == 2">
-                    Inicio
+                    Início
                 </ion-item>
                 <!-- Visão Paciente -->
                 <ion-item nav-clear menu-close href="#/app/cadastrar-exames" ng-show="loginData.perfil_id == 1">
-                    <img src="./img/imagens/icon_menu_cadastromexames.png" /> Cadastrar Exame
+                    <img src="./img/imagens/icon_menu_cadastromexames.png" /> Cadastrar Exames
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/meus-exames" ng-show="loginData.perfil_id == 1">
                     <img src="./img/imagens/icon_menu_meusexames.png" /> Meus Exames
-                </ion-item>
-                <ion-item nav-clear menu-close href="#/app/meus-agendamentos" ng-show="loginData.perfil_id == 1">
-                    <img src="./img/imagens/icon_menu_minhasconsultas.png" /> Meus Exames
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/cadastrar-agendamento" ng-show="loginData.perfil_id == 1">
                     <img src="./img/imagens/icon_menu_consultas.png" /> Solicitar Consultas
@@ -58,7 +54,7 @@
                    <img src="./img/imagens/icon_menu_gerenciar.png" /> Gerenciar Usuários
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/gerenciar-agendamento" ng-show="loginData.perfil_id == 2">
-                    <img src="./img/imagens/icon_menu_consultas.png" /> Gerenciar Agendamento
+                    <img src="./img/imagens/icon_menu_consultas.png" /> Gerenciar Agendamentos
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/gerenciar-notificacoes" ng-show="loginData.perfil_id == 2">
                     <img src="./img/imagens/icon_menu_notificar.png" /> Notificar Pacientes

@@ -39,7 +39,7 @@
 					
 					<label class="item item-input cadastroPadrao "> 
 					 	<i class="icon fa fa-file-text placeholder-icon" style="font-size: 24px"></i> 
-						<input type="text" placeholder="Informe Nº PEP" name="pep" ng-model="loginData.pep" required>
+						<input type="text" placeholder="Informe Nº PEP" name="pep" class="pep" ng-model="loginData.pep" required>
 					</label>
 					<span class="erro" ng-show="erros && !cadastrarUsuario.pep.$valid">PEP é Obrigatório</span>
 					
@@ -54,7 +54,7 @@
 					
 					<label class="item item-input cadastroPadrao "> 
 						<i class="icon fa fa-id-card-o placeholder-icon" style="font-size: 24px"></i> 
-						<input type="text" placeholder="Informe seu nome" name="nome"  class="apenasLetras"  ng-model="loginData.nome" required>
+						<input type="text" placeholder="Informe seu nome" name="nome" class="apenasLetras"  ng-model="loginData.nome" required>
 					</label>
 					<span class="erro" ng-show="erros && !cadastrarUsuario.nome.$valid">Nome é Obrigatório</span> 
 					

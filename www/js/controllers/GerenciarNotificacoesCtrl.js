@@ -26,7 +26,7 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
         // Mensagem de erro
         $scope.falhaCarregamento(response);
     });
-
+    $scope.notificacaoData = {};
     $scope.listaCancer = [];
     $http({
         method: "GET",
@@ -63,7 +63,7 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
                     if (response.data.bolRetorno == true) {
                         $scope.notificacaoData.total = response.data.result[0].total;
                         console.log($scope.notificacaoData.total)
-                        $scope.confirmarCadastroNotificacao();
+                        $scope.confirmarCadastroNotificacao($scope.notificacaoData.total);
                         $scope.notificacaoData.titulo = "";
                         $scope.notificacaoData.corpo = "";
                     }
@@ -112,7 +112,7 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
         console.log($scope.listaNotificacoes[chave]);
     }
     /******* MODAL DE DETALHE ********/
-    
+    $scope.notificacaoDataResposta = {};
     $scope.listaNotificacoesResposta = [];
     $scope.buscarNotificacaoResposta = function () {
         // Mostrando o carregando
@@ -121,7 +121,7 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
         $http({
             method: "POST",
             timeout: $scope.timeout,
-            data: 'filtroBusca=' + JSON.stringify($scope.notificacaoData),
+            data: 'filtroBusca=' + JSON.stringify($scope.notificacaoDataResposta),
             url: $scope.strUrlServico + Constantes.APP_SERVICE_NOTIFICACOES_FILTRAR_RESPOSTAS,
             headers: Util.headers($scope.token)
         })

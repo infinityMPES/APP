@@ -56,6 +56,7 @@
 		
 		// Disparando ação de load
 		$scope.carregando();
+		$scope.agendamentoData.descricao = $scope.agendamentoData.descricao.replace(/[#,$,%,¨,&,*,+,-,']/gi, '');
 		// Postando para URL
 	 	$http({
 			method: "POST",

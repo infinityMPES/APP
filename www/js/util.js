@@ -439,48 +439,48 @@ Util.validarCadastroPaciente = function (loginData, bolCadastro){
 		// Caso seja editar paciente valido o perfil
 		if(loginData.perfil_id == "" || loginData.perfil_id == undefined){
 			bolErros = true;
-			strMensagem += "<b>Perfil</b> é obrigatório!  <br />";
+			strMensagem += " <b>Perfil</b> é obrigatório!  <br />";
 		}
 	}
 	
 	if(loginData.email == "" || loginData.email == undefined){
 		bolErros = true;
-		strMensagem += "<b>E-mail</b> é obrigatório!  <br />";
+		strMensagem += " <b>E-mail</b> é obrigatório!  <br />";
 	}
 	
 	if(loginData.nome == "" || loginData.nome == undefined) {
 		bolErros = true;
-		strMensagem += "<b>Nome</b> é obrigatório!  <br />";
+		strMensagem += " <b>Nome</b> é obrigatório!  <br />";
 	}
 	
 	if(!Util.validaData(loginData.data_nascimento)) {
 		bolErros = true;
-		strMensagem += "<b>Data nascimento</b> inválida!  <br />";
+		strMensagem += " <b>Data nascimento</b> inválida!  <br />";
 	}
 	
 	if(loginData.sexo == "" || loginData.sexo == undefined){
 		bolErros = true;
-		strMensagem += "<b>Sexo</b> é obrigatório!  <br />";
+		strMensagem += " <b>Sexo</b> é obrigatório!  <br />";
 	}
 	
 	if(loginData.endereco == "" || loginData.endereco == undefined){
 		bolErros = true;
-		strMensagem += "<b>Endereço</b> é obrigatório!  <br />";
+		strMensagem += " <b>Endereço</b> é obrigatório!  <br />";
 	}
 	
 	if(loginData.cidade == "" || loginData.cidade == undefined){
 		bolErros = true;
-		strMensagem += "<b>Cidade</b> é obrigatória!  <br />";
+		strMensagem += " <b>Cidade</b> é obrigatória!  <br />";
 	}
 	
 	if(loginData.uf == "" || loginData.uf == undefined){
 		bolErros = true;
-		strMensagem += "<b>Estado</b> é obrigatório!  <br />";
+		strMensagem += " <b>Estado</b> é obrigatório!  <br />";
 	}
 	
 	if(loginData.contato == "" || loginData.contato == undefined){
 		bolErros = true;
-		strMensagem += "É necessário informar ao menos um <b>Nº de Contato</b>!  <br />";
+		strMensagem += " É necessário informar ao menos um <b>Nº de Contato</b>!  <br />";
 	}
 	
 	return {strMensagem : strMensagem, bolErros : bolErros};
@@ -552,22 +552,22 @@ Util.validarCamposExames = function(exameData){
 	 strMensagem = "";
 	 
 	 if(exameData.area_id == undefined || exameData.area_id == ""){
-		 strMensagem += "Área é obrigatória";
+		 strMensagem += "Área é obrigatória <br />";
 		 bolErros = true;	
 	 }
 	 
 	 if(exameData.tipo_exame_id == undefined || exameData.tipo_exame_id == ""){
-		 strMensagem += "Tipo de Exame é obrigatório";
+		 strMensagem += "Tipo de Exame é obrigatório <br />";
 		 bolErros = true;	
 	 }
 	 
 	 if(exameData.data_exame == undefined || exameData.data_exame == ""){
-		 strMensagem += "Data Coleta é obrigatória";
+		 strMensagem += "Data Coleta é obrigatória <br />";
 		 bolErros = true;	
 	 }
 	 
 	 if(exameData.data_previsao == undefined || exameData.data_previsao == ""){
-		 strMensagem += "Data Previsão é obrigatória";
+		 strMensagem += "Data Previsão é obrigatória <br />";
 		 bolErros = true;	
 	 }
 	 return {strMensagem : strMensagem, bolErros : bolErros};
@@ -578,19 +578,42 @@ Util.validarCamposAgendamento = function(exameData){
 	 strMensagem = "";
 	 
 	 if(exameData.area_id == undefined || exameData.area_id == ""){
-		 strMensagem += "Área é obrigatória";
+		 strMensagem += "Área é obrigatória <br />";
 		 bolErros = true;	
 	 }
 	 
 	 
 	 if(exameData.data_solicitada == undefined || exameData.data_solicitada == ""){
-		 strMensagem += "Data é obrigatória";
+		 strMensagem += "Data é obrigatória <br />";
 		 bolErros = true;	
 	 }
 	 
 	 if(exameData.descricao == undefined || exameData.descricao == ""){
-		 strMensagem += "Motivo é obrigatório";
+		 strMensagem += "Motivo é obrigatório <br />";
 		 bolErros = true;	
 	 }
+	 return {strMensagem : strMensagem, bolErros : bolErros};
+}
+
+Util.validarNotificacao = function(notificacaoData){
+	 bolErros = false;	
+	 strMensagem = "";
+	 
+	 if(notificacaoData.titulo == undefined || notificacaoData.titulo == ""){
+		 strMensagem += "Título é obrigatório <br />";
+		 bolErros = true;	
+	 }
+	 
+	 if(notificacaoData.corpo == undefined || notificacaoData.corpo == ""){
+		 strMensagem += "Corpo é obrigatório <br />";
+		 bolErros = true;	
+	 }
+	 
+	 if(notificacaoData.corpo.legth > 145) {
+		 strMensagem += "Corpo com mais de 145 caracteres <br />";
+		 bolErros = true;
+     }
+	 
+	 
 	 return {strMensagem : strMensagem, bolErros : bolErros};
 }

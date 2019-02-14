@@ -122,7 +122,8 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
   	      animation: 'fade-in',
   	      showBackdrop: true,
   	      maxWidth: 200,
-  	      showDelay: 0
+  	      showDelay: 0,
+  	      duration: 20000
   	  });
     }
     
@@ -233,7 +234,7 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
     	if(redireciona == true || redireciona == undefined){
     		var alertPopup = $ionicPopup.alert({
     			title: 'Sucesso',
-    			template: 'Aguarde, você sera redirecionado!'
+    			template: 'Aguarde, você será redirecionado!'
     		});
     		alertPopup.then(function(res) {
     		});
@@ -315,15 +316,18 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
     });
 
     $scope.closeConfirmarNotificacao = function () {
-        $scope.modal.hide();
+    	$scope.notificacaoData = {};
+    	$scope.modal.hide();
         $scope.removerConfirmacao();
     };
 
-    $scope.confirmarCadastroNotificacao = function () {
+    $scope.confirmarCadastroNotificacao = function (total) {
         $scope.modal.show();
         $scope.configurarConfirmacao();
         $scope.notificacaoData.usuario_criacao_id = $scope.loginData.id;
 		$scope.notificacaoData.envio_paciente = 0;
+		if(total != undefined)
+			$scope.notificacaoData.total = total;
     };
     
     $scope.notificacaoUsuario = function(idNotificacao){
@@ -366,6 +370,27 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
         // Mostrando o carregando
         $scope.carregando();
         $scope.mostrarLista = false;
+        
+        // Validando os campos 
+		var errosValidacao =  Util.validarNotificacao($scope.notificacaoData);
+	   	 // Caso haja algum erro
+		if(errosValidacao.bolErros){
+		 	// Disparando ação de load
+			$scope.carregado();
+			// Abrindo dialog com erros
+			var alertPopup = $ionicPopup.alert({
+				title: 'Campo obrigatórios',
+				template: errosValidacao.strMensagem
+			});
+			alertPopup.then(function(res) { });
+			return false;
+		 }
+		
+        $scope.notificacaoData.titulo = $scope.notificacaoData.titulo.replace(/[#,$,%,¨,&,*,+,-,']/gi, '');
+        $scope.notificacaoData.corpo = $scope.notificacaoData.corpo.replace(/[#,$,%,¨,&,*,+,-,']/gi, '');
+        $scope.notificacaoData.pep = ($scope.notificacaoData.perfil_id == 2) ? null : $scope.notificacaoData.pep;
+        console.log($scope.notificacaoData.corpo);
+        
         // Realizando os filtros
         $http({
             method: "POST",
