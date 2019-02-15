@@ -48,8 +48,6 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
     $scope.pesquisaNotificacao = function () {
         // �Mostrando o carregando
         $scope.carregando();
-        $scope.mostrarLista = false;
-        
         // Realizando os filtros
         $http({
             method: "POST",

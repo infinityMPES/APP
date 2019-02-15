@@ -536,7 +536,7 @@ Util.validarCadastroMedico = function (loginData){
 	
 	if(!Util.validaData(loginData.data_nascimento)) {
 		bolErros = true;
-		strMensagem += "<b>Data nascimento</b> inválida!  <br />";
+		strMensagem += "<b>Data de nascimento</b> inválida!  <br />";
 	}
 	
 	if(loginData.sexo == "" || loginData.sexo == undefined){
@@ -562,12 +562,12 @@ Util.validarCamposExames = function(exameData){
 	 }
 	 
 	 if(exameData.data_exame == undefined || exameData.data_exame == ""){
-		 strMensagem += "Data Coleta é obrigatória <br />";
+		 strMensagem += "Data da Coleta é obrigatória <br />";
 		 bolErros = true;	
 	 }
 	 
 	 if(exameData.data_previsao == undefined || exameData.data_previsao == ""){
-		 strMensagem += "Data Previsão é obrigatória <br />";
+		 strMensagem += "Data da Previsão é obrigatória <br />";
 		 bolErros = true;	
 	 }
 	 return {strMensagem : strMensagem, bolErros : bolErros};
@@ -609,7 +609,7 @@ Util.validarNotificacao = function(notificacaoData){
 		 bolErros = true;	
 	 }
 	 
-	 if(notificacaoData.corpo.legth > 145) {
+	 if(!bolErros && notificacaoData.corpo.legth > 145) {
 		 strMensagem += "Corpo com mais de 145 caracteres <br />";
 		 bolErros = true;
      }

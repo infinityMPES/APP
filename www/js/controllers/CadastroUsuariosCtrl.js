@@ -92,7 +92,7 @@
 			$scope.carregado();
 			// Abrindo dialog com erros
 			var alertPopup = $ionicPopup.alert({
-				title: 'Campo obrigatórios',
+				title: 'Campo(s) obrigatório(s)',
 				template: errosValidacao.strMensagem
 			});
 			alertPopup.then(function(res) { });
