@@ -12,7 +12,6 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
        $scope.banco = (Constantes.APP_SERVICE == "https://conexaovidaimip1.websiteseguro.com/dev/") ? "DEV": "Teste";
        $scope.mostrarBanco = 1;
     }
-    
 //   $scope.loginData = {"id":"112","perfil_id":"1","nome":"Karine Henrique da Silva","numero_pep":"123kb","contato":"(81) 99596-8432","sexo":"2","email":"karinehenrique23@gmail.com","login":"06662460419","cancer_id":"38","ultimo_acesso":"2018-12-09 14:09:14","strCpf":"06662460419"}
 
     var navIcons = document.getElementsByClassName('ion-navicon');
@@ -326,6 +325,7 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
         $scope.configurarConfirmacao();
         $scope.notificacaoData.usuario_criacao_id = $scope.loginData.id;
 		$scope.notificacaoData.envio_paciente = 0;
+		console.log($scope.notificacaoData);
 		if(total != undefined)
 			$scope.notificacaoData.total = total;
     };
@@ -389,7 +389,7 @@ app.controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout
         $scope.notificacaoData.titulo = $scope.notificacaoData.titulo.replace(/[#,$,%,¨,&,*,+,-,']/gi, '');
         $scope.notificacaoData.corpo = $scope.notificacaoData.corpo.replace(/[#,$,%,¨,&,*,+,-,']/gi, '');
         $scope.notificacaoData.pep = ($scope.notificacaoData.perfil_id == 2) ? null : $scope.notificacaoData.pep;
-        console.log($scope.notificacaoData.corpo);
+        console.log($scope.notificacaoData);
         
         // Realizando os filtros
         $http({

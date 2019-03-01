@@ -26,7 +26,6 @@ app.controller('GerenciarNotificacoesCtrl', function ($scope, $stateParams, ioni
         // Mensagem de erro
         $scope.falhaCarregamento(response);
     });
-    $scope.notificacaoData = {};
     $scope.listaCancer = [];
     $http({
         method: "GET",

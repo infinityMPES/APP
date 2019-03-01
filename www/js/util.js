@@ -609,8 +609,8 @@ Util.validarNotificacao = function(notificacaoData){
 		 bolErros = true;	
 	 }
 	 
-	 if(!bolErros && notificacaoData.corpo.legth > 145) {
-		 strMensagem += "Corpo com mais de 145 caracteres <br />";
+	 if(!bolErros && notificacaoData.corpo.legth > 500) {
+		 strMensagem += "Corpo com mais de 500 caracteres <br />";
 		 bolErros = true;
      }
 	 
